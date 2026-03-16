@@ -1,0 +1,92 @@
+/* ── OMNIBUS Custom Font Utilities ─────────────────────── */
+.font-display { font-family: 'Space Mono', 'JetBrains Mono', monospace; }
+.font-body    { font-family: 'DM Sans', sans-serif; }
+.font-code    { font-family: 'JetBrains Mono', 'Space Mono', monospace; }
+
+ /* ── Smooth theme transition — excluir elementos animados por Motion ─── */
+ :root {
+   --theme-transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease;
+ }
+
+ /*
+  * Aplicamos la transición de tema solo a los elementos que la necesitan.
+  * NO usamos el selector universal (*) para evitar conflictos con
+  * Framer Motion, que gestiona sus propias transiciones via inline styles.
+  */
+ body,
+ header,
+ nav,
+ main,
+ section,
+ footer,
+ a,
+ button,
+ span,
+ p,
+ h1, h2, h3, h4, h5, h6,
+ div:not([style*="transform"]) {
+   transition: var(--theme-transition);
+ }
+
+/* ── Data flow animation for SVG lines ─────────────────── */
+@keyframes dashFlow {
+  from { stroke-dashoffset: 24; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes pulse-ring {
+  0%, 100% { opacity: 0.4; r: 44; }
+  50%       { opacity: 0.1; r: 52; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+@keyframes scan-line {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes counter-tick {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes node-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* ── Scan line section accent ─────────────────────────── */
+.section-scan::before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #FF4500, #00D4FF, transparent);
+  margin-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Terminal diagram ────────────────────────────────── */
+.terminal-box {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0C10; }
+::-webkit-scrollbar-thumb { background: #1E2330; border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: #1E2330; }
+
+/* ── 3D card tilt utility ─────────────────────────── */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
