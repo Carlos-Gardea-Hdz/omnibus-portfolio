@@ -1,26 +1,26 @@
-import { useState, useCallback } from 'react';
-import { Lang } from '../types';
+import { useState, useCallback } from "react";
+import { Lang } from "../types";
 
 export function useLanguage() {
   const [lang, setLang] = useState<Lang>(() => {
     try {
-      return (localStorage.getItem('omnibus-lang') as Lang) || 'es';
+      return (localStorage.getItem("omnibus-lang") as Lang) || "en";
     } catch {
-      return 'es';
+      return "en";
     }
   });
 
   const toggle = useCallback(() => {
-     setLang((prev) => {
-       const next: Lang = prev === 'es' ? 'en' : 'es';
-       try {
-         localStorage.setItem('omnibus-lang', next);
-       } catch {
-         // ignore
-       }
-       return next;
-     });
-   }, []); // dependencias vacías — nunca se recrea
+    setLang((prev) => {
+      const next: Lang = prev === "es" ? "en" : "es";
+      try {
+        localStorage.setItem("omnibus-lang", next);
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+  }, []); // dependencias vacías — nunca se recrea
 
   return { lang, toggle };
 }
