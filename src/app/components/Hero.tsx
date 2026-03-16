@@ -64,7 +64,7 @@ export default function Hero() {
 
       {/* Accent glow top-right */}
       <div
-        className="absolute top-0 right-0 z-0  w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute top-0 right-0 z-0 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(255,69,0,0.07) 0%, transparent 70%)",
@@ -80,8 +80,8 @@ export default function Hero() {
 
       {/* Main hero content */}
       <div className="relative z-10 flex-1 max-w-[1280px] mx-auto w-full px-6 lg:px-12 pt-32 pb-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-        {/* LEFT — 60% */}
-        <div className="flex-1 lg:w-[60%] max-w-xl lg:max-w-none">
+        {/* LEFT — 55% */}
+        <div className="flex-1 lg:w-[55%] max-w-xl lg:max-w-none">
           {/* Pre-heading badge */}
           <motion.div {...fadeUp(0.05)}>
             <span className="inline-flex items-center gap-2 font-code text-[11px] text-[#FF4500] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 rounded-full mb-6">
@@ -131,13 +131,13 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — 40% — Network Diagram */}
+        {/* RIGHT — 45% — Network Diagram */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden lg:flex lg:w-[40%] items-center justify-center"
-          style={{ height: "480px" }}
+          className="w-full lg:w-[45%] flex items-center justify-center"
+          style={{ height: "520px" }}
         >
           <NetworkDiagram />
         </motion.div>
