@@ -6,7 +6,7 @@ const TIMELINE = [
   {
     company: "Instituto Tecnológico de Ciudad Juárez",
     period: { es: "Ago 2022 – Ago 2024", en: "Aug 2022 – Aug 2024" },
-    role: { es: "Project Lead de Tesis", en: "Thesis Project Lead" },
+    role: { es: "Líder de Proyecto de Tesis", en: "Thesis Project Lead" },
     color: "#6B7A99",
   },
   {
