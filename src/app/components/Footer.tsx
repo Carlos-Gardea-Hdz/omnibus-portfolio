@@ -1,8 +1,8 @@
-import { Github, Linkedin } from 'lucide-react';
-import { useAppContext } from '../contexts/AppContext';
+import { Github, Linkedin } from "lucide-react";
+import { useAppContext } from "../contexts/AppContext";
 
 export default function Footer() {
-  const { lang, toggleLang } = useAppContext();
+  const { lang } = useAppContext();
 
   return (
     <footer className="bg-[#F5F6FA] dark:bg-[#0A0C10] border-t border-[#E2E8F0] dark:border-[#1E2330]">
@@ -32,15 +32,6 @@ export default function Footer() {
 
           {/* Right */}
           <div className="flex items-center justify-end gap-4">
-            {/* Language toggle */}
-            <button
-              onClick={toggleLang}
-              className="font-code flex items-center h-7 rounded-full border border-[#E2E8F0] dark:border-[#1E2330] bg-[#F5F6FA] dark:bg-[#111318] overflow-hidden text-[11px] cursor-pointer"
-            >
-              <span className={`px-2.5 h-full flex items-center transition-colors ${lang === 'es' ? 'bg-[#FF4500] text-white' : 'text-[#64748B] dark:text-[#6B7A99]'}`}>ES</span>
-              <span className={`px-2.5 h-full flex items-center transition-colors ${lang === 'en' ? 'bg-[#FF4500] text-white' : 'text-[#64748B] dark:text-[#6B7A99]'}`}>EN</span>
-            </button>
-
             {/* Social icons */}
             <a
               href="https://github.com/Carlos-Gardea-Hdz"
@@ -66,9 +57,9 @@ export default function Footer() {
         {/* Bottom line */}
         <div className="mt-6 pt-6 border-t border-[#E2E8F0] dark:border-[#1E2330] flex items-center justify-center">
           <span className="font-code text-[#64748B] dark:text-[#6B7A99] text-[10px] tracking-widest">
-            {lang === 'es'
-              ? '// Arquitectura sin concesiones · Ciudad Juárez, MX'
-              : '// Architecture without compromise · Ciudad Juárez, MX'}
+            {lang === "es"
+              ? "// Arquitectura sin concesiones · Ciudad Juárez, MX"
+              : "// Architecture without compromise · Ciudad Juárez, MX"}
           </span>
         </div>
       </div>

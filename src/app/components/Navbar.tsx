@@ -1,5 +1,5 @@
 import { useState, useEffect, type MouseEvent } from "react";
-import { Menu, X, Github, Sun, Moon } from "lucide-react";
+import { Menu, X, Github, Sun, Moon, Linkedin } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 
 const NAV_LINKS = [
@@ -69,10 +69,10 @@ export default function Navbar() {
 
         {/* Right controls */}
         <div className="flex items-center gap-3">
-          {/* Language toggle */}
+          {/* Language toggle — always visible */}
           <button
             onClick={toggleLang}
-            className="font-code hidden sm:flex items-center h-7 rounded-full border border-[#E2E8F0] dark:border-[#1E2330] bg-[#F5F6FA] dark:bg-[#111318] overflow-hidden text-[11px] cursor-pointer"
+            className="font-code flex items-center h-7 rounded-full border border-[#E2E8F0] dark:border-[#1E2330] bg-[#F5F6FA] dark:bg-[#111318] overflow-hidden text-[11px] cursor-pointer"
           >
             <span
               className={`px-2.5 h-full flex items-center transition-colors ${
@@ -105,6 +105,17 @@ export default function Navbar() {
             <Github size={18} />
           </a>
 
+          {/* LinkedIn */}
+          <a
+            href="https://linkedin.com/in/carlos-gardea"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF] transition-colors"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={18} />
+          </a>
+
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
@@ -128,16 +139,6 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-[#E2E8F0] dark:border-[#1E2330] bg-[#F5F6FA] dark:bg-[#0A0C10] px-6 py-4 flex flex-col gap-4">
-          {/* Mobile lang toggle
-          <div className="flex items-center gap-2">
-            <button
-              onClick={toggleLang}
-              className="font-code flex items-center h-7 rounded-full border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] overflow-hidden text-[11px] cursor-pointer"
-            >
-              <span className={`px-2.5 h-full flex items-center transition-colors ${lang === 'es' ? 'bg-[#FF4500] text-white' : 'text-[#64748B] dark:text-[#6B7A99]'}`}>ES</span>
-              <span className={`px-2.5 h-full flex items-center transition-colors ${lang === 'en' ? 'bg-[#FF4500] text-white' : 'text-[#64748B] dark:text-[#6B7A99]'}`}>EN</span>
-            </button>
-          </div> */}
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
