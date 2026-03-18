@@ -86,7 +86,7 @@ export default function Hero() {
           <motion.div {...fadeUp(0.05)}>
             <span className="inline-flex items-center gap-2 font-code text-[11px] text-[#FF4500] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF4500] animate-pulse" />
-              The Platinum Architect's Codex — v6.2
+              Laravel 12 · React 19 · Docker · PostgreSQL 18 · VPS
             </span>
           </motion.div>
 
@@ -96,8 +96,8 @@ export default function Hero() {
             className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
           >
             {lang === "es"
-              ? "9 sistemas\nen producción.\nArquitectura\nsin concesiones."
-              : "9 production\nsystems.\nArchitecture\nwithout compromise."}
+              ? "9 sistemas de\narquitectura avanzada.\nUna infraestructura.\nUn estándar."
+              : "9 advanced-architecture\nsystems.\nOne infrastructure.\nOne standard."}
           </motion.h1>
 
           {/* Sub-heading */}
@@ -121,12 +121,20 @@ export default function Hero() {
               <ChevronRight size={16} />
             </a>
             <a
-              href="/cv-carlos-gardea.pdf"
-              download
+              href={
+                lang === "es"
+                  ? "/CV_Carlos_Gardea_2026.pdf"
+                  : "/Resume_Carlos_Gardea_2026.pdf"
+              }
+              download={
+                lang === "es"
+                  ? "CV_Carlos_Gardea_2026.pdf"
+                  : "Resume_Carlos_Gardea_2026.pdf"
+              }
               className="inline-flex items-center gap-2 font-body border border-[#E2E8F0] dark:border-[#1E2330] text-[#0D1117] dark:text-[#F0F4FF] hover:border-[#FF4500]/50 dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 active:scale-95"
             >
               <Download size={16} />
-              {lang === "es" ? "Descargar CV" : "Download CV"}
+              {lang === "es" ? "Descargar CV" : "Download Resume"}
             </a>
           </motion.div>
         </div>

@@ -74,10 +74,28 @@ export default function About() {
             {/* Avatar */}
             <div className="relative w-full max-w-xs">
               <div className="aspect-square rounded-2xl border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] overflow-hidden">
-                {/* Stylized avatar placeholder */}
+                {/* 
+                  PHOTO: Place your photo at public/avatar.jpg (square, min 400x400px).
+                  The img tag below will render it automatically once the file exists.
+                  Until then, the CG fallback is shown.
+                */}
+                <img
+                  src="/avatar.jpg"
+                  alt="Carlos Gardea"
+                  className="w-full h-full object-cover object-center"
+                  onError={(e) => {
+                    // Hide img on error, show fallback
+                    (e.target as HTMLImageElement).style.display = "none";
+                    const fallback = (e.target as HTMLImageElement)
+                      .nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = "flex";
+                  }}
+                />
+                {/* Fallback shown until avatar.jpg is uploaded */}
                 <div
-                  className="w-full h-full flex flex-col items-center justify-center"
+                  className="w-full h-full flex-col items-center justify-center"
                   style={{
+                    display: "flex",
                     background:
                       "radial-gradient(ellipse at 50% 30%, rgba(255,69,0,0.08) 0%, transparent 60%)",
                   }}
@@ -112,7 +130,7 @@ export default function About() {
                 />
               </div>
 
-              {/* Accent corner */}
+              {/* Accent corners */}
               <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-[#FF4500] opacity-60 rounded-tr" />
               <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-[#00D4FF] opacity-60 rounded-bl" />
             </div>

@@ -69,6 +69,11 @@ export default function Navbar() {
 
         {/* Right controls */}
         <div className="flex items-center gap-3">
+          {/* Availability badge — desktop only */}
+          <span className="hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] text-[#22D3A5] border border-[#22D3A5]/30 bg-[#22D3A5]/5 px-2.5 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#22D3A5] animate-pulse" />
+            {lang === "es" ? "Disponible" : "Available"}
+          </span>
           {/* Language toggle — always visible */}
           <button
             onClick={toggleLang}

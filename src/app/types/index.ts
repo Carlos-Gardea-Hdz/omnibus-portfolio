@@ -1,8 +1,17 @@
-export type Lang = 'es' | 'en';
+export type Lang = "es" | "en";
 
 export interface BilingualText {
   es: string;
   en: string;
+}
+
+export type ProjectVersionType = "legacy" | "whitelabel" | "laravel";
+
+export interface ProjectVersion {
+  type: ProjectVersionType;
+  label: BilingualText;
+  url: string;
+  available: boolean;
 }
 
 export interface Project {
@@ -11,10 +20,12 @@ export interface Project {
   codename: string;
   domain: string;
   color: string;
-  status: 'production' | 'development';
+  status: "production" | "development";
   description: BilingualText;
   stackBadges: string[];
   architecturePattern: string;
+  /** Optional: projects that have multiple versions (legacy → whitelabel → laravel) */
+  versions?: ProjectVersion[];
 }
 
 export interface TechBadge {
