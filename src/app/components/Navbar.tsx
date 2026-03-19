@@ -146,7 +146,7 @@ export default function Navbar() {
 
           {/* LinkedIn */}
           <a
-            href="https://linkedin.com/in/carlos-gardea"
+            href="https://www.linkedin.com/in/carlos-gardea"
             target="_blank"
             rel="noopener noreferrer"
             className={`transition-colors ${

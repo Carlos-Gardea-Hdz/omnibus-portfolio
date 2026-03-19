@@ -1,5 +1,6 @@
 import { Github, Linkedin } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
+import { translations } from "../data/translations";
 
 export default function Footer() {
   const { lang } = useAppContext();
@@ -11,10 +12,10 @@ export default function Footer() {
           {/* Left */}
           <div className="flex flex-col gap-1">
             <span className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-base">
-              OMNIBUS · Carlos Gardea · 2025
+              OMNIBUS · Carlos Gardea · 2026
             </span>
             <span className="font-code text-[#64748B] dark:text-[#6B7A99] text-[11px]">
-              Built with Laravel 12 + React 19 + Inertia.js
+              Built with {translations.footer.built}
             </span>
           </div>
 
@@ -43,7 +44,7 @@ export default function Footer() {
               <Github size={18} />
             </a>
             <a
-              href="https://linkedin.com/in/carlos-gardea"
+              href="https://www.linkedin.com/in/carlos-gardea"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF] transition-colors"
@@ -57,9 +58,7 @@ export default function Footer() {
         {/* Bottom line */}
         <div className="mt-6 pt-6 border-t border-[#E2E8F0] dark:border-[#1E2330] flex items-center justify-center">
           <span className="font-code text-[#64748B] dark:text-[#6B7A99] text-[10px] tracking-widest">
-            {lang === "es"
-              ? "// Arquitectura sin concesiones · Ciudad Juárez, MX"
-              : "// Architecture without compromise · Ciudad Juárez, MX"}
+            {translations.footer.tagline[lang]}
           </span>
         </div>
       </div>

@@ -20,7 +20,7 @@ export function useLanguage() {
       }
       return next;
     });
-  }, []); // dependencias vacías — nunca se recrea
+  }, []);
 
   return { lang, toggle };
 }

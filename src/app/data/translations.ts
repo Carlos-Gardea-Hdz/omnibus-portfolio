@@ -107,6 +107,18 @@ export const translations = {
     showAll: { es: "Ver todos los sistemas", en: "View all systems" },
     showLess: { es: "Ver menos proyectos", en: "View fewer projects" },
   },
+  about: {
+    tag: { es: "Perfil", en: "Profile" },
+    heading: { es: "Sobre mí", en: "About" },
+    experience: { es: "// Experiencia", en: "// Experience" },
+  },
+  footer: {
+    built: "Vite + React 19 + Tailwind CSS v4",
+    tagline: {
+      es: "// Arquitectura sin concesiones · Ciudad Juárez, MX",
+      en: "// Architecture without compromise · Ciudad Juárez, MX",
+    },
+  },
   common: {
     scrollDown: { es: "Desliza para explorar", en: "Scroll to explore" }
   }

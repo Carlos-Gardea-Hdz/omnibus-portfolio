@@ -1,4 +1,4 @@
-import { useRef, useState, type MouseEvent, type CSSProperties } from "react"; // react imports
+import { useRef, useState, type MouseEvent, type CSSProperties } from "react";
 import { ExternalLink, Github, Zap, Clock, History } from "lucide-react";
 import { Project, Lang, ProjectVersionType } from "../types";
 
@@ -140,17 +140,17 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
           </span>
         </div>
 
-          {/* Tech stack mini badges */}
-          <div className="flex flex-wrap gap-2 pt-2 border-t border-[#e4e4e7] dark:border-[#1E2330]">
-            {project.stackBadges.map((badge) => (
-              <span
-                key={badge}
-                className="font-code text-[10px] px-2 py-0.5 rounded border border-[#e4e4e7] dark:border-[#1E2330] text-[#64748b] dark:text-[#6B7A99] bg-[#fafafa] dark:bg-[#0A0C10]"
-              >
-                {badge}
-              </span>
-            ))}
-          </div>
+        {/* Tech stack mini badges */}
+        <div className="flex flex-wrap gap-2 pt-2 border-t border-[#e4e4e7] dark:border-[#1E2330]">
+          {project.stackBadges.map((badge) => (
+            <span
+              key={badge}
+              className="font-code text-[10px] px-2 py-0.5 rounded border border-[#e4e4e7] dark:border-[#1E2330] text-[#64748b] dark:text-[#6B7A99] bg-[#fafafa] dark:bg-[#0A0C10]"
+            >
+              {badge}
+            </span>
+          ))}
+        </div>
 
           {/* Versions (only for projects with legacy/whitelabel/laravel history) */}
           {project.versions && project.versions.length > 0 && (

@@ -1,19 +1,20 @@
 import { motion } from "motion/react";
 import { MapPin, Globe, Award } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
+import { translations } from "../data/translations";
 
 const TIMELINE = [
   {
     company: "Instituto Tecnológico de Ciudad Juárez",
     period: { es: "Ago 2022 – Ago 2024", en: "Aug 2022 – Aug 2024" },
     role: { es: "Líder de Proyecto de Tesis", en: "Thesis Project Lead" },
-    color: "#EF4444", // Rojo
+    color: "#EF4444",
   },
   {
     company: "Bosch México",
     period: { es: "Sep 2023 – Ago 2024", en: "Sep 2023 – Aug 2024" },
     role: { es: "Analista de Sistemas", en: "Systems Analyst" },
-    color: "#22C55E", // Verde
+    color: "#22C55E",
   },
   {
     company: "CROC Chihuahua",
@@ -22,7 +23,7 @@ const TIMELINE = [
       es: "Desarrollador Full-Stack de CMS Sindical",
       en: "Union CMS Full-Stack Developer",
     },
-    color: "#F97316", // Naranja
+    color: "#F97316",
   },
   {
     company: "OMNIBUS",
@@ -168,10 +169,10 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             <p className="font-code text-[#FF4500] text-xs tracking-[0.2em] uppercase mb-3">
-              // {lang === "es" ? "Perfil" : "Profile"}
+              // {translations.about.tag[lang]}
             </p>
             <h2 className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-6">
-              {lang === "es" ? "Sobre mí" : "About"}
+              {translations.about.heading[lang]}
             </h2>
 
             <p className="font-body text-[#64748B] dark:text-[#6B7A99] text-base leading-relaxed mb-8">
@@ -207,7 +208,7 @@ export default function About() {
             {/* Timeline */}
             <div>
               <p className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs uppercase tracking-widest mb-5">
-                {lang === "es" ? "// Experiencia" : "// Experience"}
+                {translations.about.experience[lang]}
               </p>
 
               <div className="relative">
