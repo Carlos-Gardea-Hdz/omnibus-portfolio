@@ -66,12 +66,12 @@ export default function TechStack() {
                       boxShadow: `0 6px 20px ${category.color}30`,
                       transition: { duration: 0.15 },
                     }}
-                    className="inline-flex items-center gap-2 h-8 px-3 rounded border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] cursor-default"
+                    className="inline-flex items-center gap-2 h-8 px-3 rounded border border-[#1E2330] bg-[#0A0C10] cursor-default"
                     style={{
                       borderLeft: `3px solid ${category.color}`,
                     }}
                   >
-                    <span className="font-code text-[12px] text-[#0D1117] dark:text-[#F0F4FF]">
+                    <span className="font-code text-[12px] text-[#F0F4FF]">
                       {badge.name}
                     </span>
                   </motion.div>

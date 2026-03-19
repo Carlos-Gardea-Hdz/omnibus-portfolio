@@ -43,7 +43,7 @@ const DIAGRAM_LINES = [
   { indent: 1, text: '│', color: '#1E2330' },
   { indent: 0, text: '┌────────────┴──────────────────────┐', color: '#1E2330' },
   { indent: 1, text: '│       App Containers (A–I)         │', color: '#F0F4FF' },
-  { indent: 1, text: '│  CMS · UNIGES · BRAIN · EVENTAPI   │', color: '#6B7A99' },
+  { indent: 1, text: '│  ADMIN · UNIGES · BRAIN · EVENTAPI │', color: '#6B7A99' },
   { indent: 1, text: '│  PAYROLL · OPS · NEXUS · FLUX · ⬡  │', color: '#6B7A99' },
   { indent: 0, text: '└────────────┬──────────────────────┘', color: '#1E2330' },
   { indent: 1, text: '│', color: '#1E2330' },
@@ -93,10 +93,10 @@ export default function Infrastructure() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className="flex items-start gap-4 p-4 rounded-lg border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#FF4500]/30 transition-colors"
+                  className="flex items-start gap-4 p-4 rounded-lg border border-[#1E2330] bg-[#0A0C10] hover:border-[#FF4500]/30 transition-colors"
                 >
                   <span className="text-xl flex-shrink-0 mt-0.5">{feat.icon}</span>
-                  <span className="font-body text-[#0D1117] dark:text-[#F0F4FF] text-sm leading-relaxed">
+                  <span className="font-body text-[#F0F4FF] text-sm leading-relaxed">
                     {feat[lang]}
                   </span>
                 </motion.div>

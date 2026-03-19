@@ -1,5 +1,5 @@
 const PROJECT_NODES = [
-  { name: "CMS", color: "#FF6B35" },
+  { name: "ADMIN", color: "#FF6B35" },
   { name: "UNIGES", color: "#3B82F6" },
   { name: "BRAIN", color: "#8B5CF6" },
   { name: "EVTAPI", color: "#10B981" },

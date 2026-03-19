@@ -122,23 +122,23 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="relative z-10 max-w-[1280px] mx-auto w-full px-6 lg:px-12 pb-16"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-[#E2E8F0] dark:border-[#1E2330] rounded-xl overflow-hidden bg-white/60 dark:bg-[#111318]/60 backdrop-blur-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 border border-[#1E2330] rounded-xl overflow-hidden bg-[#0A0C10]/60 backdrop-blur-sm">
           {STATS.map((stat, i) => (
             <div
               key={i}
               className={`px-6 py-6 flex flex-col gap-1 ${
                 i < STATS.length - 1
-                  ? "border-r border-b md:border-b-0 border-[#E2E8F0] dark:border-[#1E2330]"
+                  ? "border-r border-b md:border-b-0 border-[#1E2330]"
                   : ""
               }`}
             >
               <span className="font-display text-[#FF4500] text-3xl tracking-tight">
                 {stat.value}
               </span>
-              <span className="font-body text-[#0D1117] dark:text-[#F0F4FF] text-sm">
+              <span className="font-body text-[#F0F4FF] text-sm">
                 {stat.label[lang]}
               </span>
-              <span className="font-code text-[#64748B] dark:text-[#6B7A99] text-[11px]">
+              <span className="font-code text-[#6B7A99] text-[11px]">
                 {stat.desc[lang]}
               </span>
             </div>

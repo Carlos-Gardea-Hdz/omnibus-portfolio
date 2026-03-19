@@ -17,11 +17,11 @@ const TIMELINE = [
     color: "#22C55E",
   },
   {
-    company: "CROC Chihuahua",
+    company: "Organización Privada",
     period: { es: "Oct 2024 – Nov 2025", en: "Oct 2024 – Nov 2025" },
     role: {
-      es: "Desarrollador Full-Stack de CMS Sindical",
-      en: "Union CMS Full-Stack Developer",
+      es: "Desarrollador Full-Stack de Plataforma Empresarial",
+      en: "Enterprise Platform Full-Stack Developer",
     },
     color: "#F97316",
   },
@@ -74,7 +74,7 @@ export default function About() {
           >
             {/* Avatar */}
             <div className="relative w-full max-w-xs">
-              <div className="aspect-square rounded-2xl border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] overflow-hidden">
+              <div className="aspect-square rounded-2xl border border-[#1E2330] bg-[#0A0C10] overflow-hidden">
                 {/* 
                   PHOTO: Place your photo at public/avatar.jpg (square, min 400x400px).
                   The img tag below will render it automatically once the file exists.
@@ -106,10 +106,10 @@ export default function About() {
                       CG
                     </span>
                   </div>
-                  <span className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-lg">
+                  <span className="font-display text-[#F0F4FF] text-lg">
                     Carlos Gardea
                   </span>
-                  <span className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs mt-1">
+                  <span className="font-code text-[#6B7A99] text-xs mt-1">
                     Software Engineer
                   </span>
                   <div className="flex items-center gap-1.5 mt-3">
@@ -145,14 +145,14 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.08 }}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318]"
+                  className="flex items-start gap-3 p-3 rounded-lg border border-[#1E2330] bg-[#0A0C10]"
                 >
                   <span className="text-lg">{edu.icon}</span>
                   <div>
-                    <div className="font-body text-[#0D1117] dark:text-[#F0F4FF] text-sm">
+                    <div className="font-body text-[#F0F4FF] text-sm">
                       {edu.title}
                     </div>
-                    <div className="font-code text-[#64748B] dark:text-[#6B7A99] text-[11px]">
+                    <div className="font-code text-[#6B7A99] text-[11px]">
                       {edu.subtitle}
                     </div>
                   </div>
@@ -177,8 +177,8 @@ export default function About() {
 
             <p className="font-body text-[#64748B] dark:text-[#6B7A99] text-base leading-relaxed mb-8">
               {lang === "es"
-                ? "Ingeniero de Software especializado en arquitecturas Laravel con visión full-stack. Experiencia demostrada en sistemas de producción: CMS sindical multi-organización y plataforma universitaria de titulación con +70% de incremento en eficiencia terminal. Background en entorno industrial Bosch · Inglés B2 certificado (Oxford University)."
-                : "Software Engineer specialized in Laravel architectures with a full-stack mindset. Proven experience delivering production systems: multi-organization union CMS and a university graduation platform with +70% efficiency improvement. Background in industrial manufacturing environments at Bosch. B2 English certified (Oxford University)."}
+                ? "Ingeniero de Software especializado en arquitecturas Laravel con visión full-stack. Experiencia demostrada en sistemas de producción: plataforma de administración empresarial multi-sucursal y plataforma universitaria de titulación con +70% de incremento en eficiencia terminal. Background en entorno industrial Bosch · Inglés B2 certificado (Oxford University)."
+                : "Software Engineer specialized in Laravel architectures with a full-stack mindset. Proven experience delivering production systems: multi-branch enterprise administration platform and a university graduation platform with +70% efficiency improvement. Background in industrial manufacturing environments at Bosch. B2 English certified (Oxford University)."}
             </p>
 
             {/* Skills */}
@@ -198,7 +198,7 @@ export default function About() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="font-code text-[11px] px-2.5 py-1 rounded border border-[#E2E8F0] dark:border-[#1E2330] bg-[#F5F6FA] dark:bg-[#0A0C10] text-[#64748B] dark:text-[#6B7A99]"
+                  className="font-code text-[11px] px-2.5 py-1 rounded border border-[#1E2330] bg-[#111318] text-[#6B7A99]"
                 >
                   {skill}
                 </span>

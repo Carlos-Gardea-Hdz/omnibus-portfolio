@@ -2,15 +2,15 @@ import { Project } from "../types";
 
 export const projects: Project[] = [
   {
-    id: "cms-sindical",
+    id: "plataforma-empresarial",
     letter: "A",
-    codename: "CMS SINDICAL",
-    domain: "cms.carlosgardea.com",
+    codename: "PLATAFORMA EMPRESARIAL",
+    domain: "admin.carlosgardea.com",
     color: "#FF6B35",
     status: "development",
     description: {
-      es: "CMS multi-organización para sindicatos industriales. Búsqueda full-text con Meilisearch, RBAC de 4 niveles y analytics segmentado. Reconstrucción Laravel 12 de un sistema en producción real.",
-      en: "Multi-organization CMS for industrial unions. Full-text search with Meilisearch, 4-level RBAC, and per-org analytics. Laravel 12 rebuild of a real production system.",
+      es: "Plataforma de administración empresarial multi-sucursal. Búsqueda full-text con Meilisearch, RBAC de 4 niveles y analytics segmentado. Reconstrucción Laravel 12 de un sistema en producción real.",
+      en: "Multi-branch enterprise administration platform. Full-text search with Meilisearch, 4-level RBAC, and per-branch analytics. Laravel 12 rebuild of a real production system.",
     },
     stackBadges: [
       "Laravel 12",
@@ -19,24 +19,24 @@ export const projects: Project[] = [
       "Inertia.js",
       "PostgreSQL",
     ],
-    architecturePattern: "Content Management + Full-Text Search",
+    architecturePattern: "Enterprise Management + Full-Text Search",
     versions: [
       {
         type: "legacy",
         label: { es: "Producción Real", en: "Live Production" },
-        url: "https://crocchihuahua.com",
+        url: "https://sistema-privado.com",
         available: true,
       },
       {
         type: "whitelabel",
         label: { es: "White Label", en: "White Label" },
-        url: "https://cms-legacy.carlosgardea.com",
+        url: "https://admin-legacy.carlosgardea.com",
         available: false,
       },
       {
         type: "laravel",
         label: { es: "Laravel (WIP)", en: "Laravel (WIP)" },
-        url: "https://cms.carlosgardea.com",
+        url: "https://admin.carlosgardea.com",
         available: false,
       },
     ],
