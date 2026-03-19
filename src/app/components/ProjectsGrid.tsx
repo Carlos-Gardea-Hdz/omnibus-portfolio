@@ -13,13 +13,15 @@ export default function ProjectsGrid() {
   const displayedProjects = showAll ? projects : initialProjects;
 
   return (
-    <section id="projects" className="relative py-24 bg-white dark:bg-[#0A0C10] overflow-hidden">
+    <section id="projects" className="relative py-24 bg-[#FAFAFA] dark:bg-[#0A0C10] overflow-hidden">
       {/* Background decoration */}
       <div
         className="absolute inset-0 z-0 opacity-60 dark:opacity-20 pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(circle, #64748B 1px, transparent 1px)`,
           backgroundSize: "24px 24px",
+          maskImage: "linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
         }}
       />
 
@@ -81,9 +83,13 @@ export default function ProjectsGrid() {
         {/* Load More Button */}
         {projects.length > 6 && (
           <motion.div
+            layout
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="flex justify-center mt-12"
+            transition={{
+              layout: { duration: 0.4, type: "spring", bounce: 0, delay: showAll ? 0 : 0.3 }
+            }}
           >
             <button
               onClick={() => setShowAll(!showAll)}

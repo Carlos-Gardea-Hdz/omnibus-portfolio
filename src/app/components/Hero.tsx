@@ -27,7 +27,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-[#F5F6FA] dark:bg-[#0A0C10] overflow-hidden">
+    <section className="relative min-h-screen flex flex-col bg-[#FAFAFA] dark:bg-[#0A0C10] overflow-hidden">
       {/* Background grid */}
       <div
         className="absolute inset-0 z-0 opacity-30 dark:opacity-100 pointer-events-none"
@@ -35,7 +35,11 @@ export default function Hero() {
           backgroundImage: `radial-gradient(circle, #1E2330 1px, transparent 1px)`,
           backgroundSize: "28px 28px",
           maskImage:
-            "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%)",
+            "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%), linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%), linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
         }}
       />
 

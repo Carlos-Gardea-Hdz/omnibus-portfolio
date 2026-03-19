@@ -28,7 +28,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "backdrop-blur-md border-b border-white/10 bg-[#0A0C10]/90"
-          : "bg-transparent"
+          : "bg-white/90 dark:bg-transparent backdrop-blur-sm dark:backdrop-blur-none border-b border-black/5 dark:border-transparent"
       }`}
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between gap-4">
@@ -41,10 +41,14 @@ export default function Navbar() {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <span className="font-display text-white dark:text-[#F0F4FF] text-xl tracking-tight leading-none group-hover:text-[#FF4500] dark:group-hover:text-[#FF4500] transition-colors">
+          <span className={`font-display text-xl tracking-tight leading-none transition-colors ${
+            scrolled ? "text-white group-hover:text-[#FF4500]" : "text-[#1a1a1a] dark:text-[#F0F4FF] group-hover:text-[#FF4500]"
+          }`}>
             OMNIBUS
           </span>
-          <span className="font-code text-white/60 dark:text-[#6B7A99] text-[10px] leading-none mt-0.5">
+          <span className={`font-code text-[10px] leading-none mt-0.5 ${
+            scrolled ? "text-white/60" : "text-[#64748B] dark:text-[#6B7A99]"
+          }`}>
             by Carlos Gardea
           </span>
         </a>
@@ -56,7 +60,11 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="font-body text-white/70 dark:text-[#6B7A99] hover:text-white dark:hover:text-[#F0F4FF] transition-colors text-sm"
+              className={`font-body transition-colors text-sm ${
+                scrolled 
+                  ? "text-white/70 hover:text-white" 
+                  : "text-[#475569] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+              }`}
             >
               {link.label[lang]}
             </a>
@@ -71,11 +79,13 @@ export default function Navbar() {
             const status = translations.navbar.status[statusKey];
             return (
               <span 
-                className="hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] border px-2.5 py-1 rounded-full transition-colors"
+                className={`hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] border px-2.5 py-1 rounded-full transition-colors ${
+                  !scrolled && !isDark ? "bg-white shadow-sm" : ""
+                }`}
                 style={{ 
                   color: status.color, 
                   borderColor: `${status.color}40`,
-                  backgroundColor: `${status.color}05`
+                  backgroundColor: scrolled || isDark ? `${status.color}05` : undefined
                 }}
               >
                 <span 
@@ -89,13 +99,19 @@ export default function Navbar() {
           {/* Language toggle — always visible */}
           <button
             onClick={toggleLang}
-            className="font-code flex items-center h-7 rounded-full border border-white/10 bg-white/5 dark:bg-[#111318] overflow-hidden text-[11px] cursor-pointer"
+            className={`font-code flex items-center h-7 rounded-full border overflow-hidden text-[11px] cursor-pointer ${
+              scrolled 
+                ? "border-white/10 bg-white/5" 
+                : "border-black/10 dark:border-white/10 bg-[#FAFAFA] dark:bg-[#111318]"
+            }`}
           >
             <span
               className={`px-2.5 h-full flex items-center transition-colors ${
                 lang === "es"
                   ? "bg-[#FF4500] text-white"
-                  : "text-white/60 dark:text-[#6B7A99] hover:text-white dark:hover:text-[#F0F4FF]"
+                  : scrolled
+                    ? "text-white/60 hover:text-white"
+                    : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
               }`}
             >
               ES
@@ -104,7 +120,9 @@ export default function Navbar() {
               className={`px-2.5 h-full flex items-center transition-colors ${
                 lang === "en"
                   ? "bg-[#FF4500] text-white"
-                  : "text-white/60 dark:text-[#6B7A99] hover:text-white dark:hover:text-[#F0F4FF]"
+                  : scrolled
+                    ? "text-white/60 hover:text-white"
+                    : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
               }`}
             >
               EN
@@ -116,7 +134,11 @@ export default function Navbar() {
             href="https://github.com/Carlos-Gardea-Hdz"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/60 dark:text-[#6B7A99] hover:text-white dark:hover:text-[#F0F4FF] transition-colors"
+            className={`transition-colors ${
+              scrolled 
+                ? "text-white/60 hover:text-white" 
+                : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+            }`}
             aria-label="GitHub"
           >
             <Github size={18} />
@@ -127,7 +149,11 @@ export default function Navbar() {
             href="https://linkedin.com/in/carlos-gardea"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/60 dark:text-[#6B7A99] hover:text-white dark:hover:text-[#F0F4FF] transition-colors"
+            className={`transition-colors ${
+              scrolled 
+                ? "text-white/60 hover:text-white" 
+                : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+            }`}
             aria-label="LinkedIn"
           >
             <Linkedin size={18} />
@@ -136,7 +162,11 @@ export default function Navbar() {
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="text-white/60 dark:text-[#6B7A99] hover:text-white dark:hover:text-[#F0F4FF] transition-colors cursor-pointer"
+            className={`transition-colors cursor-pointer ${
+              scrolled 
+                ? "text-white/60 hover:text-white" 
+                : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+            }`}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
@@ -144,7 +174,11 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white/60 dark:text-[#6B7A99] hover:text-white dark:hover:text-[#F0F4FF] transition-colors cursor-pointer"
+            className={`md:hidden transition-colors cursor-pointer ${
+              scrolled 
+                ? "text-white/60 hover:text-white" 
+                : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+            }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -155,13 +189,21 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-[#0A0C10] px-6 py-4 flex flex-col gap-4">
+        <div className={`md:hidden border-t px-6 py-4 flex flex-col gap-4 ${
+          scrolled 
+            ? "border-white/10 bg-[#0A0C10]" 
+            : "border-black/10 dark:border-[#1E2330] bg-[#FAFAFA] dark:bg-[#0A0C10]"
+        }`}>
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="font-body text-white/80 dark:text-[#F0F4FF] text-base py-1 border-b border-white/5"
+              className={`font-body text-base py-1 border-b ${
+                scrolled
+                  ? "text-white/80 border-white/5"
+                  : "text-[#0D1117] dark:text-[#F0F4FF] border-black/5 dark:border-[#1E2330]"
+              }`}
             >
               {link.label[lang]}
             </a>

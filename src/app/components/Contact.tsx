@@ -9,13 +9,15 @@ export default function Contact() {
   return (
     <section id="contact" className="relative py-24 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#E8EAEF] dark:bg-[#0A0C10]">
+      <div className="absolute inset-0 bg-[#FAFAFA] dark:bg-[#0A0C10]">
         {/* Grid */}
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 opacity-60 dark:opacity-40"
           style={{
-            backgroundImage: `radial-gradient(circle, #1E2330 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, #64748B 1px, transparent 1px)`,
             backgroundSize: "24px 24px",
+            maskImage: "linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
           }}
         />
         {/* Orange glow */}
