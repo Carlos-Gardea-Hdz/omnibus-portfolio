@@ -57,7 +57,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="tilt-card relative flex flex-col h-full rounded-lg border border-[#1E2330] bg-[#0A0C10] overflow-hidden cursor-default group"
+      className="tilt-card relative flex flex-col h-full rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden cursor-default group shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
       style={{
         transform,
         borderLeft: `3px solid ${project.color}`,
@@ -114,18 +114,18 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
         {/* Codename */}
         <div>
           <h3
-            className="font-display text-[#F0F4FF] text-xl leading-tight mb-1 group-hover:text-[var(--card-accent)] transition-colors"
+            className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-xl leading-tight mb-1 group-hover:text-[var(--card-accent)] transition-colors"
             style={{ "--card-accent": project.color } as CSSProperties}
           >
             {project.codename}
           </h3>
-          <span className="font-code text-[11px] text-[#6B7A99] border border-[#1E2330] px-2 py-0.5 rounded">
+          <span className="font-code text-[11px] text-[#9CA3AF] dark:text-[#6B7A99] border border-[#404040] dark:border-[#1E2330] px-2 py-0.5 rounded">
             {project.domain}
           </span>
         </div>
 
         {/* Description */}
-        <p className="font-body text-[#6B7A99] text-sm leading-relaxed flex-1">
+        <p className="font-body text-[#9CA3AF] dark:text-[#6B7A99] text-sm leading-relaxed flex-1">
           {project.description[lang]}
         </p>
 
@@ -135,17 +135,17 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
             className="w-1 h-3 rounded-full flex-shrink-0"
             style={{ backgroundColor: project.color }}
           />
-          <span className="font-code text-[10px] text-[#6B7A99] leading-tight">
+          <span className="font-code text-[10px] text-[#9CA3AF] dark:text-[#6B7A99] leading-tight">
             {project.architecturePattern}
           </span>
         </div>
 
         {/* Tech stack mini badges */}
-        <div className="flex flex-wrap gap-2 pt-2 border-t border-[#1E2330]">
+        <div className="flex flex-wrap gap-2 pt-2 border-t border-[#404040] dark:border-[#1E2330]">
           {project.stackBadges.map((badge) => (
             <span
               key={badge}
-              className="font-code text-[10px] px-2 py-0.5 rounded border border-[#1E2330] text-[#6B7A99] bg-[#111318]"
+              className="font-code text-[10px] px-2 py-0.5 rounded border border-[#404040] dark:border-[#1E2330] text-[#9CA3AF] dark:text-[#6B7A99] bg-[#2D2D2D] dark:bg-[#111318]"
             >
               {badge}
             </span>
@@ -154,8 +154,8 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
 
           {/* Versions (only for projects with legacy/whitelabel/laravel history) */}
           {project.versions && project.versions.length > 0 && (
-            <div className="flex flex-col gap-1.5 pt-2 border-t border-[#1E2330]">
-              <span className="inline-flex items-center gap-1 font-code text-[10px] text-[#6B7A99]">
+            <div className="flex flex-col gap-1.5 pt-2 border-t border-[#404040] dark:border-[#1E2330]">
+              <span className="inline-flex items-center gap-1 font-code text-[10px] text-[#9CA3AF] dark:text-[#6B7A99]">
                 <History size={10} />
                 {lang === "es" ? "Versiones" : "Versions"}
               </span>
@@ -195,13 +195,13 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
         )}
 
         {/* CTA links */}
-        <div className="flex items-center gap-4 pt-2 border-t border-[#1E2330]">
+        <div className="flex items-center gap-4 pt-2 border-t border-[#404040] dark:border-[#1E2330]">
           {isProduction && (
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-body text-xs text-[#F0F4FF] hover:text-[#FF4500] transition-colors font-medium"
+              className="inline-flex items-center gap-1.5 font-body text-xs text-[#ffffff] dark:text-[#F0F4FF] hover:text-[#FF4500] transition-colors font-medium"
             >
               <ExternalLink size={12} />
               {lang === "es" ? "Visitar Sistema" : "Visit System"}
@@ -211,7 +211,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
             href={project.github || "https://github.com/Carlos-Gardea-Hdz"}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-body text-xs text-[#6B7A99] hover:text-[#F0F4FF] transition-colors"
+            className="inline-flex items-center gap-1.5 font-body text-xs text-[#9CA3AF] dark:text-[#6B7A99] hover:text-[#ffffff] dark:hover:text-[#F0F4FF] transition-colors"
           >
             <Github size={12} />
             {lang === "es" ? "Ver Código" : "View Code"}

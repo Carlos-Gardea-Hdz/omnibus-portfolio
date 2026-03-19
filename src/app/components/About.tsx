@@ -59,9 +59,9 @@ export default function About() {
   const { lang } = useAppContext();
 
   return (
-    <section id="about" className="bg-[#F5F6FA] dark:bg-[#0A0C10] py-24">
+    <section id="about" className="bg-[#f9fafb] dark:bg-[#0A0C10] py-24">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#1E2330] to-transparent mb-12" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#e5e7eb] dark:via-[#1E2330] to-transparent mb-12" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* LEFT — Avatar card */}
@@ -74,7 +74,7 @@ export default function About() {
           >
             {/* Avatar */}
             <div className="relative w-full max-w-xs">
-              <div className="aspect-square rounded-2xl border border-[#1E2330] bg-[#0A0C10] overflow-hidden">
+              <div className="aspect-square rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none">
                 {/* 
                   PHOTO: Place your photo at public/avatar.jpg (square, min 400x400px).
                   The img tag below will render it automatically once the file exists.
@@ -106,15 +106,15 @@ export default function About() {
                       CG
                     </span>
                   </div>
-                  <span className="font-display text-[#F0F4FF] text-lg">
+                  <span className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-lg">
                     Carlos Gardea
                   </span>
-                  <span className="font-code text-[#6B7A99] text-xs mt-1">
+                  <span className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-xs mt-1">
                     Software Engineer
                   </span>
                   <div className="flex items-center gap-1.5 mt-3">
-                    <MapPin size={11} className="text-[#6B7A99]" />
-                    <span className="font-code text-[#6B7A99] text-[11px]">
+                    <MapPin size={11} className="text-[#9CA3AF] dark:text-[#6B7A99]" />
+                    <span className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px]">
                       Ciudad Juárez, MX
                     </span>
                   </div>
@@ -145,14 +145,14 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.08 }}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-[#1E2330] bg-[#0A0C10]"
+                  className="flex items-start gap-3 p-3 rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
                 >
                   <span className="text-lg">{edu.icon}</span>
                   <div>
-                    <div className="font-body text-[#F0F4FF] text-sm">
+                    <div className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm">
                       {edu.title}
                     </div>
-                    <div className="font-code text-[#6B7A99] text-[11px]">
+                    <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px]">
                       {edu.subtitle}
                     </div>
                   </div>
@@ -171,11 +171,11 @@ export default function About() {
             <p className="font-code text-[#FF4500] text-xs tracking-[0.2em] uppercase mb-3">
               // {translations.about.tag[lang]}
             </p>
-            <h2 className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-6">
+            <h2 className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-6">
               {translations.about.heading[lang]}
             </h2>
 
-            <p className="font-body text-[#64748B] dark:text-[#6B7A99] text-base leading-relaxed mb-8">
+            <p className="font-body text-[#4B5563] dark:text-[#6B7A99] text-base leading-relaxed mb-8">
               {lang === "es"
                 ? "Ingeniero de Software especializado en arquitecturas Laravel con visión full-stack. Experiencia demostrada en sistemas de producción: plataforma de administración empresarial multi-sucursal y plataforma universitaria de titulación con +70% de incremento en eficiencia terminal. Background en entorno industrial Bosch · Inglés B2 certificado (Oxford University)."
                 : "Software Engineer specialized in Laravel architectures with a full-stack mindset. Proven experience delivering production systems: multi-branch enterprise administration platform and a university graduation platform with +70% efficiency improvement. Background in industrial manufacturing environments at Bosch. B2 English certified (Oxford University)."}
@@ -198,7 +198,7 @@ export default function About() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="font-code text-[11px] px-2.5 py-1 rounded border border-[#1E2330] bg-[#111318] text-[#6B7A99]"
+                  className="font-code text-[11px] px-2.5 py-1 rounded border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#111318] text-[#ffffff] dark:text-[#6B7A99] shadow-[0_2px_10px_rgba(0,0,0,0.05)] dark:shadow-none"
                 >
                   {skill}
                 </span>
@@ -207,13 +207,13 @@ export default function About() {
 
             {/* Timeline */}
             <div>
-              <p className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs uppercase tracking-widest mb-5">
+              <p className="font-code text-[#4B5563] dark:text-[#6B7A99] text-xs uppercase tracking-widest mb-5">
                 {translations.about.experience[lang]}
               </p>
 
               <div className="relative">
                 {/* Timeline line */}
-                <div className="absolute left-3.5 top-4 bottom-4 w-px bg-[#1E2330]" />
+                <div className="absolute left-3.5 top-4 bottom-4 w-px bg-[#e5e7eb] dark:bg-[#1E2330]" />
 
                 <div className="flex flex-col gap-6">
                   {TIMELINE.map((item, i) => (
@@ -227,7 +227,7 @@ export default function About() {
                     >
                       {/* Node */}
                       <div
-                        className={`w-7 h-7 rounded-full border-2 flex items-center justify-center flex-shrink-0 z-10 ${item.current ? "bg-[#FF4500]/10" : "bg-[#111318]"}`}
+                        className={`w-7 h-7 rounded-full border-2 flex items-center justify-center flex-shrink-0 z-10 ${item.current ? "bg-[#FF4500]/10" : "bg-[#f9fafb] dark:bg-[#111318]"}`}
                         style={{ borderColor: item.color }}
                       >
                         {item.current && (
@@ -237,17 +237,17 @@ export default function About() {
 
                       <div className="pb-2">
                         <div
-                          className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-base"
+                          className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-base"
                           style={{
                             color: item.current ? item.color : undefined,
                           }}
                         >
                           {item.company}
                         </div>
-                        <div className="font-body text-[#64748B] dark:text-[#6B7A99] text-sm">
+                        <div className="font-body text-[#4B5563] dark:text-[#6B7A99] text-sm">
                           {item.role[lang]}
                         </div>
-                        <div className="font-code text-[#64748B] dark:text-[#6B7A99] text-[11px] mt-0.5">
+                        <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px] mt-0.5">
                           {item.period[lang]}
                         </div>
                       </div>

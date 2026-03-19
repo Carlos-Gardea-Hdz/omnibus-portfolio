@@ -27,7 +27,7 @@ export default function NetworkDiagram() {
     <div className="relative w-full h-full flex items-center justify-center">
       <svg
         viewBox="0 0 620 620"
-        className="w-full h-full max-w-[500px] rounded-2xl bg-[#0A0C10] border border-[#1E2330]"
+        className="w-full h-full max-w-[500px] rounded-2xl bg-[#333333] dark:bg-[#0A0C10] border border-[#404040] dark:border-[#1E2330] shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none"
         style={{ filter: "drop-shadow(0 0 40px rgba(255,69,0,0.08))" }}
       >
         <defs>
@@ -231,7 +231,7 @@ export default function NetworkDiagram() {
           cx={CX}
           cy={CY}
           r={54}
-          fill="#0A0C10"
+          fill="#333333"
           stroke="#FF4500"
           strokeWidth="2"
           filter="url(#hubGlow)"
@@ -272,7 +272,7 @@ export default function NetworkDiagram() {
           x={CX}
           y={CY + 4}
           textAnchor="middle"
-          fill="#F0F4FF"
+          fill="#ffffff"
           fontSize="11"
           fontFamily="'JetBrains Mono', monospace"
         >
@@ -282,7 +282,7 @@ export default function NetworkDiagram() {
           x={CX}
           y={CY + 20}
           textAnchor="middle"
-          fill="#6B7A99"
+          fill="#9CA3AF"
           fontSize="10"
           fontFamily="'JetBrains Mono', monospace"
         >
@@ -320,7 +320,7 @@ export default function NetworkDiagram() {
                 cx={x}
                 cy={y}
                 r={26}
-                fill="#0A0C10"
+                fill="#333333"
                 stroke={node.color}
                 strokeWidth="2"
               />
@@ -341,7 +341,7 @@ export default function NetworkDiagram() {
                 x={x}
                 y={y + 13}
                 textAnchor="middle"
-                fill="#6B7A99"
+                fill="#9CA3AF"
                 fontSize="9"
                 fontFamily="'JetBrains Mono', monospace"
               >

@@ -22,12 +22,12 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-[#FAFAFA] dark:bg-[#0A0C10] overflow-hidden">
+    <section className="relative min-h-screen flex flex-col bg-[#ffffff] dark:bg-[#0A0C10] overflow-hidden">
       {/* Background grid */}
       <div
         className="absolute inset-0 z-0 opacity-30 dark:opacity-100 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, #1E2330 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, #e5e7eb 1px, transparent 1px)`,
           backgroundSize: "28px 28px",
           maskImage:
             "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%), linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
@@ -69,7 +69,7 @@ export default function Hero() {
           {/* Main heading */}
           <motion.h1
             {...fadeUp(0.12)}
-            className="font-display text-[#0a0a0a] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
+            className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
           >
             {translations.hero.title[lang]}
           </motion.h1>
@@ -83,24 +83,24 @@ export default function Hero() {
           </motion.p>
 
           {/* CTA buttons */}
-        <motion.div {...fadeUp(0.28)} className="flex flex-wrap gap-4">
-          <a
-            href="#projects"
-            onClick={handleScrollToProjects}
-            className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
-          >
-            {translations.hero.cta.primary[lang]}
-            <ChevronRight size={16} />
-          </a>
-          <a
-            href={translations.hero.cvFilename[lang]}
-            download={translations.hero.cvFilename[lang].substring(1)}
-            className="inline-flex items-center gap-2 font-body border border-[#d4d4d8] dark:border-[#1E2330] text-[#0a0a0a] dark:text-[#F0F4FF] hover:border-[#FF4500]/50 dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 bg-white dark:bg-transparent active:scale-95"
-          >
-            <Download size={16} />
-            {translations.hero.cta.secondary[lang]}
-          </a>
-        </motion.div>
+          <motion.div {...fadeUp(0.28)} className="flex flex-wrap gap-4">
+            <a
+              href="#projects"
+              onClick={handleScrollToProjects}
+              className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+            >
+              {translations.hero.cta.primary[lang]}
+              <ChevronRight size={16} />
+            </a>
+            <a
+              href={translations.hero.cvFilename[lang]}
+              download={translations.hero.cvFilename[lang].substring(1)}
+              className="inline-flex items-center gap-2 font-body border border-[#d4d4d8] dark:border-[#1E2330] text-[#2D2D2D] dark:text-[#F0F4FF] hover:border-[#FF4500]/50 dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 bg-white dark:bg-transparent active:scale-95 shadow-sm"
+            >
+              <Download size={16} />
+              {translations.hero.cta.secondary[lang]}
+            </a>
+          </motion.div>
         </div>
 
         {/* RIGHT — 45% — Network Diagram */}
@@ -122,23 +122,23 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="relative z-10 max-w-[1280px] mx-auto w-full px-6 lg:px-12 pb-16"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-[#1E2330] rounded-xl overflow-hidden bg-[#0A0C10]">
+        <div className="grid grid-cols-2 md:grid-cols-4 border border-[#404040] dark:border-[#1E2330] rounded-xl overflow-hidden bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none">
           {STATS.map((stat, i) => (
             <div
               key={i}
               className={`px-6 py-6 flex flex-col gap-1 ${
                 i < STATS.length - 1
-                  ? "border-r border-b md:border-b-0 border-[#1E2330]"
+                  ? "border-r border-b md:border-b-0 border-[#404040] dark:border-[#1E2330]"
                   : ""
               }`}
             >
               <span className="font-display text-[#FF4500] text-3xl tracking-tight">
                 {stat.value}
               </span>
-              <span className="font-body text-[#F0F4FF] text-sm">
+              <span className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm">
                 {stat.label[lang]}
               </span>
-              <span className="font-code text-[#6B7A99] text-[11px]">
+              <span className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px]">
                 {stat.desc[lang]}
               </span>
             </div>
@@ -150,7 +150,7 @@ export default function Hero() {
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 opacity-40">
         <ArrowDown
           size={16}
-          className="text-[#64748B] dark:text-[#6B7A99] animate-bounce"
+          className="text-[#4B5563] dark:text-[#6B7A99] animate-bounce"
         />
       </div>
     </section>
