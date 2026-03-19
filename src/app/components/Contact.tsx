@@ -87,7 +87,7 @@ export default function Contact() {
           <h2 className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-6xl mb-5 leading-tight">
             {translations.contact.title[lang]}
           </h2>
-          <p className="font-body text-[#64748B] dark:text-[#6B7A99] text-lg mb-12 max-w-lg mx-auto">
+          <p className="font-body text-[#64748B] dark:text-[#94A3B8] text-lg mb-12 max-w-lg mx-auto">
             {translations.contact.description[lang]}
           </p>
         </motion.div>
@@ -227,15 +227,6 @@ export default function Contact() {
             </motion.div>
           </div>
         </div>
-
-        {/* Contact pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 flex-wrap"
-        >
 
         {/* Contact pills */}
         <motion.div
