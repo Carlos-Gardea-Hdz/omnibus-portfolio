@@ -1,10 +1,51 @@
 import { motion } from "motion/react";
-import { Send, Github, Linkedin, Globe, Mail } from "lucide-react";
+import { Send, Github, Linkedin, Globe, Mail, Loader2 } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import { translations } from "../data/translations";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Contact() {
   const { lang } = useAppContext();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const contactSchema = z.object({
+    name: z.string().min(2, translations.contact.form.validation.nameMin[lang]),
+    email: z.string().email(translations.contact.form.validation.emailInvalid[lang]),
+    message: z.string().min(10, translations.contact.form.validation.messageMin[lang]),
+  });
+
+  type ContactFormValues = z.infer<typeof contactSchema>;
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const onSubmit = async (data: ContactFormValues) => {
+    setIsSubmitting(true);
+    // Simular envío o implementar tu lógica de backend aquí
+    try {
+      console.log("Form data:", data);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      toast.success(translations.contact.form.success[lang]);
+      reset();
+    } catch (error) {
+      toast.error(translations.contact.form.error[lang]);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden">
@@ -51,40 +92,150 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* CTA Buttons */}
+        {/* Contact Form & Socials Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto mb-14">
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-left bg-white dark:bg-[#111318] p-8 rounded-2xl border border-[#E2E8F0] dark:border-[#1E2330] shadow-xl shadow-black/5"
+          >
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div className="space-y-2">
+                <label className="font-display text-sm text-[#0D1117] dark:text-[#F0F4FF]">
+                  {translations.contact.form.name[lang]}
+                </label>
+                <Input
+                  {...register("name")}
+                  placeholder="Carlos Gardea"
+                  className={errors.name ? "border-destructive focus-visible:ring-destructive/20" : ""}
+                />
+                {errors.name && (
+                  <p className="font-code text-[11px] text-destructive mt-1">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label className="font-display text-sm text-[#0D1117] dark:text-[#F0F4FF]">
+                  {translations.contact.form.email[lang]}
+                </label>
+                <Input
+                  {...register("email")}
+                  type="email"
+                  placeholder="carlos@example.com"
+                  className={errors.email ? "border-destructive focus-visible:ring-destructive/20" : ""}
+                />
+                {errors.email && (
+                  <p className="font-code text-[11px] text-destructive mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label className="font-display text-sm text-[#0D1117] dark:text-[#F0F4FF]">
+                  {translations.contact.form.message[lang]}
+                </label>
+                <Textarea
+                  {...register("message")}
+                  placeholder="..."
+                  rows={4}
+                  className={errors.message ? "border-destructive focus-visible:ring-destructive/20" : ""}
+                />
+                {errors.message && (
+                  <p className="font-code text-[11px] text-destructive mt-1">
+                    {errors.message.message}
+                  </p>
+                )}
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full h-12 bg-[#FF4500] hover:bg-[#E03E00] text-white font-display text-sm rounded-lg transition-all duration-200 shadow-lg shadow-[#FF4500]/20"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin mr-2" />
+                    {translations.contact.form.sending[lang]}
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} className="mr-2" />
+                    {translations.contact.form.send[lang]}
+                  </>
+                )}
+              </Button>
+            </form>
+          </motion.div>
+
+          {/* Social Links & Info */}
+          <div className="flex flex-col gap-8 text-left">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col gap-4"
+            >
+              <a
+                href="https://linkedin.com/in/carlos-gardea"
+                target="_blank"
+                rel="noopener noreferrer me"
+                className="inline-flex items-center gap-4 group p-4 rounded-xl border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#FF4500]/40 transition-all duration-200"
+              >
+                <div className="w-12 h-12 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+                  <Linkedin size={20} />
+                </div>
+                <div>
+                  <div className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-sm">LinkedIn</div>
+                  <div className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs">/in/carlos-gardea</div>
+                </div>
+              </a>
+
+              <a
+                href="https://github.com/Carlos-Gardea-Hdz"
+                target="_blank"
+                rel="noopener noreferrer me"
+                className="inline-flex items-center gap-4 group p-4 rounded-xl border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#FF4500]/40 transition-all duration-200"
+              >
+                <div className="w-12 h-12 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+                  <Github size={20} />
+                </div>
+                <div>
+                  <div className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-sm">GitHub</div>
+                  <div className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs">/Carlos-Gardea-Hdz</div>
+                </div>
+              </a>
+
+              <a
+                href="mailto:carlos.gardea.hdz@outlook.com"
+                className="inline-flex items-center gap-4 group p-4 rounded-xl border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#FF4500]/40 transition-all duration-200"
+              >
+                <div className="w-12 h-12 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <div className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-sm">Email</div>
+                  <div className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs">carlos.gardea.hdz@outlook.com</div>
+                </div>
+              </a>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Contact pills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 flex-wrap"
         >
-          <a
-            href="https://linkedin.com/in/carlos-gardea"
-            target="_blank"
-            rel="noopener noreferrer me"
-            className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-8 py-3.5 rounded-lg transition-all duration-200 hover:shadow-[0_0_32px_rgba(255,69,0,0.4)] active:scale-95"
-          >
-            <Linkedin size={16} />
-            {translations.contact.cta.linkedin[lang]}
-          </a>
-          <a
-            href="mailto:carlos.gardea.hdz@outlook.com"
-            className="inline-flex items-center gap-2 font-body border border-[#E2E8F0] dark:border-[#1E2330] hover:border-[#FF4500]/50 text-[#0D1117] dark:text-[#F0F4FF] px-8 py-3.5 rounded-lg transition-all duration-200 active:scale-95"
-          >
-            <Send size={16} />
-            {translations.contact.cta.email[lang]}
-          </a>
-          <a
-            href="https://github.com/Carlos-Gardea-Hdz"
-            target="_blank"
-            rel="noopener noreferrer me"
-            className="inline-flex items-center gap-2 font-body border border-[#E2E8F0] dark:border-[#1E2330] hover:border-[#FF4500]/50 text-[#0D1117] dark:text-[#F0F4FF] px-8 py-3.5 rounded-lg transition-all duration-200 active:scale-95"
-          >
-            <Github size={16} />
-            {translations.contact.cta.github[lang]}
-          </a>
-        </motion.div>
 
         {/* Contact pills */}
         <motion.div

@@ -65,6 +65,20 @@ export const translations = {
       linkedin: { es: "Conectar en LinkedIn", en: "Connect on LinkedIn" },
       email: { es: "Enviar email", en: "Send email" },
       github: { es: "Ver GitHub", en: "View GitHub" }
+    },
+    form: {
+      name: { es: "Nombre", en: "Name" },
+      email: { es: "Email", en: "Email" },
+      message: { es: "Mensaje", en: "Message" },
+      send: { es: "Enviar mensaje", en: "Send message" },
+      sending: { es: "Enviando...", en: "Sending..." },
+      validation: {
+        nameMin: { es: "El nombre debe tener al menos 2 caracteres", en: "Name must be at least 2 characters" },
+        emailInvalid: { es: "Email inválido", en: "Invalid email" },
+        messageMin: { es: "El mensaje debe tener al menos 10 caracteres", en: "Message must be at least 10 characters" }
+      },
+      success: { es: "¡Mensaje enviado con éxito!", en: "Message sent successfully!" },
+      error: { es: "Hubo un error al enviar el mensaje.", en: "There was an error sending the message." }
     }
   },
   common: {
