@@ -53,7 +53,7 @@ export default function ProjectCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="tilt-card relative flex flex-col rounded-lg border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] overflow-hidden cursor-default group"
+      className="tilt-card relative flex flex-col h-full rounded-lg border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] overflow-hidden cursor-default group"
       style={{
         transform,
         borderLeft: `3px solid ${project.color}`,

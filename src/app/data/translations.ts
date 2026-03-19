@@ -52,7 +52,24 @@ export const translations = {
       { href: "#about", label: { es: "Sobre mí", en: "About" } },
       { href: "#contact", label: { es: "Contacto", en: "Contact" } },
     ],
-    availability: { es: "Disponible", en: "Available" }
+    status: {
+      available: {
+        label: { es: "Disponible para trabajar", en: "Available for work" },
+        color: "#22D3EE", // Cyan/Light Blue for "Open"
+        dot: "#22D3EE"
+      },
+      busy: {
+        label: { es: "En un proyecto", en: "Busy on a project" },
+        color: "#F87171", // Red
+        dot: "#F87171"
+      },
+      away: {
+        label: { es: "Fuera de línea", en: "Currently away" },
+        color: "#FBBF24", // Amber
+        dot: "#FBBF24"
+      }
+    },
+    currentStatus: "available" // Cambiar aquí para actualizar en todo el sitio
   },
   contact: {
     tag: { es: "Contacto", en: "Contact" },

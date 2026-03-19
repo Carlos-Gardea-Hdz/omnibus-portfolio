@@ -21,10 +21,10 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
+          <About />
           <TechStack />
           <ProjectsGrid />
           <Infrastructure />
-          <About />
           <Contact />
         </main>
         <Footer />

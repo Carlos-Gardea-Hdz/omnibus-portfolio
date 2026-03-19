@@ -65,11 +65,27 @@ export default function Navbar() {
 
         {/* Right controls */}
         <div className="flex items-center gap-3">
-          {/* Availability badge — desktop only */}
-          <span className="hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] text-[#22D3A5] border border-[#22D3A5]/30 bg-[#22D3A5]/5 px-2.5 py-1 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#22D3A5] animate-pulse" />
-            {translations.navbar.availability[lang]}
-          </span>
+          {/* Availability status */}
+          {(() => {
+            const statusKey = translations.navbar.currentStatus as keyof typeof translations.navbar.status;
+            const status = translations.navbar.status[statusKey];
+            return (
+              <span 
+                className="hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] border px-2.5 py-1 rounded-full transition-colors"
+                style={{ 
+                  color: status.color, 
+                  borderColor: `${status.color}40`,
+                  backgroundColor: `${status.color}05`
+                }}
+              >
+                <span 
+                  className="w-1.5 h-1.5 rounded-full animate-pulse" 
+                  style={{ backgroundColor: status.dot }}
+                />
+                {status.label[lang]}
+              </span>
+            );
+          })()}
           {/* Language toggle — always visible */}
           <button
             onClick={toggleLang}

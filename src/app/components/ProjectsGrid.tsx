@@ -1,51 +1,98 @@
-import { motion } from 'motion/react';
-import { useAppContext } from '../contexts/AppContext';
-import { projects } from '../data/projects';
-import ProjectCard from './ProjectCard';
+import { motion, AnimatePresence } from "motion/react";
+import { useAppContext } from "../contexts/AppContext";
+import { projects } from "../data/projects";
+import ProjectCard from "./ProjectCard";
+import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function ProjectsGrid() {
   const { lang } = useAppContext();
+  const [showAll, setShowAll] = useState(false);
+
+  const initialProjects = projects.slice(0, 6);
+  const displayedProjects = showAll ? projects : initialProjects;
 
   return (
-    <section id="projects" className="bg-[#F5F6FA] dark:bg-[#0A0C10] py-24">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
-        {/* Section header */}
-        <div className="mb-14">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#1E2330] to-transparent mb-12" />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="font-code text-[#FF4500] text-xs tracking-[0.2em] uppercase mb-3">
-              // {lang === 'es' ? 'Trabajos' : 'Work'}
-            </p>
-            <h2 className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-4">
-              {lang === 'es' ? 'Los Proyectos' : 'The Projects'}
-            </h2>
-            <p className="font-body text-[#64748B] dark:text-[#6B7A99] text-lg max-w-xl">
-              {lang === 'es'
-                ? 'De arquitectura fundamental a patrones enterprise. Cada app resuelve un problema real.'
-                : 'From foundational architecture to enterprise patterns. Each app solves a real problem.'}
-            </p>
-          </motion.div>
+    <section id="projects" className="relative py-24 bg-[#F8FAFC] dark:bg-[#0A0C10]/50 overflow-hidden">
+      {/* Background decoration */}
+      <div
+        className="absolute inset-0 z-0 opacity-40 dark:opacity-20 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, #E2E8F0 1px, transparent 1px)`,
+          backgroundSize: "32px 32px",
+        }}
+      />
+
+      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12">
+        {/* Heading */}
+        <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-16">
+          <div className="max-w-2xl">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-code text-[#FF4500] text-xs tracking-[0.25em] uppercase mb-4"
+            >
+              // {lang === "es" ? "Sistemas de Arquitectura" : "Architecture Systems"}
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl leading-tight"
+            >
+              {lang === "es"
+                ? "Cada sistema es un estándar de arquitectura."
+                : "Every system is an architectural standard."}
+            </motion.h2>
+          </div>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: (index % 3) * 0.08 }}
-            >
-              <ProjectCard project={project} lang={lang} index={index} />
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
+          <AnimatePresence mode="popLayout">
+            {displayedProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="h-full"
+              >
+                <ProjectCard project={project} lang={lang} index={index} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
+
+        {/* Load More Button */}
+        {projects.length > 6 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="flex justify-center mt-12"
+          >
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="group inline-flex items-center gap-2 font-display text-sm text-[#64748B] dark:text-[#94A3B8] hover:text-[#FF4500] transition-colors border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] px-6 py-2.5 rounded-full shadow-sm hover:shadow-md active:scale-95"
+            >
+              {showAll ? (
+                <>
+                  {lang === "es" ? "Ver menos proyectos" : "View fewer projects"}
+                  <ChevronUp size={16} className="group-hover:-translate-y-0.5 transition-transform" />
+                </>
+              ) : (
+                <>
+                  {lang === "es" ? "Ver todos los sistemas" : "View all systems"}
+                  <ChevronDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
+                </>
+              )}
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );

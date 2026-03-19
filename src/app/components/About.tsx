@@ -7,13 +7,13 @@ const TIMELINE = [
     company: "Instituto Tecnológico de Ciudad Juárez",
     period: { es: "Ago 2022 – Ago 2024", en: "Aug 2022 – Aug 2024" },
     role: { es: "Líder de Proyecto de Tesis", en: "Thesis Project Lead" },
-    color: "#6B7A99",
+    color: "#EF4444", // Rojo
   },
   {
     company: "Bosch México",
     period: { es: "Sep 2023 – Ago 2024", en: "Sep 2023 – Aug 2024" },
     role: { es: "Analista de Sistemas", en: "Systems Analyst" },
-    color: "#6B7A99",
+    color: "#22C55E", // Verde
   },
   {
     company: "CROC Chihuahua",
@@ -22,7 +22,7 @@ const TIMELINE = [
       es: "Desarrollador Full-Stack de CMS Sindical",
       en: "Union CMS Full-Stack Developer",
     },
-    color: "#00D4FF",
+    color: "#F97316", // Naranja
   },
   {
     company: "OMNIBUS",
