@@ -1,15 +1,22 @@
 #!/bin/bash
+# Cargar variables de entorno
+if [ -f .env.deploy ]; then
+    export $(cat .env.deploy | xargs)
+else
+    echo "❌ Error: .env.deploy no encontrado"
+    exit 1
+fi
+
 echo "🚀 Desplegando a PRODUCCIÓN..."
 
-# No hace falta correr npm run build otra vez si acabas de hacerlo para staging,
-# pero es más seguro hacerlo para garantizar limpieza.
 npm run build
 
-# Subir al directorio de producción
-# Usamos rsync para despliegues atómicos y eficientes
-rsync -azP --delete ./dist/ vps:/opt/omnibus/portfolio/dist-prod/
+# Subir al directorio de producción usando variables de entorno
+echo "📦 Sincronizando archivos con rsync..."
+rsync -azP --delete ./dist/ ${VPS_HOST}:${VPS_PROD_PATH}
 
 # Reload Nginx del contenedor de producción
-ssh vps "docker exec omnibus-portfolio-prod nginx -s reload"
+echo "🔄 Recargando Nginx en producción..."
+ssh ${VPS_HOST} "docker exec ${PROD_CONTAINER} nginx -s reload"
 
 echo "🔥 ¡Producción actualizada!"
