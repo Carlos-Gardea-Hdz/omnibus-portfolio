@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { type MouseEvent } from "react";
 import { motion } from "motion/react";
 import { ArrowDown, Download, ChevronRight } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
@@ -15,11 +15,6 @@ const fadeUp = (delay: number) => ({
 
 export default function Hero() {
   const { lang } = useAppContext();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleScrollToProjects = (e: MouseEvent) => {
     e.preventDefault();
@@ -74,7 +69,7 @@ export default function Hero() {
           {/* Main heading */}
           <motion.h1
             {...fadeUp(0.12)}
-            className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
+            className="font-display text-[#0a0a0a] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
           >
             {translations.hero.title[lang]}
           </motion.h1>
@@ -82,7 +77,7 @@ export default function Hero() {
           {/* Sub-heading */}
           <motion.p
             {...fadeUp(0.2)}
-            className="font-body text-[#64748B] dark:text-[#6B7A99] text-base md:text-lg leading-relaxed mb-10 max-w-[520px]"
+            className="font-body text-[#404040] dark:text-[#6B7A99] text-base md:text-lg leading-relaxed mb-10 max-w-[520px]"
           >
             {translations.hero.description[lang]}
           </motion.p>
@@ -92,7 +87,7 @@ export default function Hero() {
             <a
               href="#projects"
               onClick={handleScrollToProjects}
-              className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(255,69,0,0.35)] active:scale-95"
+              className="inline-flex items-center gap-2 font-body bg-[#0a0a0a] hover:bg-[#262626] dark:bg-[#FF4500] dark:hover:bg-[#E03E00] text-white px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
             >
               {translations.hero.cta.primary[lang]}
               <ChevronRight size={16} />
@@ -100,7 +95,7 @@ export default function Hero() {
             <a
               href={translations.hero.cvFilename[lang]}
               download={translations.hero.cvFilename[lang].substring(1)}
-              className="inline-flex items-center gap-2 font-body border border-[#E2E8F0] dark:border-[#1E2330] text-[#0D1117] dark:text-[#F0F4FF] hover:border-[#FF4500]/50 dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 active:scale-95"
+              className="inline-flex items-center gap-2 font-body border border-[#d4d4d8] dark:border-[#1E2330] text-[#0a0a0a] dark:text-[#F0F4FF] hover:border-[#0a0a0a] dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 bg-white dark:bg-transparent active:scale-95"
             >
               <Download size={16} />
               {translations.hero.cta.secondary[lang]}

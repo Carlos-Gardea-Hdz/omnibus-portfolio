@@ -24,6 +24,8 @@ export interface Project {
   description: BilingualText;
   stackBadges: string[];
   architecturePattern: string;
+  link?: string;
+  github?: string;
   /** Optional: projects that have multiple versions (legacy → whitelabel → laravel) */
   versions?: ProjectVersion[];
 }

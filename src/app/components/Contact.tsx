@@ -45,10 +45,10 @@ export default function Contact() {
           <p className="font-code text-[#FF4500] text-xs tracking-[0.25em] uppercase mb-4">
             // {translations.contact.tag[lang]}
           </p>
-          <h2 className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-6xl mb-5 leading-tight">
+          <h2 className="font-display text-[#0a0a0a] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-6xl mb-5 leading-tight">
             {translations.contact.title[lang]}
           </h2>
-          <p className="font-body text-[#64748B] dark:text-[#94A3B8] text-lg mb-12 max-w-lg mx-auto">
+          <p className="font-body text-[#52525b] dark:text-[#94A3B8] text-lg mb-12 max-w-lg mx-auto">
             {translations.contact.description[lang]}
           </p>
         </motion.div>
@@ -60,17 +60,17 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            href="https://linkedin.com/in/carlos-gardea"
+            href="https://www.linkedin.com/in/carlos-gardea"
             target="_blank"
             rel="noopener noreferrer me"
-            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5"
+            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#d4d4d8] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#0a0a0a] dark:hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-[#FF4500]/5"
           >
-            <div className="w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+            <div className="w-14 h-14 rounded-full bg-[#f4f4f5] dark:bg-[#FF4500]/10 flex items-center justify-center text-[#0a0a0a] dark:text-[#FF4500] group-hover:bg-[#0a0a0a] dark:group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
               <Linkedin size={24} />
             </div>
             <div className="text-center">
-              <div className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-base mb-1">LinkedIn</div>
-              <div className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs">/in/carlos-gardea</div>
+              <div className="font-display text-[#0a0a0a] dark:text-[#F0F4FF] text-base mb-1">LinkedIn</div>
+              <div className="font-code text-[#52525b] dark:text-[#6B7A99] text-xs">/in/carlos-gardea</div>
             </div>
           </motion.a>
 
@@ -82,14 +82,14 @@ export default function Contact() {
             href="https://github.com/Carlos-Gardea-Hdz"
             target="_blank"
             rel="noopener noreferrer me"
-            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5"
+            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#d4d4d8] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#0a0a0a] dark:hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-[#FF4500]/5"
           >
-            <div className="w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+            <div className="w-14 h-14 rounded-full bg-[#f4f4f5] dark:bg-[#FF4500]/10 flex items-center justify-center text-[#0a0a0a] dark:text-[#FF4500] group-hover:bg-[#0a0a0a] dark:group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
               <Github size={24} />
             </div>
             <div className="text-center">
-              <div className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-base mb-1">GitHub</div>
-              <div className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs">/Carlos-Gardea-Hdz</div>
+              <div className="font-display text-[#0a0a0a] dark:text-[#F0F4FF] text-base mb-1">GitHub</div>
+              <div className="font-code text-[#52525b] dark:text-[#6B7A99] text-xs">/Carlos-Gardea-Hdz</div>
             </div>
           </motion.a>
 
@@ -99,14 +99,14 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
             href="mailto:carlos.gardea.hdz@outlook.com"
-            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5"
+            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#d4d4d8] dark:border-[#1E2330] bg-white dark:bg-[#111318] hover:border-[#0a0a0a] dark:hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-[#FF4500]/5"
           >
-            <div className="w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+            <div className="w-14 h-14 rounded-full bg-[#f4f4f5] dark:bg-[#FF4500]/10 flex items-center justify-center text-[#0a0a0a] dark:text-[#FF4500] group-hover:bg-[#0a0a0a] dark:group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
               <Mail size={24} />
             </div>
             <div className="text-center">
-              <div className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-base mb-1">Email</div>
-              <div className="font-code text-[#64748B] dark:text-[#6B7A99] text-xs">carlos.gardea.hdz@outlook.com</div>
+              <div className="font-display text-[#0a0a0a] dark:text-[#F0F4FF] text-base mb-1">Email</div>
+              <div className="font-code text-[#52525b] dark:text-[#6B7A99] text-xs">carlos.gardea.hdz@outlook.com</div>
             </div>
           </motion.a>
         </div>

@@ -98,6 +98,15 @@ export const translations = {
       error: { es: "Hubo un error al enviar el mensaje.", en: "There was an error sending the message." }
     }
   },
+  projects: {
+    tag: { es: "Sistemas de Arquitectura", en: "Architecture Systems" },
+    heading: {
+      es: "Cada sistema es un estándar de arquitectura.",
+      en: "Every system is an architectural standard.",
+    },
+    showAll: { es: "Ver todos los sistemas", en: "View all systems" },
+    showLess: { es: "Ver menos proyectos", en: "View fewer projects" },
+  },
   common: {
     scrollDown: { es: "Desliza para explorar", en: "Scroll to explore" }
   }

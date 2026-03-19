@@ -5,17 +5,9 @@ import { Project, Lang, ProjectVersionType } from "../types";
 interface ProjectCardProps {
   project: Project;
   lang: Lang;
-  index: number;
 }
 
-export default function ProjectCard({
-  project,
-  lang,
-  // Unused props (index) are kept if they are required by the parent component's mapping.
-  // We'll add an ESLint ignore comment to prevent warnings if index isn't used inside the component.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  index,
-}: ProjectCardProps) {
+export default function ProjectCard({ project, lang }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
   const [isHovered, setIsHovered] = useState(false);
@@ -150,14 +142,7 @@ export default function ProjectCard({
 
           {/* Tech stack mini badges */}
           <div className="flex flex-wrap gap-2 pt-2 border-t border-[#e4e4e7] dark:border-[#1E2330]">
-            {project.stackBadges?.map((badge) => (
-              <span
-                key={badge}
-                className="font-code text-[10px] px-2 py-0.5 rounded border border-[#e4e4e7] dark:border-[#1E2330] text-[#64748b] dark:text-[#6B7A99] bg-[#fafafa] dark:bg-[#0A0C10]"
-              >
-                {badge}
-              </span>
-            )) || project.tech?.map((badge) => (
+            {project.stackBadges.map((badge) => (
               <span
                 key={badge}
                 className="font-code text-[10px] px-2 py-0.5 rounded border border-[#e4e4e7] dark:border-[#1E2330] text-[#64748b] dark:text-[#6B7A99] bg-[#fafafa] dark:bg-[#0A0C10]"
