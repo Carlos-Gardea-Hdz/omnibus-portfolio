@@ -1,4 +1,4 @@
-import { useRef, useState, type MouseEvent, type CSSProperties } from "react";
+import { useRef, useState, type MouseEvent, type CSSProperties } from "react"; // react imports
 import { ExternalLink, Github, Zap, Clock, History } from "lucide-react";
 import { Project, Lang, ProjectVersionType } from "../types";
 
@@ -11,18 +11,30 @@ interface ProjectCardProps {
 export default function ProjectCard({
   project,
   lang,
+  // Unused props (index) are kept if they are required by the parent component's mapping.
+  // We'll add an ESLint ignore comment to prevent warnings if index isn't used inside the component.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   index,
 }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    if (!cardRef.current) return;
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    setMousePos({ x, y });
+    
+    const rotateX = ((y / rect.height) - 0.5) * -8;
+    const rotateY = ((x / rect.width) - 0.5) * 8;
+    
     setTransform(
-      `perspective(1000px) rotateX(${(-y * 8).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg) translateY(-4px)`,
+      `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`,
     );
     setIsHovered(true);
   };
@@ -53,7 +65,7 @@ export default function ProjectCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="tilt-card relative flex flex-col h-full rounded-lg border border-[#E2E8F0] dark:border-[#1E2330] bg-white dark:bg-[#111318] overflow-hidden cursor-default group"
+      className="tilt-card relative flex flex-col h-full rounded-lg border border-[#e4e4e7] dark:border-[#1E2330] bg-white dark:bg-[#111318] overflow-hidden cursor-default group"
       style={{
         transform,
         borderLeft: `3px solid ${project.color}`,
@@ -61,15 +73,23 @@ export default function ProjectCard({
         transition: "transform 0.15s ease, box-shadow 0.15s ease",
       }}
     >
+      {/* Dynamic glow effect */}
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
+        }}
+      />
+
       {/* Top accent line */}
       <div
-        className="h-0.5 w-full"
+        className="h-0.5 w-full relative z-20"
         style={{
           background: `linear-gradient(90deg, ${project.color}, transparent)`,
         }}
       />
 
-      <div className="p-6 flex flex-col flex-1 gap-4">
+      <div className="p-6 flex flex-col flex-1 gap-4 relative z-20">
         {/* Header row */}
         <div className="flex items-start justify-between gap-2">
           {/* Letter badge */}
@@ -80,6 +100,7 @@ export default function ProjectCard({
               borderColor: `${project.color}40`,
               backgroundColor: `${project.color}10`,
             }}
+            aria-label={`Project letter: ${project.letter}`}
           >
             {project.letter}
           </span>
@@ -101,18 +122,18 @@ export default function ProjectCard({
         {/* Codename */}
         <div>
           <h3
-            className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-xl leading-tight mb-1 group-hover:text-[var(--card-accent)] transition-colors"
+            className="font-display text-[#0a0a0a] dark:text-[#F0F4FF] text-xl leading-tight mb-1 group-hover:text-[var(--card-accent)] transition-colors"
             style={{ "--card-accent": project.color } as CSSProperties}
           >
             {project.codename}
           </h3>
-          <span className="font-code text-[11px] text-[#64748B] dark:text-[#6B7A99] border border-[#E2E8F0] dark:border-[#1E2330] px-2 py-0.5 rounded">
+          <span className="font-code text-[11px] text-[#52525b] dark:text-[#6B7A99] border border-[#e4e4e7] dark:border-[#1E2330] px-2 py-0.5 rounded">
             {project.domain}
           </span>
         </div>
 
         {/* Description */}
-        <p className="font-body text-[#64748B] dark:text-[#6B7A99] text-sm leading-relaxed flex-1">
+        <p className="font-body text-[#52525b] dark:text-[#6B7A99] text-sm leading-relaxed flex-1">
           {project.description[lang]}
         </p>
 
@@ -122,30 +143,37 @@ export default function ProjectCard({
             className="w-1 h-3 rounded-full flex-shrink-0"
             style={{ backgroundColor: project.color }}
           />
-          <span className="font-code text-[10px] text-[#64748B] dark:text-[#6B7A99] leading-tight">
+          <span className="font-code text-[10px] text-[#6B7A99] leading-tight">
             {project.architecturePattern}
           </span>
         </div>
 
-        {/* Stack badges */}
-        <div className="flex flex-wrap gap-1.5">
-          {project.stackBadges.map((badge) => (
-            <span
-              key={badge}
-              className="font-code text-[10px] px-2 py-0.5 rounded border border-[#E2E8F0] dark:border-[#1E2330] text-[#64748B] dark:text-[#6B7A99] bg-[#F5F6FA] dark:bg-[#0A0C10]"
-            >
-              {badge}
-            </span>
-          ))}
-        </div>
+          {/* Tech stack mini badges */}
+          <div className="flex flex-wrap gap-2 pt-2 border-t border-[#e4e4e7] dark:border-[#1E2330]">
+            {project.stackBadges?.map((badge) => (
+              <span
+                key={badge}
+                className="font-code text-[10px] px-2 py-0.5 rounded border border-[#e4e4e7] dark:border-[#1E2330] text-[#64748b] dark:text-[#6B7A99] bg-[#fafafa] dark:bg-[#0A0C10]"
+              >
+                {badge}
+              </span>
+            )) || project.tech?.map((badge) => (
+              <span
+                key={badge}
+                className="font-code text-[10px] px-2 py-0.5 rounded border border-[#e4e4e7] dark:border-[#1E2330] text-[#64748b] dark:text-[#6B7A99] bg-[#fafafa] dark:bg-[#0A0C10]"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
 
-        {/* Versions (only for projects with legacy/whitelabel/laravel history) */}
-        {project.versions && project.versions.length > 0 && (
-          <div className="flex flex-col gap-1.5 pt-2 border-t border-[#E2E8F0] dark:border-[#1E2330]">
-            <span className="inline-flex items-center gap-1 font-code text-[10px] text-[#64748B] dark:text-[#6B7A99]">
-              <History size={10} />
-              {lang === "es" ? "Versiones" : "Versions"}
-            </span>
+          {/* Versions (only for projects with legacy/whitelabel/laravel history) */}
+          {project.versions && project.versions.length > 0 && (
+            <div className="flex flex-col gap-1.5 pt-2 border-t border-[#e4e4e7] dark:border-[#1E2330]">
+              <span className="inline-flex items-center gap-1 font-code text-[10px] text-[#64748b] dark:text-[#6B7A99]">
+                <History size={10} />
+                {lang === "es" ? "Versiones" : "Versions"}
+              </span>
             <div className="flex flex-wrap gap-1.5">
               {project.versions.map((v) => {
                 const cfg = versionConfig[v.type];
@@ -182,24 +210,23 @@ export default function ProjectCard({
         )}
 
         {/* CTA links */}
-        <div className="flex items-center gap-4 pt-2 border-t border-[#E2E8F0] dark:border-[#1E2330]">
+        <div className="flex items-center gap-4 pt-2 border-t border-[#e4e4e7] dark:border-[#1E2330]">
           {isProduction && (
             <a
-              href={`https://${project.domain}`}
+              href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-body text-xs transition-colors hover:opacity-100 opacity-70"
-              style={{ color: project.color }}
+              className="inline-flex items-center gap-1.5 font-body text-xs text-[#0a0a0a] dark:text-[#F0F4FF] hover:text-[#FF4500] transition-colors font-medium"
             >
               <ExternalLink size={12} />
-              {lang === "es" ? "Ver Demo" : "View Demo"}
+              {lang === "es" ? "Visitar Sistema" : "Visit System"}
             </a>
           )}
           <a
-            href="https://github.com/Carlos-Gardea-Hdz"
+            href={project.github || "https://github.com/Carlos-Gardea-Hdz"}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-body text-xs text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF] transition-colors"
+            className="inline-flex items-center gap-1.5 font-body text-xs text-[#64748b] dark:text-[#6B7A99] hover:text-[#0a0a0a] dark:hover:text-[#F0F4FF] transition-colors"
           >
             <Github size={12} />
             {lang === "es" ? "Ver Código" : "View Code"}
