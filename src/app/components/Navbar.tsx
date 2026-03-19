@@ -1,13 +1,9 @@
 import { useState, useEffect, type MouseEvent } from "react";
 import { Menu, X, Github, Sun, Moon, Linkedin } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
+import { translations } from "../data/translations";
 
-const NAV_LINKS = [
-  { href: "#projects", label: { es: "Proyectos", en: "Projects" } },
-  { href: "#stack", label: { es: "Stack", en: "Stack" } },
-  { href: "#about", label: { es: "Sobre mí", en: "About" } },
-  { href: "#contact", label: { es: "Contacto", en: "Contact" } },
-];
+const NAV_LINKS = translations.navbar.links;
 
 export default function Navbar() {
   const { lang, toggleLang, isDark, toggleTheme } = useAppContext();
@@ -72,7 +68,7 @@ export default function Navbar() {
           {/* Availability badge — desktop only */}
           <span className="hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] text-[#22D3A5] border border-[#22D3A5]/30 bg-[#22D3A5]/5 px-2.5 py-1 rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-[#22D3A5] animate-pulse" />
-            {lang === "es" ? "Disponible" : "Available"}
+            {translations.navbar.availability[lang]}
           </span>
           {/* Language toggle — always visible */}
           <button

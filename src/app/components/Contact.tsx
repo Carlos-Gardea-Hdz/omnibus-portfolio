@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Send, Github, Linkedin, Globe, Mail } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
+import { translations } from "../data/translations";
 
 export default function Contact() {
   const { lang } = useAppContext();
@@ -40,17 +41,13 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
         >
           <p className="font-code text-[#FF4500] text-xs tracking-[0.25em] uppercase mb-4">
-            // {lang === "es" ? "Contacto" : "Contact"}
+            // {translations.contact.tag[lang]}
           </p>
           <h2 className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-6xl mb-5 leading-tight">
-            {lang === "es"
-              ? "¿Construimos algo juntos?"
-              : "Shall we build something together?"}
+            {translations.contact.title[lang]}
           </h2>
           <p className="font-body text-[#64748B] dark:text-[#6B7A99] text-lg mb-12 max-w-lg mx-auto">
-            {lang === "es"
-              ? "Disponible para proyectos freelance, posiciones remotas y colaboraciones."
-              : "Available for freelance projects, remote positions, and collaborations."}
+            {translations.contact.description[lang]}
           </p>
         </motion.div>
 
@@ -69,14 +66,14 @@ export default function Contact() {
             className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-8 py-3.5 rounded-lg transition-all duration-200 hover:shadow-[0_0_32px_rgba(255,69,0,0.4)] active:scale-95"
           >
             <Linkedin size={16} />
-            {lang === "es" ? "Conectar en LinkedIn" : "Connect on LinkedIn"}
+            {translations.contact.cta.linkedin[lang]}
           </a>
           <a
             href="mailto:carlos.gardea.hdz@outlook.com"
             className="inline-flex items-center gap-2 font-body border border-[#E2E8F0] dark:border-[#1E2330] hover:border-[#FF4500]/50 text-[#0D1117] dark:text-[#F0F4FF] px-8 py-3.5 rounded-lg transition-all duration-200 active:scale-95"
           >
             <Send size={16} />
-            {lang === "es" ? "Enviar email" : "Send email"}
+            {translations.contact.cta.email[lang]}
           </a>
           <a
             href="https://github.com/Carlos-Gardea-Hdz"
@@ -85,7 +82,7 @@ export default function Contact() {
             className="inline-flex items-center gap-2 font-body border border-[#E2E8F0] dark:border-[#1E2330] hover:border-[#FF4500]/50 text-[#0D1117] dark:text-[#F0F4FF] px-8 py-3.5 rounded-lg transition-all duration-200 active:scale-95"
           >
             <Github size={16} />
-            {lang === "es" ? "Ver GitHub" : "View GitHub"}
+            {translations.contact.cta.github[lang]}
           </a>
         </motion.div>
 

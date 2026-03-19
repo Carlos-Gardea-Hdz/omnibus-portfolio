@@ -3,32 +3,9 @@ import { motion } from "motion/react";
 import { ArrowDown, Download, ChevronRight } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import NetworkDiagram from "./NetworkDiagram";
+import { translations } from "../data/translations";
 
-const STATS = [
-  {
-    value: "9",
-    label: { es: "Proyectos", en: "Projects" },
-    desc: { es: "Arquitectura avanzada", en: "Advanced architecture" },
-  },
-  {
-    value: "1",
-    label: { es: "Infraestructura", en: "Infrastructure" },
-    desc: { es: "VPS · Docker · Traefik v3", en: "VPS · Docker · Traefik v3" },
-  },
-  {
-    value: "5",
-    label: { es: "Lenguajes", en: "Languages" },
-    desc: {
-      es: "PHP · Go · Rust · Python · TS",
-      en: "PHP · Go · Rust · Python · TS",
-    },
-  },
-  {
-    value: "+70%",
-    label: { es: "Eficiencia", en: "Efficiency" },
-    desc: { es: "Documentado en UNIGES", en: "Documented in UNIGES" },
-  },
-];
+const STATS = translations.hero.stats;
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 20 },
@@ -86,7 +63,7 @@ export default function Hero() {
           <motion.div {...fadeUp(0.05)}>
             <span className="inline-flex items-center gap-2 font-code text-[11px] text-[#FF4500] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF4500] animate-pulse" />
-              Laravel 12 · React 19 · Docker · PostgreSQL 18 · VPS
+              {translations.hero.badge}
             </span>
           </motion.div>
 
@@ -95,9 +72,7 @@ export default function Hero() {
             {...fadeUp(0.12)}
             className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
           >
-            {lang === "es"
-              ? "9 sistemas de\narquitectura avanzada.\nUna infraestructura.\nUn estándar."
-              : "9 advanced-architecture\nsystems.\nOne infrastructure.\nOne standard."}
+            {translations.hero.title[lang]}
           </motion.h1>
 
           {/* Sub-heading */}
@@ -105,9 +80,7 @@ export default function Hero() {
             {...fadeUp(0.2)}
             className="font-body text-[#64748B] dark:text-[#6B7A99] text-base md:text-lg leading-relaxed mb-10 max-w-[520px]"
           >
-            {lang === "es"
-              ? "Portafolio de arquitectura avanzada construido sobre VPS propio con Docker, Traefik v3, PostgreSQL 18 y Valkey. Cada proyecto demuestra un patrón de arquitectura diferente: desde Event Sourcing hasta microservicios con Go y Rust."
-              : "Advanced-architecture portfolio built on a self-managed VPS with Docker, Traefik v3, PostgreSQL 18, and Valkey. Each project demonstrates a distinct architectural pattern: from Event Sourcing to Go and Rust microservices."}
+            {translations.hero.description[lang]}
           </motion.p>
 
           {/* CTA buttons */}
@@ -117,24 +90,16 @@ export default function Hero() {
               onClick={handleScrollToProjects}
               className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(255,69,0,0.35)] active:scale-95"
             >
-              {lang === "es" ? "Ver Proyectos" : "View Projects"}
+              {translations.hero.cta.primary[lang]}
               <ChevronRight size={16} />
             </a>
             <a
-              href={
-                lang === "es"
-                  ? "/CV_Carlos_Gardea_2026.pdf"
-                  : "/Resume_Carlos_Gardea_2026.pdf"
-              }
-              download={
-                lang === "es"
-                  ? "CV_Carlos_Gardea_2026.pdf"
-                  : "Resume_Carlos_Gardea_2026.pdf"
-              }
+              href={translations.hero.cvFilename[lang]}
+              download={translations.hero.cvFilename[lang].substring(1)}
               className="inline-flex items-center gap-2 font-body border border-[#E2E8F0] dark:border-[#1E2330] text-[#0D1117] dark:text-[#F0F4FF] hover:border-[#FF4500]/50 dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 active:scale-95"
             >
               <Download size={16} />
-              {lang === "es" ? "Descargar CV" : "Download Resume"}
+              {translations.hero.cta.secondary[lang]}
             </a>
           </motion.div>
         </div>
