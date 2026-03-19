@@ -13,13 +13,13 @@ export default function ProjectsGrid() {
   const displayedProjects = showAll ? projects : initialProjects;
 
   return (
-    <section id="projects" className="relative py-24 bg-[#F8FAFC] dark:bg-[#0A0C10]/50 overflow-hidden">
+    <section id="projects" className="relative py-24 bg-white dark:bg-[#0A0C10] overflow-hidden">
       {/* Background decoration */}
       <div
-        className="absolute inset-0 z-0 opacity-40 dark:opacity-20 pointer-events-none"
+        className="absolute inset-0 z-0 opacity-60 dark:opacity-20 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, #E2E8F0 1px, transparent 1px)`,
-          backgroundSize: "32px 32px",
+          backgroundImage: `radial-gradient(circle, #64748B 1px, transparent 1px)`,
+          backgroundSize: "24px 24px",
         }}
       />
 
@@ -50,16 +50,26 @@ export default function ProjectsGrid() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
-          <AnimatePresence mode="popLayout">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          <AnimatePresence mode="popLayout" initial={false}>
             {displayedProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ 
+                  opacity: 0, 
+                  scale: 0.9, 
+                  y: 20,
+                  transition: { duration: 0.3 } 
+                }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                  delay: showAll ? (index - 6) * 0.05 : 0 
+                }}
                 className="h-full"
               >
                 <ProjectCard project={project} lang={lang} index={index} />
