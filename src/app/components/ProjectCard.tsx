@@ -1,6 +1,7 @@
-import { useRef, useState, type MouseEvent, type CSSProperties } from "react";
+import { CSSProperties } from "react";
 import { ExternalLink, Github, Zap, Clock, History } from "lucide-react";
 import { Project, Lang, ProjectVersionType } from "../types";
+import { useMouseGlow } from "../hooks/useMouseGlow";
 
 interface ProjectCardProps {
   project: Project;
@@ -8,35 +9,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, lang }: ProjectCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState("");
-  const [isHovered, setIsHovered] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    setMousePos({ x, y });
-    
-    const rotateX = ((y / rect.height) - 0.5) * -8;
-    const rotateY = ((x / rect.width) - 0.5) * 8;
-    
-    setTransform(
-      `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`,
-    );
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setTransform(
-      "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)",
-    );
-    setIsHovered(false);
-  };
+  const { ref: cardRef, isHovered, mousePos, transform, handlers } = useMouseGlow<HTMLDivElement>({ tilt: true });
 
   const isProduction = project.status === "production";
 
@@ -55,8 +28,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
   return (
     <div
       ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      {...handlers}
       className="tilt-card relative flex flex-col h-full rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden cursor-default group shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
       style={{
         transform,

@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { MapPin, Globe, Award } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import { translations } from "../data/translations";
+import { useMouseGlow } from "../hooks/useMouseGlow";
 
 const TIMELINE = [
   {
@@ -55,8 +56,43 @@ const EDUCATION = [
   },
 ];
 
+// Wrapper for Education badges to use hooks
+function EducationBadge({ edu, index }: { edu: any, index: number }) {
+  const badgeGlow = useMouseGlow<HTMLDivElement>();
+  
+  return (
+    <motion.div
+      ref={badgeGlow.ref}
+      {...badgeGlow.handlers}
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 + index * 0.08 }}
+      className="relative flex items-start gap-3 p-3 rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none overflow-hidden group"
+    >
+      {/* Dynamic glow effect */}
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+        style={{
+          background: `radial-gradient(200px circle at ${badgeGlow.mousePos.x}px ${badgeGlow.mousePos.y}px, rgba(255,255,255,0.08), transparent 40%)`,
+        }}
+      />
+      <span className="relative z-20 text-lg">{edu.icon}</span>
+      <div className="relative z-20">
+        <div className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm">
+          {edu.title}
+        </div>
+        <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px]">
+          {edu.subtitle}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function About() {
   const { lang } = useAppContext();
+  const avatarGlow = useMouseGlow<HTMLDivElement>();
 
   return (
     <section id="about" className="bg-[#f9fafb] dark:bg-[#0A0C10] py-24">
@@ -73,8 +109,20 @@ export default function About() {
             className="flex flex-col gap-6"
           >
             {/* Avatar */}
-            <div className="relative w-full max-w-xs">
-              <div className="aspect-square rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none">
+            <div className="relative w-full max-w-xs group">
+              <div 
+                ref={avatarGlow.ref}
+                {...avatarGlow.handlers}
+                className="relative aspect-square rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none"
+              >
+                {/* Dynamic glow effect */}
+                <div
+                  className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                  style={{
+                    background: `radial-gradient(300px circle at ${avatarGlow.mousePos.x}px ${avatarGlow.mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
+                  }}
+                />
+                
                 {/* 
                   PHOTO: Place your photo at public/avatar.jpg (square, min 400x400px).
                   The img tag below will render it automatically once the file exists.
@@ -83,7 +131,7 @@ export default function About() {
                 <img
                   src="/avatar.jpg"
                   alt="Carlos Gardea"
-                  className="w-full h-full object-cover object-center"
+                  className="relative z-20 w-full h-full object-cover object-center"
                   onError={(e) => {
                     // Hide img on error, show fallback
                     (e.target as HTMLImageElement).style.display = "none";
@@ -94,7 +142,7 @@ export default function About() {
                 />
                 {/* Fallback shown until avatar.jpg is uploaded */}
                 <div
-                  className="w-full h-full flex-col items-center justify-center"
+                  className="relative z-20 w-full h-full flex-col items-center justify-center"
                   style={{
                     display: "flex",
                     background:
@@ -139,24 +187,7 @@ export default function About() {
             {/* Education badges */}
             <div className="flex flex-col gap-3">
               {EDUCATION.map((edu, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + i * 0.08 }}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
-                >
-                  <span className="text-lg">{edu.icon}</span>
-                  <div>
-                    <div className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm">
-                      {edu.title}
-                    </div>
-                    <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px]">
-                      {edu.subtitle}
-                    </div>
-                  </div>
-                </motion.div>
+                <EducationBadge key={i} edu={edu} index={i} />
               ))}
             </div>
           </motion.div>

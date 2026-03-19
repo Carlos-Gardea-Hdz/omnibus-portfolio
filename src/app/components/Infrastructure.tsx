@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { useAppContext } from '../contexts/AppContext';
+import { useMouseGlow } from '../hooks/useMouseGlow';
 
 const FEATURES = [
   {
@@ -56,6 +57,7 @@ const DIAGRAM_LINES = [
 
 export default function Infrastructure() {
   const { lang } = useAppContext();
+  const terminalGlow = useMouseGlow<HTMLDivElement>();
 
   return (
     <section className="bg-[#ffffff] dark:bg-[#0A0C10] py-24">
@@ -112,9 +114,21 @@ export default function Infrastructure() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="sticky top-24"
           >
-            <div className="rounded-xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-2xl">
+            <div 
+              ref={terminalGlow.ref}
+              {...terminalGlow.handlers}
+              className="relative rounded-xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-2xl group"
+            >
+              {/* Dynamic glow effect */}
+              <div
+                className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                style={{
+                  background: `radial-gradient(600px circle at ${terminalGlow.mousePos.x}px ${terminalGlow.mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
+                }}
+              />
+
               {/* Terminal header */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-[#404040] dark:border-[#1E2330] bg-[#2D2D2D] dark:bg-[#111318]">
+              <div className="relative z-20 flex items-center gap-2 px-4 py-3 border-b border-[#404040] dark:border-[#1E2330] bg-[#2D2D2D] dark:bg-[#111318]">
                 <div className="w-3 h-3 rounded-full bg-[#EF4444]" />
                 <div className="w-3 h-3 rounded-full bg-[#F59E0B]" />
                 <div className="w-3 h-3 rounded-full bg-[#22D3A5]" />
@@ -124,7 +138,7 @@ export default function Infrastructure() {
               </div>
 
               {/* Diagram content */}
-              <div className="terminal-box p-6">
+              <div className="terminal-box p-6 relative z-20">
                 {DIAGRAM_LINES.map((line, i) => (
                   <motion.div
                     key={i}

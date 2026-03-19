@@ -2,9 +2,13 @@ import { motion } from "motion/react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import { translations } from "../data/translations";
+import { useMouseGlow } from "../hooks/useMouseGlow";
 
 export default function Contact() {
   const { lang } = useAppContext();
+  const linkedInGlow = useMouseGlow<HTMLAnchorElement>();
+  const githubGlow = useMouseGlow<HTMLAnchorElement>();
+  const emailGlow = useMouseGlow<HTMLAnchorElement>();
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden">
@@ -56,6 +60,8 @@ export default function Contact() {
         {/* Social Link Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <motion.a
+            ref={linkedInGlow.ref}
+            {...linkedInGlow.handlers}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -63,18 +69,27 @@ export default function Contact() {
             href="https://www.linkedin.com/in/carlos-gardea"
             target="_blank"
             rel="noopener noreferrer me"
-            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
+            className="relative flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none overflow-hidden"
           >
-            <div className="w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+            {/* Dynamic glow effect */}
+            <div
+              className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+              style={{
+                background: `radial-gradient(400px circle at ${linkedInGlow.mousePos.x}px ${linkedInGlow.mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
+              }}
+            />
+            <div className="relative z-20 w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
               <Linkedin size={24} />
             </div>
-            <div className="text-center">
+            <div className="relative z-20 text-center">
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">LinkedIn</div>
               <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-xs">/in/carlos-gardea</div>
             </div>
           </motion.a>
 
           <motion.a
+            ref={githubGlow.ref}
+            {...githubGlow.handlers}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -82,29 +97,45 @@ export default function Contact() {
             href="https://github.com/Carlos-Gardea-Hdz"
             target="_blank"
             rel="noopener noreferrer me"
-            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
+            className="relative flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none overflow-hidden"
           >
-            <div className="w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+            {/* Dynamic glow effect */}
+            <div
+              className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+              style={{
+                background: `radial-gradient(400px circle at ${githubGlow.mousePos.x}px ${githubGlow.mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
+              }}
+            />
+            <div className="relative z-20 w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
               <Github size={24} />
             </div>
-            <div className="text-center">
+            <div className="relative z-20 text-center">
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">GitHub</div>
               <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-xs">/Carlos-Gardea-Hdz</div>
             </div>
           </motion.a>
 
           <motion.a
+            ref={emailGlow.ref}
+            {...emailGlow.handlers}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
             href="mailto:carlos.gardea.hdz@outlook.com"
-            className="flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
+            className="relative flex flex-col items-center gap-4 group p-6 rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] hover:border-[#FF4500]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF4500]/5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none overflow-hidden"
           >
-            <div className="w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
+            {/* Dynamic glow effect */}
+            <div
+              className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+              style={{
+                background: `radial-gradient(400px circle at ${emailGlow.mousePos.x}px ${emailGlow.mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
+              }}
+            />
+            <div className="relative z-20 w-14 h-14 rounded-full bg-[#FF4500]/10 flex items-center justify-center text-[#FF4500] group-hover:bg-[#FF4500] group-hover:text-white transition-all duration-300">
               <Mail size={24} />
             </div>
-            <div className="text-center">
+            <div className="relative z-20 text-center">
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">Email</div>
               <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-xs">carlos.gardea.hdz@outlook.com</div>
             </div>
