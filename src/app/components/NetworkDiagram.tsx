@@ -27,7 +27,7 @@ export default function NetworkDiagram() {
     <div className="relative w-full h-full flex items-center justify-center">
       <svg
         viewBox="0 0 620 620"
-        className="w-full h-full max-w-[500px]"
+        className="w-full h-full max-w-[500px] rounded-2xl bg-[#0A0C10] border border-[#1E2330]"
         style={{ filter: "drop-shadow(0 0 40px rgba(255,69,0,0.08))" }}
       >
         <defs>

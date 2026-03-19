@@ -83,24 +83,24 @@ export default function Hero() {
           </motion.p>
 
           {/* CTA buttons */}
-          <motion.div {...fadeUp(0.28)} className="flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              onClick={handleScrollToProjects}
-              className="inline-flex items-center gap-2 font-body bg-[#0a0a0a] hover:bg-[#262626] dark:bg-[#FF4500] dark:hover:bg-[#E03E00] text-white px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
-            >
-              {translations.hero.cta.primary[lang]}
-              <ChevronRight size={16} />
-            </a>
-            <a
-              href={translations.hero.cvFilename[lang]}
-              download={translations.hero.cvFilename[lang].substring(1)}
-              className="inline-flex items-center gap-2 font-body border border-[#d4d4d8] dark:border-[#1E2330] text-[#0a0a0a] dark:text-[#F0F4FF] hover:border-[#0a0a0a] dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 bg-white dark:bg-transparent active:scale-95"
-            >
-              <Download size={16} />
-              {translations.hero.cta.secondary[lang]}
-            </a>
-          </motion.div>
+        <motion.div {...fadeUp(0.28)} className="flex flex-wrap gap-4">
+          <a
+            href="#projects"
+            onClick={handleScrollToProjects}
+            className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+          >
+            {translations.hero.cta.primary[lang]}
+            <ChevronRight size={16} />
+          </a>
+          <a
+            href={translations.hero.cvFilename[lang]}
+            download={translations.hero.cvFilename[lang].substring(1)}
+            className="inline-flex items-center gap-2 font-body border border-[#d4d4d8] dark:border-[#1E2330] text-[#0a0a0a] dark:text-[#F0F4FF] hover:border-[#FF4500]/50 dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 bg-white dark:bg-transparent active:scale-95"
+          >
+            <Download size={16} />
+            {translations.hero.cta.secondary[lang]}
+          </a>
+        </motion.div>
         </div>
 
         {/* RIGHT — 45% — Network Diagram */}
@@ -122,7 +122,7 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="relative z-10 max-w-[1280px] mx-auto w-full px-6 lg:px-12 pb-16"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-[#1E2330] rounded-xl overflow-hidden bg-[#0A0C10]/60 backdrop-blur-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 border border-[#1E2330] rounded-xl overflow-hidden bg-[#0A0C10]">
           {STATS.map((stat, i) => (
             <div
               key={i}
