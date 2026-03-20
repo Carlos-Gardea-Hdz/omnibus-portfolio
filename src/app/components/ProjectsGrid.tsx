@@ -43,9 +43,9 @@ export default function ProjectsGrid() {
     <section id="projects" className="relative py-24 bg-[#FAFAFA] dark:bg-[#0A0C10] overflow-hidden">
       {/* Background decoration */}
       <div
-        className="absolute inset-0 z-0 opacity-60 dark:opacity-20 pointer-events-none"
+        className="absolute inset-0 z-0 opacity-50 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, #64748B 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
           backgroundSize: "24px 24px",
           maskImage: "linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
           WebkitMaskImage: "linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",

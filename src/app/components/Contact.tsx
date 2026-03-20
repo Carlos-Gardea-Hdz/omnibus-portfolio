@@ -16,9 +16,9 @@ export default function Contact() {
       <div className="absolute inset-0 bg-[#f9fafb] dark:bg-[#0A0C10]">
         {/* Grid */}
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 opacity-50"
           style={{
-            backgroundImage: `radial-gradient(circle, #9CA3AF 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
             backgroundSize: "24px 24px",
             maskImage: "linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
             WebkitMaskImage: "linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",

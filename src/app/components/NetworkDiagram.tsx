@@ -1,3 +1,5 @@
+import { useAppContext } from "../contexts/AppContext";
+
 const PROJECT_NODES = [
   { name: "ADMIN", color: "#FF6B35" },
   { name: "UNIGES", color: "#3B82F6" },
@@ -23,6 +25,8 @@ function getNodePosition(index: number) {
 }
 
 export default function NetworkDiagram() {
+  const { isDark } = useAppContext();
+
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       <svg
@@ -40,7 +44,7 @@ export default function NetworkDiagram() {
             height="24"
             patternUnits="userSpaceOnUse"
           >
-            <circle cx="0.5" cy="0.5" r="0.8" fill="#1E2330" />
+            <circle cx="0.5" cy="0.5" r="0.8" fill={isDark ? "#1E2D40" : "#4A4A4A"} />
           </pattern>
 
           {/* Center glow */}

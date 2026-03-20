@@ -25,10 +25,10 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col bg-[#ffffff] dark:bg-[#0A0C10] overflow-hidden">
       {/* Background grid */}
       <div
-        className="absolute inset-0 z-0 opacity-40 dark:opacity-30 pointer-events-none"
+        className="absolute inset-0 z-0 opacity-50 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, #9CA3AF 1px, transparent 1px)`,
-          backgroundSize: "28px 28px",
+          backgroundImage: `radial-gradient(circle, var(--dot-color) 1px, transparent 1px)`,
+          backgroundSize: "24px 24px",
           maskImage:
             "radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%), linear-gradient(to bottom, transparent, black 80px, black calc(100% - 80px), transparent)",
           WebkitMaskImage:
