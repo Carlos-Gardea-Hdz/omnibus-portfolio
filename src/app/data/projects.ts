@@ -30,8 +30,8 @@ export const projects: Project[] = [
       {
         type: "whitelabel",
         label: { es: "White Label", en: "White Label" },
-        url: "https://admin-legacy.carlosgardea.com",
-        available: false,
+        url: "https://cms-legacy.carlosgardea.com/",
+        available: true,
       },
       {
         type: "laravel",
@@ -70,8 +70,8 @@ export const projects: Project[] = [
       {
         type: "whitelabel",
         label: { es: "White Label", en: "White Label" },
-        url: "https://uniges-legacy.carlosgardea.com",
-        available: false,
+        url: "https://uniges-legacy.carlosgardea.com/",
+        available: true,
       },
       {
         type: "laravel",
