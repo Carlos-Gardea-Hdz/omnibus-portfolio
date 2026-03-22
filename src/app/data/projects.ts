@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: "plataforma-empresarial",
     letter: "A",
     codename: "PLATAFORMA EMPRESARIAL",
-    domain: "admin.carlosgardea.com",
+    domain: "cms.carlosgardea.com",
     color: "#FF6B35",
     status: "development",
     description: {
@@ -24,7 +24,7 @@ export const projects: Project[] = [
       {
         type: "legacy",
         label: { es: "Producción Real", en: "Live Production" },
-        url: "https://sistema-privado.com",
+        url: "https://crocchihuahua.com/",
         available: true,
       },
       {
@@ -36,7 +36,7 @@ export const projects: Project[] = [
       {
         type: "laravel",
         label: { es: "Laravel (WIP)", en: "Laravel (WIP)" },
-        url: "https://admin.carlosgardea.com",
+        url: "https://cms.carlosgardea.com",
         available: false,
       },
     ],
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     id: "uniges",
     letter: "B",
     codename: "UNIGES",
-    domain: "titulacion.carlosgardea.com",
+    domain: "uniges.carlosgardea.com",
     color: "#3B82F6",
     status: "development",
     description: {
@@ -76,7 +76,7 @@ export const projects: Project[] = [
       {
         type: "laravel",
         label: { es: "Laravel (WIP)", en: "Laravel (WIP)" },
-        url: "https://titulacion.carlosgardea.com",
+        url: "https://uniges.carlosgardea.com",
         available: false,
       },
     ],
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     id: "brainscribe",
     letter: "C",
     codename: "BRAINSCRIBE",
-    domain: "brain.carlosgardea.com",
+    domain: "brainscribe.carlosgardea.com",
     color: "#8B5CF6",
     status: "development",
     description: {
