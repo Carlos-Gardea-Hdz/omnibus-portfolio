@@ -9,17 +9,17 @@ export const projects: Project[] = [
     color: "#FF6B35",
     status: "development",
     description: {
-      es: "Plataforma de administración empresarial multi-sucursal. Búsqueda full-text con Meilisearch, RBAC de 4 niveles y analytics segmentado. Reconstrucción Laravel 12 de un sistema en producción real.",
-      en: "Multi-branch enterprise administration platform. Full-text search with Meilisearch, 4-level RBAC, and per-branch analytics. Laravel 12 rebuild of a real production system.",
+      es: "Plataforma de administración empresarial multi-sucursal con aislamiento de datos por organización (scoping a nivel de aplicación). RBAC de 4 niveles, gestión de contenido y vacantes, padrón de miembros y analytics segmentado por sucursal. Reconstrucción Laravel 12 de un sistema en producción real.",
+      en: "Multi-branch enterprise administration platform with per-organization data isolation (application-level scoping). 4-level RBAC, content + job management, a member registry, and per-branch analytics. Laravel 12 rebuild of a real production system.",
     },
     stackBadges: [
       "Laravel 12",
       "React 19",
-      "Meilisearch",
       "Inertia.js",
+      "Spatie Data",
       "PostgreSQL",
     ],
-    architecturePattern: "Enterprise Management + Full-Text Search",
+    architecturePattern: "Multi-Org Scoping + RBAC + DDD-Lite",
     versions: [
       {
         type: "legacy",
@@ -163,17 +163,17 @@ export const projects: Project[] = [
     color: "#06B6D4",
     status: "development",
     description: {
-      es: "SaaS multi-tenant con aislamiento de datos por organización. Panel administrativo con Filament 4, feature flags con Laravel Pennant y rollout por tenant.",
-      en: "Multi-tenant SaaS with per-organization data isolation. Admin panel powered by Filament 4, feature flags via Laravel Pennant with per-tenant rollout control.",
+      es: "SaaS multi-tenant con aislamiento físico: una base de datos por inquilino (stancl/tenancy). Aprovisionamiento encolado, consola de operador, autenticación por tenant, equipos con límite de asientos y feature flags con Laravel Pennant. Frontend Inertia + React.",
+      en: "Multi-tenant SaaS with physical isolation: a database per tenant (stancl/tenancy). Queued provisioning, an operator console, per-tenant authentication, seat-limited teams, and feature flags via Laravel Pennant. Inertia + React frontend.",
     },
     stackBadges: [
       "Laravel 12",
-      "Filament 4",
-      "Livewire",
+      "stancl/tenancy",
+      "React 19",
       "Laravel Pennant",
       "PostgreSQL",
     ],
-    architecturePattern: "Multi-Tenancy + SaaS + Feature Flags",
+    architecturePattern: "DB-per-Tenant + SaaS + Feature Flags",
   },
   {
     id: "fluxdesk",
@@ -183,10 +183,10 @@ export const projects: Project[] = [
     color: "#84CC16",
     status: "development",
     description: {
-      es: "Mesa de ayuda construida con el stack TALL moderno (2025): Livewire 4 + Volt (Single File Components) + Flux UI + Folio. Reactividad en servidor sin JavaScript.",
-      en: "Help desk built on the modern TALL stack (2025): Livewire 4 + Volt (Single File Components) + Flux UI + Folio. Server-side reactivity without custom JavaScript.",
+      es: "Mesa de ayuda con el stack TALL (2025): Livewire 4 (Single File Components) + Flux UI + Tailwind v4. Tickets con máquina de estados, categorías y SLA por prioridad con indicadores de vencimiento. Reactividad en servidor sin JavaScript propio.",
+      en: "Help desk on the TALL stack (2025): Livewire 4 (Single File Components) + Flux UI + Tailwind v4. Tickets with a status machine, categories, and priority-based SLA with breach indicators. Server-side reactivity with no custom JavaScript.",
     },
-    stackBadges: ["Laravel 12", "Livewire 4", "Volt", "Flux UI", "Folio"],
+    stackBadges: ["Laravel 12", "Livewire 4", "Flux UI", "Tailwind v4", "PostgreSQL"],
     architecturePattern: "TALL Stack + Server-Side Reactivity",
   },
   {
