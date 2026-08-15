@@ -7,3 +7,9 @@
 allowBuilds:
   '@tailwindcss/oxide': true   # motor nativo de Tailwind v4
   esbuild: true                # binario que vite usa para transformar
+
+# Un peer sin satisfacer ROMPE la instalación en vez de quedarse en advertencia.
+# Con la advertencia por defecto, react-day-picker v8 convivió con React 19 sin
+# declararlo hasta que npm lo señaló como error en CI; esto lo hace visible en
+# el momento de instalar, no meses después.
+strictPeerDependencies: true
