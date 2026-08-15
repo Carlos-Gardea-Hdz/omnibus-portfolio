@@ -24,6 +24,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Va ANTES del build a propósito: 'vite build' usa esbuild, que transpila
+      # sin comprobar tipos — un error de tipos pasaría el build en verde.
+      - name: Type check
+        run: pnpm typecheck
+
       - name: Build
         run: pnpm build
 
