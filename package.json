@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "packageManager": "pnpm@11.22.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -71,10 +72,5 @@
     "@vitejs/plugin-react": "4.7.0",
     "tailwindcss": "4.1.12",
     "vite": "^6.4.1"
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "6.3.5"
-    }
   }
 }

@@ -1,0 +1,9 @@
+# Configuración de pnpm. Desde pnpm 11 los settings NO se leen del campo
+# "pnpm" de package.json — viven aquí (https://pnpm.io/settings).
+#
+# pnpm bloquea los scripts de instalación por defecto (defensa supply-chain):
+# cada dependencia que quiera ejecutar código al instalarse se aprueba a mano.
+# Estas dos compilan binarios nativos y sin su script el build falla.
+allowBuilds:
+  '@tailwindcss/oxide': true   # motor nativo de Tailwind v4
+  esbuild: true                # binario que vite usa para transformar
