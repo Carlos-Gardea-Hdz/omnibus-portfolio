@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # Lee la versión de pnpm del campo "packageManager" de package.json,
+      # así CI y local no pueden divergir.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Va ANTES del build a propósito: 'vite build' usa esbuild, que transpila
+      # sin comprobar tipos — un error de tipos pasaría el build en verde.
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Build
+        run: pnpm build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
