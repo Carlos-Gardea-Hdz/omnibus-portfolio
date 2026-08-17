@@ -1,4 +1,6 @@
+import { useReducedMotion } from "motion/react";
 import { useAppContext } from "../contexts/AppContext";
+import { translations } from "../data/translations";
 
 const PROJECT_NODES = [
   { name: "ADMIN", color: "#FF6B35" },
@@ -25,15 +27,21 @@ function getNodePosition(index: number) {
 }
 
 export default function NetworkDiagram() {
-  const { isDark } = useAppContext();
+  const { isDark, lang } = useAppContext();
+  const reducedMotion = useReducedMotion();
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       <svg
         viewBox="0 0 620 620"
+        role="img"
+        aria-labelledby="network-diagram-title"
         className="w-full h-full max-w-[500px] rounded-2xl bg-[#333333] dark:bg-[#0A0C10] border border-[#404040] dark:border-[#1E2330] shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none"
         style={{ filter: "drop-shadow(0 0 40px rgba(255,69,0,0.08))" }}
       >
+        <title id="network-diagram-title">
+          {translations.hero.diagramLabel[lang]}
+        </title>
         <defs>
           {/* Grid pattern */}
           <pattern
@@ -98,7 +106,7 @@ export default function NetworkDiagram() {
         <text
           x="10"
           y="18"
-          fill="#2A3044"
+          fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="11"
           fontFamily="'JetBrains Mono', monospace"
         >
@@ -107,7 +115,7 @@ export default function NetworkDiagram() {
         <text
           x="560"
           y="18"
-          fill="#2A3044"
+          fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="11"
           fontFamily="'JetBrains Mono', monospace"
         >
@@ -116,7 +124,7 @@ export default function NetworkDiagram() {
         <text
           x="10"
           y="614"
-          fill="#2A3044"
+          fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="11"
           fontFamily="'JetBrains Mono', monospace"
         >
@@ -125,7 +133,7 @@ export default function NetworkDiagram() {
         <text
           x="550"
           y="614"
-          fill="#2A3044"
+          fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="11"
           fontFamily="'JetBrains Mono', monospace"
         >
@@ -138,7 +146,7 @@ export default function NetworkDiagram() {
           cy={CY}
           r={RADIUS + 32}
           fill="none"
-          stroke="#1E2330"
+          stroke={isDark ? "#1E2330" : "#4A4A4A"}
           strokeWidth="0.8"
           strokeDasharray="3 8"
         />
@@ -157,51 +165,57 @@ export default function NetworkDiagram() {
               strokeWidth="1.5"
               strokeDasharray="8 5"
               strokeLinecap="round"
-              style={{
-                animation: `dashFlow 2.5s linear infinite`,
-                animationDelay: `${i * 0.28}s`,
-              }}
+              style={
+                reducedMotion
+                  ? undefined
+                  : {
+                      animation: `dashFlow 2.5s linear infinite`,
+                      animationDelay: `${i * 0.28}s`,
+                    }
+              }
             />
           );
         })}
 
         {/* Animated data packets */}
-        {PROJECT_NODES.map((node, i) => {
-          const { x, y } = getNodePosition(i);
-          const dur = 2.5 + i * 0.15;
-          return (
-            <circle key={`packet-${i}`} r="3.5" fill="#00D4FF" opacity="0.9">
-              <animateMotion
-                dur={`${dur}s`}
-                repeatCount="indefinite"
-                begin={`${i * 0.3}s`}
-              >
-                <mpath href={`#path-${i}`} />
-              </animateMotion>
-              <animate
-                attributeName="opacity"
-                values="0;1;1;0"
-                dur={`${dur}s`}
-                repeatCount="indefinite"
-                begin={`${i * 0.3}s`}
-              />
-            </circle>
-          );
-        })}
+        {!reducedMotion &&
+          PROJECT_NODES.map((node, i) => {
+            const { x, y } = getNodePosition(i);
+            const dur = 2.5 + i * 0.15;
+            return (
+              <circle key={`packet-${i}`} r="3.5" fill="#00D4FF" opacity="0.9">
+                <animateMotion
+                  dur={`${dur}s`}
+                  repeatCount="indefinite"
+                  begin={`${i * 0.3}s`}
+                >
+                  <mpath href={`#path-${i}`} />
+                </animateMotion>
+                <animate
+                  attributeName="opacity"
+                  values="0;1;1;0"
+                  dur={`${dur}s`}
+                  repeatCount="indefinite"
+                  begin={`${i * 0.3}s`}
+                />
+              </circle>
+            );
+          })}
 
         {/* Hidden paths for animateMotion */}
-        {PROJECT_NODES.map((_, i) => {
-          const { x, y } = getNodePosition(i);
-          return (
-            <path
-              key={`path-${i}`}
-              id={`path-${i}`}
-              d={`M${CX},${CY} L${x},${y}`}
-              fill="none"
-              style={{ display: "none" }}
-            />
-          );
-        })}
+        {!reducedMotion &&
+          PROJECT_NODES.map((_, i) => {
+            const { x, y } = getNodePosition(i);
+            return (
+              <path
+                key={`path-${i}`}
+                id={`path-${i}`}
+                d={`M${CX},${CY} L${x},${y}`}
+                fill="none"
+                style={{ display: "none" }}
+              />
+            );
+          })}
 
         {/* Center hub glow */}
         <circle cx={CX} cy={CY} r={110} fill="url(#centerGlow)" />
@@ -216,18 +230,22 @@ export default function NetworkDiagram() {
           strokeWidth="1.5"
           opacity="0.25"
         >
-          <animate
-            attributeName="r"
-            values="62;78;62"
-            dur="3s"
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="opacity"
-            values="0.4;0.1;0.4"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+          {!reducedMotion && (
+            <>
+              <animate
+                attributeName="r"
+                values="62;78;62"
+                dur="3s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="opacity"
+                values="0.4;0.1;0.4"
+                dur="3s"
+                repeatCount="indefinite"
+              />
+            </>
+          )}
         </circle>
 
         {/* Center hub */}
@@ -250,14 +268,16 @@ export default function NetworkDiagram() {
           strokeDasharray="4 4"
           opacity="0.5"
         >
-          <animateTransform
-            attributeName="transform"
-            type="rotate"
-            from={`0 ${CX} ${CY}`}
-            to={`360 ${CX} ${CY}`}
-            dur="20s"
-            repeatCount="indefinite"
-          />
+          {!reducedMotion && (
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from={`0 ${CX} ${CY}`}
+              to={`360 ${CX} ${CY}`}
+              dur="20s"
+              repeatCount="indefinite"
+            />
+          )}
         </circle>
 
         {/* Hub label */}
@@ -305,18 +325,22 @@ export default function NetworkDiagram() {
             <g key={`node-${i}`} filter="url(#nodeGlow)">
               {/* Outer glow */}
               <circle cx={x} cy={y} r={34} fill={node.color} opacity="0.1">
-                <animate
-                  attributeName="r"
-                  values="28;36;28"
-                  dur={`${2.5 + i * 0.2}s`}
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="opacity"
-                  values="0.1;0.22;0.1"
-                  dur={`${2.5 + i * 0.2}s`}
-                  repeatCount="indefinite"
-                />
+                {!reducedMotion && (
+                  <>
+                    <animate
+                      attributeName="r"
+                      values="28;36;28"
+                      dur={`${2.5 + i * 0.2}s`}
+                      repeatCount="indefinite"
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0.1;0.22;0.1"
+                      dur={`${2.5 + i * 0.2}s`}
+                      repeatCount="indefinite"
+                    />
+                  </>
+                )}
               </circle>
 
               {/* Node circle */}
@@ -380,7 +404,7 @@ export default function NetworkDiagram() {
               y1={pt.y}
               x2={pt.x + 8}
               y2={pt.y}
-              stroke="#1E2330"
+              stroke={isDark ? "#1E2330" : "#4A4A4A"}
               strokeWidth="1.2"
             />
             <line
@@ -388,7 +412,7 @@ export default function NetworkDiagram() {
               y1={pt.y - 8}
               x2={pt.x}
               y2={pt.y + 8}
-              stroke="#1E2330"
+              stroke={isDark ? "#1E2330" : "#4A4A4A"}
               strokeWidth="1.2"
             />
           </g>
@@ -399,7 +423,7 @@ export default function NetworkDiagram() {
           x={CX}
           y={608}
           textAnchor="middle"
-          fill="#2A3044"
+          fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="10"
           fontFamily="'JetBrains Mono', monospace"
         >

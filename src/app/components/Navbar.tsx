@@ -1,4 +1,4 @@
-import { useState, useEffect, type MouseEvent } from "react";
+import { useState, useEffect, useRef, type MouseEvent } from "react";
 import { Menu, X, Github, Sun, Moon, Linkedin } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import { translations } from "../data/translations";
@@ -9,12 +9,25 @@ export default function Navbar() {
   const { lang, toggleLang, isDark, toggleTheme } = useAppContext();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
 
   const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -77,20 +90,22 @@ export default function Navbar() {
           {(() => {
             const statusKey = translations.navbar.currentStatus as keyof typeof translations.navbar.status;
             const status = translations.navbar.status[statusKey];
+            const onDarkSurface = scrolled || isDark;
+            const pillColor = onDarkSurface ? status.color : status.colorLight;
             return (
-              <span 
+              <span
                 className={`hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] border px-2.5 py-1 rounded-full transition-colors ${
                   !scrolled && !isDark ? "bg-white shadow-sm" : ""
                 }`}
-                style={{ 
-                  color: status.color, 
-                  borderColor: `${status.color}40`,
-                  backgroundColor: scrolled || isDark ? `${status.color}05` : undefined
+                style={{
+                  color: pillColor,
+                  borderColor: `${pillColor}40`,
+                  backgroundColor: onDarkSurface ? `${status.color}05` : undefined
                 }}
               >
-                <span 
-                  className="w-1.5 h-1.5 rounded-full animate-pulse" 
-                  style={{ backgroundColor: status.dot }}
+                <span
+                  className="w-1.5 h-1.5 rounded-full animate-pulse"
+                  style={{ backgroundColor: onDarkSurface ? status.dot : pillColor }}
                 />
                 {status.label[lang]}
               </span>
@@ -99,6 +114,7 @@ export default function Navbar() {
           {/* Language toggle — always visible */}
           <button
             onClick={toggleLang}
+            aria-label={lang === "es" ? "Cambiar idioma a inglés" : "Switch language to Spanish"}
             className={`font-code flex items-center h-7 rounded-full border overflow-hidden text-[11px] cursor-pointer ${
               scrolled 
                 ? "border-white/10 bg-white/5" 
@@ -174,13 +190,16 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
+            ref={menuButtonRef}
             className={`md:hidden transition-colors cursor-pointer ${
-              scrolled 
-                ? "text-white/60 hover:text-white" 
+              scrolled
+                ? "text-white/60 hover:text-white"
                 : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+            aria-label={lang === "es" ? "Abrir o cerrar menú" : "Toggle menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -189,7 +208,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className={`md:hidden border-t px-6 py-4 flex flex-col gap-4 ${
+        <div id="mobile-menu" className={`md:hidden border-t px-6 py-4 flex flex-col gap-4 ${
           scrolled 
             ? "border-white/10 bg-[#0A0C10]" 
             : "border-black/10 dark:border-[#1E2330] bg-[#FAFAFA] dark:bg-[#0A0C10]"

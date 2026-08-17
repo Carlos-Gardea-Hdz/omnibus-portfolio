@@ -43,6 +43,10 @@ export const translations = {
     cvFilename: {
       es: "/CV_Carlos_Gardea_2026.pdf",
       en: "/Resume_Carlos_Gardea_2026.pdf"
+    },
+    diagramLabel: {
+      es: "Diagrama de red: nueve aplicaciones desplegadas en un VPS central con Docker y Traefik v3",
+      en: "Network diagram: nine applications deployed on a central VPS with Docker and Traefik v3",
     }
   },
   navbar: {
@@ -56,16 +60,19 @@ export const translations = {
       available: {
         label: { es: "Disponible para trabajar", en: "Available for work" },
         color: "#22D3EE", // Cyan/Light Blue for "Open"
+        colorLight: "#0E7490", // Darker cyan for light backgrounds (WCAG AA)
         dot: "#22D3EE"
       },
       busy: {
         label: { es: "En un proyecto", en: "Busy on a project" },
         color: "#F87171", // Red
+        colorLight: "#B91C1C", // Darker red for light backgrounds (WCAG AA)
         dot: "#F87171"
       },
       away: {
         label: { es: "Fuera de línea", en: "Currently away" },
         color: "#FBBF24", // Amber
+        colorLight: "#B45309", // Darker amber for light backgrounds (WCAG AA)
         dot: "#FBBF24"
       }
     },
@@ -106,6 +113,13 @@ export const translations = {
     },
     showAll: { es: "Ver todos los sistemas", en: "View all systems" },
     showLess: { es: "Ver menos proyectos", en: "View fewer projects" },
+    comingSoon: { es: "Próximamente", en: "Coming soon" },
+  },
+  infrastructure: {
+    diagramSummary: {
+      es: "Diagrama de arquitectura: el tráfico de internet entra por Traefik v3 (SSL/TLS, balanceo de carga y enrutamiento), pasa a los contenedores de aplicaciones (A–I) y llega a la capa de datos con PostgreSQL 18, Valkey 8.0, Meilisearch 1.12 y MinIO.",
+      en: "Architecture diagram: internet traffic enters through Traefik v3 (SSL/TLS, load balancing, and routing), flows to the application containers (A–I), and reaches the data layer with PostgreSQL 18, Valkey 8.0, Meilisearch 1.12, and MinIO.",
+    },
   },
   about: {
     tag: { es: "Perfil", en: "Profile" },
@@ -120,7 +134,8 @@ export const translations = {
     },
   },
   common: {
-    scrollDown: { es: "Desliza para explorar", en: "Scroll to explore" }
+    scrollDown: { es: "Desliza para explorar", en: "Scroll to explore" },
+    skipToContent: { es: "Saltar al contenido", en: "Skip to content" }
   }
 };
 

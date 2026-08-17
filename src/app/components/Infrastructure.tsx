@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useAppContext } from '../contexts/AppContext';
 import { useMouseGlow } from '../hooks/useMouseGlow';
+import { translations } from '../data/translations';
 
 const FEATURES = [
   {
@@ -73,7 +74,7 @@ export default function Infrastructure() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <p className="font-code text-[#FF4500] text-xs tracking-[0.2em] uppercase mb-3">
+              <p className="font-code text-[var(--accent-text)] text-xs tracking-[0.2em] uppercase mb-3">
                 // {lang === 'es' ? 'Infraestructura' : 'Infrastructure'}
               </p>
               <h2 className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-4">
@@ -97,7 +98,7 @@ export default function Infrastructure() {
                   transition={{ duration: 0.4, delay: i * 0.06 }}
                   className="flex items-start gap-4 p-4 rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] hover:border-[#FF4500]/30 transition-colors shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
                 >
-                  <span className="text-xl flex-shrink-0 mt-0.5">{feat.icon}</span>
+                  <span className="text-xl flex-shrink-0 mt-0.5" aria-hidden="true">{feat.icon}</span>
                   <span className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm leading-relaxed">
                     {feat[lang]}
                   </span>
@@ -137,8 +138,9 @@ export default function Infrastructure() {
                 </span>
               </div>
 
-              {/* Diagram content */}
-              <div className="terminal-box p-6 relative z-20">
+              {/* Diagram content — decorative ASCII art, described for screen readers below */}
+              <p className="sr-only">{translations.infrastructure.diagramSummary[lang]}</p>
+              <div className="terminal-box p-6 relative z-20" aria-hidden="true">
                 {DIAGRAM_LINES.map((line, i) => (
                   <motion.div
                     key={i}

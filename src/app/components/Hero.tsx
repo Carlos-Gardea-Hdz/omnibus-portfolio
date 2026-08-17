@@ -60,7 +60,7 @@ export default function Hero() {
         <div className="flex-1 lg:w-[55%] max-w-xl lg:max-w-none">
           {/* Pre-heading badge */}
           <motion.div {...fadeUp(0.05)}>
-            <span className="inline-flex items-center gap-2 font-code text-[11px] text-[#FF4500] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 rounded-full mb-6">
+            <span className="inline-flex items-center gap-2 font-code text-[11px] text-[var(--accent-text)] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF4500] animate-pulse" />
               {translations.hero.badge}
             </span>

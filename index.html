@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Carlos Gardea — Software Engineer. Portafolio de arquitectura avanzada con Laravel, React, Docker y más." />
-    <title>OMNIBUS — Carlos Gardea</title>
+    <title>Carlos Gardea — Software Engineer | Laravel, React, DevOps</title>
+    <meta
+      name="description"
+      content="Carlos Gardea is a Software Engineer building OMNIBUS: 9 production-grade Laravel applications on self-managed infrastructure. Open to work."
+    />
+    <link rel="canonical" href="https://carlosgardea.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Carlos Gardea — Software Engineer | Laravel, React, DevOps" />
+    <meta
+      property="og:description"
+      content="Carlos Gardea is a Software Engineer building OMNIBUS: 9 production-grade Laravel applications on self-managed infrastructure. Open to work."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://carlosgardea.com/" />
+    <meta property="og:image" content="https://carlosgardea.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Carlos Gardea — Software Engineer. OMNIBUS: 9 production-grade Laravel applications."
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Carlos Gardea — Software Engineer | Laravel, React, DevOps" />
+    <meta
+      name="twitter:description"
+      content="Carlos Gardea is a Software Engineer building OMNIBUS: 9 production-grade Laravel applications on self-managed infrastructure. Open to work."
+    />
+    <meta name="twitter:image" content="https://carlosgardea.com/og-image.png" />
+
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
@@ -12,7 +42,39 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
     <link rel="mask-icon" href="/favicon.svg" color="#FF4500" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#0A0C10" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0C10" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Carlos Gardea",
+        "jobTitle": "Software Engineer",
+        "url": "https://carlosgardea.com/",
+        "sameAs": [
+          "https://github.com/Carlos-Gardea-Hdz",
+          "https://www.linkedin.com/in/carlos-gardea"
+        ],
+        "knowsAbout": ["Laravel", "React", "PostgreSQL", "Docker", "Traefik", "TypeScript"]
+      }
+    </script>
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("omnibus-theme");
+          var dark = stored
+            ? stored === "dark"
+            : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {
+          // localStorage unavailable — keep the default light theme
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

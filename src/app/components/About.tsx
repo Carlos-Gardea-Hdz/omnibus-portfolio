@@ -199,7 +199,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <p className="font-code text-[#FF4500] text-xs tracking-[0.2em] uppercase mb-3">
+            <p className="font-code text-[var(--accent-text)] text-xs tracking-[0.2em] uppercase mb-3">
               // {translations.about.tag[lang]}
             </p>
             <h2 className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-6">
