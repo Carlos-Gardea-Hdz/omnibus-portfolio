@@ -38,3 +38,55 @@ jobs:
           name: dist
           path: dist/
           retention-days: 7
+
+  # Deploy continuo: cada push a main (= cada merge de PR) publica el MISMO
+  # artefacto que pasó type-check y build — primero staging, luego producción.
+  # La llave SSH (secret VPS_SSH_KEY) está enjaulada en el VPS con un forced
+  # command de rrsync: solo puede escribir bajo /opt/omnibus/portfolio, nada
+  # más. nginx sirve estáticos por bind mount, así que no hace falta reload.
+  deploy-staging:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: https://carlosgardea.cloud
+    steps:
+      - uses: actions/download-artifact@v6
+        with:
+          name: dist
+          path: dist
+
+      - uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add VPS host key
+        run: mkdir -p ~/.ssh && echo "${{ secrets.VPS_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+      - name: Rsync to staging
+        run: rsync -az --delete ./dist/ deployer_vps@195.35.37.195:dist/
+
+  deploy-prod:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    # El environment 'production' permite añadir aprobación manual en
+    # Settings → Environments cuando se quiera un gate humano.
+    environment:
+      name: production
+      url: https://carlosgardea.com
+    steps:
+      - uses: actions/download-artifact@v6
+        with:
+          name: dist
+          path: dist
+
+      - uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add VPS host key
+        run: mkdir -p ~/.ssh && echo "${{ secrets.VPS_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+      - name: Rsync to production
+        run: rsync -az --delete ./dist/ deployer_vps@195.35.37.195:dist-prod/
