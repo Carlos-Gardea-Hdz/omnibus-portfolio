@@ -9,7 +9,8 @@ fi
 
 echo "🚀 Desplegando a PRODUCCIÓN..."
 
-npm run build
+pnpm install --frozen-lockfile
+pnpm build
 
 # Subir al directorio de producción usando variables de entorno
 echo "📦 Sincronizando archivos con rsync..."

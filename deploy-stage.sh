@@ -9,7 +9,8 @@ fi
 
 echo "🚧 Desplegando a STAGING..."
 
-npm run build
+pnpm install --frozen-lockfile
+pnpm build
 
 # Subir al directorio de staging usando variables de entorno
 echo "📦 Sincronizando archivos con rsync..."
