@@ -55,7 +55,7 @@ export default function ProjectsGrid() {
       <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12">
         {/* Heading */}
         <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-16">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl lg:ml-12">
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ export default function ProjectsGrid() {
             <button
               onClick={handleToggle}
               disabled={isAnimating}
-              className={`group inline-flex items-center gap-2 font-display text-sm transition-colors border bg-white dark:bg-[#111318] px-6 py-2.5 rounded-full shadow-sm hover:shadow-md active:scale-95 ${
+              className={`group inline-flex items-center gap-2 font-display text-sm transition-colors border bg-white dark:bg-[#111318] px-6 py-2.5 shadow-sm hover:shadow-md active:scale-95 ${
                 isAnimating ? 'opacity-70 cursor-wait' : 'hover:text-[#FF4500] hover:border-[#0a0a0a]/20 dark:hover:border-white/20'
               } text-[#52525b] dark:text-[#94A3B8] border-[#e4e4e7] dark:border-[#1E2330]`}
             >

@@ -1,36 +1,36 @@
 import { motion } from 'motion/react';
+import { Camera, Container, Database, Route, Shield, Workflow } from 'lucide-react';
 import { useAppContext } from '../contexts/AppContext';
-import { useMouseGlow } from '../hooks/useMouseGlow';
 import { translations } from '../data/translations';
 
 const FEATURES = [
   {
-    icon: '🔒',
+    icon: Shield,
     es: 'SSH hardened · UFW · Fail2Ban (3 intentos / 1hr ban)',
     en: 'SSH hardened · UFW · Fail2Ban (3 attempts / 1hr ban)',
   },
   {
-    icon: '🔄',
+    icon: Route,
     es: 'Traefik v3 reverse proxy · SSL automático vía Let\'s Encrypt',
     en: 'Traefik v3 reverse proxy · Automatic SSL via Let\'s Encrypt',
   },
   {
-    icon: '🗄️',
+    icon: Database,
     es: 'PostgreSQL 18 · Valkey 8.0 · Meilisearch 1.12',
     en: 'PostgreSQL 18 · Valkey 8.0 · Meilisearch 1.12',
   },
   {
-    icon: '🐳',
+    icon: Container,
     es: 'Docker 29 · Redes aisladas por capa (app / data / monitoring)',
     en: 'Docker 29 · Isolated networks per layer (app / data / monitoring)',
   },
   {
-    icon: '🔭',
+    icon: Workflow,
     es: 'CI/CD via GitHub Actions · Trivy security scanning',
     en: 'CI/CD via GitHub Actions · Trivy security scanning',
   },
   {
-    icon: '📸',
+    icon: Camera,
     es: 'VPS snapshots en milestones estables',
     en: 'VPS snapshots at stable milestones',
   },
@@ -46,7 +46,7 @@ const DIAGRAM_LINES = [
   { indent: 0, text: '┌────────────┴──────────────────────┐', color: '#1E2330' },
   { indent: 1, text: '│       App Containers (A–I)         │', color: '#F0F4FF' },
   { indent: 1, text: '│  ADMIN · UNIGES · BRAIN · EVENTAPI │', color: '#6B7A99' },
-  { indent: 1, text: '│  PAYROLL · OPS · NEXUS · FLUX · ⬡  │', color: '#6B7A99' },
+  { indent: 1, text: '│  PAYROLL · OPS · NEXUS · FLUX · …  │', color: '#6B7A99' },
   { indent: 0, text: '└────────────┬──────────────────────┘', color: '#1E2330' },
   { indent: 1, text: '│', color: '#1E2330' },
   { indent: 0, text: '┌────────────┴──────────────────────┐', color: '#1E2330' },
@@ -58,7 +58,6 @@ const DIAGRAM_LINES = [
 
 export default function Infrastructure() {
   const { lang } = useAppContext();
-  const terminalGlow = useMouseGlow<HTMLDivElement>();
 
   return (
     <section className="bg-[#ffffff] dark:bg-[#0A0C10] py-24">
@@ -96,9 +95,9 @@ export default function Infrastructure() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className="flex items-start gap-4 p-4 rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] hover:border-[#FF4500]/30 transition-colors shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
+                  className="flex items-start gap-4 p-4 border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
                 >
-                  <span className="text-xl flex-shrink-0 mt-0.5" aria-hidden="true">{feat.icon}</span>
+                  <feat.icon size={18} className="text-[#FF4500] flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm leading-relaxed">
                     {feat[lang]}
                   </span>
@@ -115,19 +114,7 @@ export default function Infrastructure() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="sticky top-24"
           >
-            <div 
-              ref={terminalGlow.ref}
-              {...terminalGlow.handlers}
-              className="relative rounded-xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-2xl group"
-            >
-              {/* Dynamic glow effect */}
-              <div
-                className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                style={{
-                  background: `radial-gradient(600px circle at ${terminalGlow.mousePos.x}px ${terminalGlow.mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
-                }}
-              />
-
+            <div className="relative border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-2xl">
               {/* Terminal header */}
               <div className="relative z-20 flex items-center gap-2 px-4 py-3 border-b border-[#404040] dark:border-[#1E2330] bg-[#2D2D2D] dark:bg-[#111318]">
                 <div className="w-3 h-3 rounded-full bg-[#EF4444]" />
@@ -174,7 +161,7 @@ export default function Infrastructure() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#111318] p-3 text-center shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
+                  className="border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#111318] p-3 text-center shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
                 >
                   <div className="font-display text-xl" style={{ color: stat.color }}>
                     {stat.value}

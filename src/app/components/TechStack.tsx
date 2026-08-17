@@ -1,38 +1,20 @@
 import { motion } from 'motion/react';
 import { useAppContext } from '../contexts/AppContext';
 import { techCategories } from '../data/techStack';
-import { useMouseGlow } from '../hooks/useMouseGlow';
 
-// Wrapper component to use hooks inside map
 function TechBadge({ badge, category, badgeIdx, catIdx }: { badge: any, category: any, badgeIdx: number, catIdx: number }) {
-  const badgeGlow = useMouseGlow<HTMLDivElement>();
-  
   return (
     <motion.div
-      ref={badgeGlow.ref}
-      {...badgeGlow.handlers}
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: catIdx * 0.05 + badgeIdx * 0.04 }}
-      whileHover={{
-        y: -3,
-        boxShadow: `0 6px 20px ${category.color}30`,
-        transition: { duration: 0.15 },
-      }}
-      className="relative inline-flex items-center gap-2 h-8 px-3 rounded border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] cursor-default shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none overflow-hidden group"
+      className="inline-flex items-center gap-2 h-8 px-3 border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] cursor-default shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
       style={{
         borderLeft: `3px solid ${category.color}`,
       }}
     >
-      {/* Dynamic glow effect */}
-      <div
-        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-        style={{
-          background: `radial-gradient(100px circle at ${badgeGlow.mousePos.x}px ${badgeGlow.mousePos.y}px, rgba(255,255,255,0.1), transparent 40%)`,
-        }}
-      />
-      <span className="relative z-20 font-code text-[12px] text-[#ffffff] dark:text-[#F0F4FF]">
+      <span className="font-code text-[12px] text-[#ffffff] dark:text-[#F0F4FF]">
         {badge.name}
       </span>
     </motion.div>
@@ -53,6 +35,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="lg:ml-12"
           >
             <p className="font-code text-[#FF4500] text-xs tracking-[0.2em] uppercase mb-3">
               // {lang === 'es' ? 'Tecnologías' : 'Technologies'}
@@ -81,7 +64,7 @@ export default function TechStack() {
               {/* Category label */}
               <div className="flex items-center gap-3 mb-4">
                 <span
-                  className="w-1 h-4 rounded-full"
+                  className="w-1 h-4"
                   style={{ backgroundColor: category.color }}
                 />
                 <span className="font-code text-[11px] tracking-[0.15em] uppercase text-[#4B5563] dark:text-[#6B7A99]">

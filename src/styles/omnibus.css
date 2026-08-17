@@ -1,7 +1,7 @@
 /* ── OMNIBUS Custom Font Utilities ─────────────────────── */
-.font-display { font-family: 'Space Mono', 'JetBrains Mono', monospace; }
-.font-body    { font-family: 'DM Sans', sans-serif; }
-.font-code    { font-family: 'JetBrains Mono', 'Space Mono', monospace; }
+.font-display { font-family: 'Monaspace Xenon', monospace; }
+.font-body    { font-family: 'Monaspace Neon', monospace; }
+.font-code    { font-family: 'Monaspace Neon', 'JetBrains Mono', monospace; }
 
  /* ── Smooth theme transition — excluir elementos animados por Motion ─── */
  :root {
@@ -73,7 +73,7 @@
 
 /* ── Terminal diagram ────────────────────────────────── */
 .terminal-box {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Monaspace Neon', 'JetBrains Mono', monospace;
   font-size: 12px;
   line-height: 1.7;
 }
@@ -81,8 +81,36 @@
 /* ── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0A0C10; }
-::-webkit-scrollbar-thumb { background: #1E2330; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #1E2330; }
 .dark ::-webkit-scrollbar-thumb { background: #1E2330; }
+
+/* ── Film grain overlay ────────────────────────────────
+ * Static grayscale noise (SVG feTurbulence) over the whole
+ * viewport. Non-interactive and intentionally faint; slightly
+ * stronger on dark backgrounds where grain reads weaker.
+ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: 0.04;
+}
+.dark body::before {
+  opacity: 0.05;
+}
+
+/* ── Anchor offset for the fixed navbar ───────────────
+ * Navbar is 64px tall; without this, jumping to an anchor
+ * hides the section title underneath it.
+ */
+main [id],
+section[id] {
+  scroll-margin-top: 80px;
+}
 
 /* ── 3D card tilt utility ─────────────────────────── */
 .tilt-card {

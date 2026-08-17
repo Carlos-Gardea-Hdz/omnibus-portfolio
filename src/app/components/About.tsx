@@ -1,8 +1,7 @@
 import { motion } from "motion/react";
-import { MapPin, Globe, Award } from "lucide-react";
+import { GraduationCap, Globe, MapPin, Trophy } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import { translations } from "../data/translations";
-import { useMouseGlow } from "../hooks/useMouseGlow";
 
 const TIMELINE = [
   {
@@ -52,43 +51,31 @@ const EDUCATION = [
   {
     title: "Ing. en Sistemas Computacionales",
     subtitle: "TecNM Ciudad Juárez · 2018–2024",
-    icon: "🎓",
+    icon: GraduationCap,
   },
   {
     title: "LOGO! Cloud Challenge",
     subtitle: "Siemens México · 2022 (Nacional)",
-    icon: "🏆",
+    icon: Trophy,
   },
   {
     title: "B2 English Certified",
     subtitle: "Oxford University Press",
-    icon: "🌐",
+    icon: Globe,
   },
 ];
 
-// Wrapper for Education badges to use hooks
 function EducationBadge({ edu, index }: { edu: any, index: number }) {
-  const badgeGlow = useMouseGlow<HTMLDivElement>();
-  
   return (
     <motion.div
-      ref={badgeGlow.ref}
-      {...badgeGlow.handlers}
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 + index * 0.08 }}
-      className="relative flex items-start gap-3 p-3 rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none overflow-hidden group"
+      className="flex items-start gap-3 p-3 border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
     >
-      {/* Dynamic glow effect */}
-      <div
-        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-        style={{
-          background: `radial-gradient(200px circle at ${badgeGlow.mousePos.x}px ${badgeGlow.mousePos.y}px, rgba(255,255,255,0.08), transparent 40%)`,
-        }}
-      />
-      <span className="relative z-20 text-lg">{edu.icon}</span>
-      <div className="relative z-20">
+      <edu.icon size={18} className="text-[#FF4500] flex-shrink-0 mt-0.5" aria-hidden="true" />
+      <div>
         <div className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm">
           {edu.title}
         </div>
@@ -102,7 +89,6 @@ function EducationBadge({ edu, index }: { edu: any, index: number }) {
 
 export default function About() {
   const { lang } = useAppContext();
-  const avatarGlow = useMouseGlow<HTMLDivElement>();
 
   return (
     <section id="about" className="bg-[#f9fafb] dark:bg-[#0A0C10] py-24">
@@ -118,22 +104,10 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="flex flex-col gap-6"
           >
-            {/* Avatar */}
-            <div className="relative w-full max-w-xs group">
-              <div 
-                ref={avatarGlow.ref}
-                {...avatarGlow.handlers}
-                className="relative aspect-square rounded-2xl border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none"
-              >
-                {/* Dynamic glow effect */}
-                <div
-                  className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                  style={{
-                    background: `radial-gradient(300px circle at ${avatarGlow.mousePos.x}px ${avatarGlow.mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
-                  }}
-                />
-                
-                {/* 
+            {/* Avatar — bleeds out of the container axis on large screens */}
+            <div className="relative w-full max-w-xs lg:-ml-10">
+              <div className="relative aspect-square border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none">
+                {/*
                   PHOTO: Place your photo at public/avatar.jpg (square, min 400x400px).
                   The img tag below will render it automatically once the file exists.
                   Until then, the CG fallback is shown.
@@ -159,7 +133,7 @@ export default function About() {
                       "radial-gradient(ellipse at 50% 30%, rgba(255,69,0,0.08) 0%, transparent 60%)",
                   }}
                 >
-                  <div className="w-24 h-24 rounded-full border-2 border-[#FF4500]/40 bg-[#FF4500]/10 flex items-center justify-center mb-4">
+                  <div className="w-24 h-24 border-2 border-[#FF4500]/40 bg-[#FF4500]/10 flex items-center justify-center mb-4">
                     <span className="font-display text-[#FF4500] text-3xl">
                       CG
                     </span>
@@ -190,8 +164,8 @@ export default function About() {
               </div>
 
               {/* Accent corners */}
-              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-[#FF4500] opacity-60 rounded-tr" />
-              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-[#00D4FF] opacity-60 rounded-bl" />
+              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-[#FF4500] opacity-60" />
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-[#00D4FF] opacity-60" />
             </div>
 
             {/* Education badges */}
@@ -239,7 +213,7 @@ export default function About() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="font-code text-[11px] px-2.5 py-1 rounded border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#111318] text-[#ffffff] dark:text-[#6B7A99] shadow-[0_2px_10px_rgba(0,0,0,0.05)] dark:shadow-none"
+                  className="font-code text-[11px] px-2.5 py-1 border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#111318] text-[#ffffff] dark:text-[#6B7A99] shadow-[0_2px_10px_rgba(0,0,0,0.05)] dark:shadow-none"
                 >
                   {skill}
                 </span>

@@ -9,8 +9,8 @@ export const projects: Project[] = [
     color: "#FF6B35",
     status: "development",
     description: {
-      es: "Plataforma de administración empresarial multi-sucursal. Búsqueda full-text con Meilisearch, RBAC de 4 niveles y analytics segmentado. Reconstrucción Laravel 12 de un sistema en producción real.",
-      en: "Multi-branch enterprise administration platform. Full-text search with Meilisearch, 4-level RBAC, and per-branch analytics. Laravel 12 rebuild of a real production system.",
+      es: "Reconstrucción en Laravel 12 de una plataforma de administración multi-sucursal que sigue operando en producción. Búsqueda full-text con Meilisearch, RBAC de 4 niveles y analytics por sucursal.",
+      en: "Laravel 12 rebuild of a multi-branch administration platform still running in production. Full-text search with Meilisearch, 4-level RBAC, and per-branch analytics.",
     },
     stackBadges: [
       "Laravel 12",
@@ -49,8 +49,8 @@ export const projects: Project[] = [
     color: "#3B82F6",
     status: "development",
     description: {
-      es: "Plataforma universitaria de gestión de titulación. Logró +70% de incremento en eficiencia terminal. Workflow de 9 estados, WebSockets en tiempo real y analytics con 7 gráficas.",
-      en: "University thesis management platform. Achieved +70% increase in graduation efficiency. 9-state workflow engine, real-time WebSockets, and analytics with 7 chart types.",
+      es: "Plataforma universitaria de gestión de titulación, con +70% de incremento documentado en eficiencia terminal. Workflow de 9 estados, WebSockets con Laravel Reverb y analytics con 7 tipos de gráfica. El sistema original sigue en producción.",
+      en: "University degree-completion platform, with a documented +70% increase in graduation efficiency. 9-state workflow engine, WebSockets via Laravel Reverb, and analytics with 7 chart types. The original system is still in production.",
     },
     stackBadges: [
       "Laravel 12",
@@ -89,8 +89,8 @@ export const projects: Project[] = [
     color: "#8B5CF6",
     status: "development",
     description: {
-      es: "Transcriptor y resumidor de audio con modelos ML en Python. Workers asíncronos para procesamiento de archivos de audio con integración entre Laravel y Python vía queues.",
-      en: "AI audio transcription and summarization. Async ML workers for audio file processing. Laravel-to-Python integration via message queues.",
+      es: "Transcripción y resumen de audio con Whisper en Python. Laravel encola los trabajos y workers en Python los procesan de forma asíncrona.",
+      en: "Audio transcription and summarization with Whisper in Python. Laravel queues the jobs and Python workers process them asynchronously.",
     },
     stackBadges: [
       "Laravel 12",
@@ -149,8 +149,8 @@ export const projects: Project[] = [
     color: "#EF4444",
     status: "development",
     description: {
-      es: "Monitoreo de infraestructura en tiempo real. Microservicios en Go con gRPC como protocolo de comunicación. Laravel Octane para máximo throughput. Desplegado sobre K3s/Kubernetes.",
-      en: "Real-time infrastructure monitoring. Go microservices communicating via gRPC. Laravel Octane for maximum throughput. Deployed on K3s/Kubernetes.",
+      es: "Monitoreo de infraestructura en tiempo real: microservicios en Go que se comunican por gRPC, con Laravel Octane en la capa de aplicación, desplegado sobre K3s.",
+      en: "Real-time infrastructure monitoring: Go microservices communicating over gRPC, with Laravel Octane at the application layer, deployed on K3s.",
     },
     stackBadges: ["Laravel Octane", "Go 1.25", "gRPC", "K3s", "OpenTelemetry"],
     architecturePattern: "gRPC Microservices + K3s + High-Throughput",
@@ -183,8 +183,8 @@ export const projects: Project[] = [
     color: "#84CC16",
     status: "development",
     description: {
-      es: "Mesa de ayuda construida con el stack TALL moderno (2025): Livewire 4 + Volt (Single File Components) + Flux UI + Folio. Reactividad en servidor sin JavaScript.",
-      en: "Help desk built on the modern TALL stack (2025): Livewire 4 + Volt (Single File Components) + Flux UI + Folio. Server-side reactivity without custom JavaScript.",
+      es: "Mesa de ayuda construida con el stack TALL (2025): Livewire 4 + Volt (Single File Components) + Flux UI + Folio. Reactividad en servidor sin escribir JavaScript propio.",
+      en: "Help desk built on the TALL stack (2025): Livewire 4 + Volt (Single File Components) + Flux UI + Folio. Server-side reactivity without writing custom JavaScript.",
     },
     stackBadges: ["Laravel 12", "Livewire 4", "Volt", "Flux UI", "Folio"],
     architecturePattern: "TALL Stack + Server-Side Reactivity",
@@ -197,8 +197,8 @@ export const projects: Project[] = [
     color: "#F43F5E",
     status: "development",
     description: {
-      es: "Analytics de alto throughput. Arquitectura híbrida sobre K3s con ingesta masiva de eventos, procesamiento en streaming y dashboards en tiempo real.",
-      en: "High-throughput analytics platform. Hybrid K3s architecture with massive event ingestion, stream processing, and real-time dashboards.",
+      es: "Plataforma de analytics de alto throughput sobre K3s: ingesta de eventos, procesamiento en streaming y dashboards en tiempo real, con trazas vía OpenTelemetry.",
+      en: "High-throughput analytics platform on K3s: event ingestion, stream processing, and real-time dashboards, with tracing via OpenTelemetry.",
     },
     stackBadges: [
       "Laravel",

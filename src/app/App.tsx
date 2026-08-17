@@ -22,7 +22,7 @@ export default function App() {
         <div className="font-body bg-[#F5F6FA] dark:bg-[#0A0C10] min-h-screen">
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#0A0C10] focus:text-white dark:focus:bg-white dark:focus:text-[#0A0C10]"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#0A0C10] focus:text-white dark:focus:bg-white dark:focus:text-[#0A0C10]"
           >
             {translations.common.skipToContent[lang]}
           </a>

@@ -1,7 +1,5 @@
-import { CSSProperties } from "react";
 import { ExternalLink, Github, Zap, Clock, History } from "lucide-react";
 import { Project, Lang, ProjectVersionType } from "../types";
-import { useMouseGlow } from "../hooks/useMouseGlow";
 import { translations } from "../data/translations";
 
 interface ProjectCardProps {
@@ -10,8 +8,6 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, lang }: ProjectCardProps) {
-  const { ref: cardRef, isHovered, mousePos, transform, handlers } = useMouseGlow<HTMLDivElement>({ tilt: true });
-
   const isProduction = project.status === "production";
 
   const versionConfig: Record<
@@ -28,38 +24,25 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
 
   return (
     <div
-      ref={cardRef}
-      {...handlers}
-      className="tilt-card relative flex flex-col h-full rounded-lg border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden cursor-default group shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
+      className="relative flex flex-col h-full border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#0A0C10] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none"
       style={{
-        transform,
         borderLeft: `3px solid ${project.color}`,
-        boxShadow: isHovered ? `0 12px 32px ${project.color}20` : undefined,
-        transition: "transform 0.15s ease, box-shadow 0.15s ease",
       }}
     >
-      {/* Dynamic glow effect */}
-      <div
-        className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-        style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,69,0,0.15), transparent 40%)`,
-        }}
-      />
-
       {/* Top accent line */}
       <div
-        className="h-0.5 w-full relative z-20"
+        className="h-0.5 w-full"
         style={{
           background: `linear-gradient(90deg, ${project.color}, transparent)`,
         }}
       />
 
-      <div className="p-6 flex flex-col flex-1 gap-4 relative z-20">
+      <div className="p-6 flex flex-col flex-1 gap-4">
         {/* Header row */}
         <div className="flex items-start justify-between gap-2">
           {/* Letter badge */}
           <span
-            className="font-display text-xs w-7 h-7 flex items-center justify-center rounded border flex-shrink-0"
+            className="font-display text-xs w-7 h-7 flex items-center justify-center border flex-shrink-0"
             style={{
               color: project.color,
               borderColor: `${project.color}40`,
@@ -72,12 +55,12 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
 
           {/* Status badge */}
           {isProduction ? (
-            <span className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 rounded-full bg-[#22D3A5]/10 text-[#22D3A5] border border-[#22D3A5]/20">
+            <span className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 bg-[#22D3A5]/10 text-[#22D3A5] border border-[#22D3A5]/20">
               <Zap size={9} />
               {lang === "es" ? "En Producción" : "In Production"}
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20">
+            <span className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 bg-amber-500/10 text-amber-500 border border-amber-500/20">
               <Clock size={9} />
               {lang === "es" ? "En Desarrollo" : "In Development"}
             </span>
@@ -86,13 +69,10 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
 
         {/* Codename */}
         <div>
-          <h3
-            className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-xl leading-tight mb-1 group-hover:text-[var(--card-accent)] transition-colors"
-            style={{ "--card-accent": project.color } as CSSProperties}
-          >
+          <h3 className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-xl leading-tight mb-1">
             {project.codename}
           </h3>
-          <span className="font-code text-[11px] text-[#9CA3AF] dark:text-[#6B7A99] border border-[#404040] dark:border-[#1E2330] px-2 py-0.5 rounded">
+          <span className="font-code text-[11px] text-[#9CA3AF] dark:text-[#6B7A99] border border-[#404040] dark:border-[#1E2330] px-2 py-0.5">
             {project.domain}
           </span>
         </div>
@@ -105,7 +85,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
         {/* Architecture pattern */}
         <div className="flex items-center gap-1.5">
           <span
-            className="w-1 h-3 rounded-full flex-shrink-0"
+            className="w-1 h-3 flex-shrink-0"
             style={{ backgroundColor: project.color }}
           />
           <span className="font-code text-[10px] text-[#9CA3AF] dark:text-[#6B7A99] leading-tight">
@@ -118,7 +98,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
           {project.stackBadges.map((badge) => (
             <span
               key={badge}
-              className="font-code text-[10px] px-2 py-0.5 rounded border border-[#404040] dark:border-[#1E2330] text-[#9CA3AF] dark:text-[#6B7A99] bg-[#2D2D2D] dark:bg-[#111318]"
+              className="font-code text-[10px] px-2 py-0.5 border border-[#404040] dark:border-[#1E2330] text-[#9CA3AF] dark:text-[#6B7A99] bg-[#2D2D2D] dark:bg-[#111318]"
             >
               {badge}
             </span>
@@ -141,7 +121,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
                     href={v.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 rounded border transition-opacity hover:opacity-100 opacity-80"
+                    className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 border transition-opacity hover:opacity-100 opacity-80"
                     style={{
                       color: cfg.color,
                       borderColor: `${cfg.color}40`,
@@ -154,7 +134,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
                 ) : (
                   <span
                     key={v.type}
-                    className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 rounded border border-[#404040] dark:border-[#1E2330] text-[#9CA3AF] bg-[#2D2D2D] dark:bg-[#111318] cursor-not-allowed"
+                    className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 border border-[#404040] dark:border-[#1E2330] text-[#9CA3AF] bg-[#2D2D2D] dark:bg-[#111318] cursor-not-allowed"
                   >
                     <Clock size={9} />
                     {v.label[lang]} · {translations.projects.comingSoon[lang]}

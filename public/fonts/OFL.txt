@@ -1,7 +1,7 @@
 The fonts in this directory are licensed under the SIL Open Font License, Version 1.1:
 
-Copyright 2016 The Space Mono Project Authors (https://github.com/googlefonts/spacemono)
-Copyright 2014-2017 Indian Type Foundry (info@indiantypefoundry.com), Copyright 2019 Google LLC — DM Sans (https://github.com/googlefonts/dm-fonts)
+Copyright (c) 2023, GitHub https://github.com/githubnext/monaspace
+with Reserved Font Name "Monaspace", including subfamilies: "Argon", "Neon", "Xenon", "Radon", and "Krypton"
 
 Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)
 
