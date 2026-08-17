@@ -36,6 +36,16 @@ const TIMELINE = [
     color: "#FF4500",
     current: true,
   },
+  {
+    company: "Inventec México (IEC Technologies)",
+    period: { es: "Mar 2026 – Presente", en: "Mar 2026 – Present" },
+    role: {
+      es: "Ingeniero Desarrollador de Software",
+      en: "Software Development Engineer",
+    },
+    color: "#3B82F6",
+    current: true,
+  },
 ];
 
 const EDUCATION = [
@@ -208,8 +218,8 @@ export default function About() {
 
             <p className="font-body text-[#4B5563] dark:text-[#6B7A99] text-base leading-relaxed mb-8">
               {lang === "es"
-                ? "Ingeniero de Software especializado en arquitecturas Laravel con visión full-stack. Experiencia demostrada en sistemas de producción: plataforma de administración empresarial multi-sucursal y plataforma universitaria de titulación con +70% de incremento en eficiencia terminal. Background en entorno industrial Bosch · Inglés B2 certificado (Oxford University)."
-                : "Software Engineer specialized in Laravel architectures with a full-stack mindset. Proven experience delivering production systems: multi-branch enterprise administration platform and a university graduation platform with +70% efficiency improvement. Background in industrial manufacturing environments at Bosch. B2 English certified (Oxford University)."}
+                ? "Ingeniero Desarrollador de Software en Inventec México (IEC Technologies), construyendo sistemas de manufactura para piso de producción. Especializado en arquitecturas Laravel con visión full-stack y experiencia demostrada en sistemas en producción: plataforma de administración empresarial multi-sucursal y plataforma universitaria de titulación con +70% de incremento en eficiencia terminal. Background industrial en Bosch · Inglés B2 certificado (Oxford University)."
+                : "Software Development Engineer at Inventec México (IEC Technologies), building manufacturing systems for the production floor. Specialized in Laravel architectures with a full-stack mindset and proven experience delivering production systems: a multi-branch enterprise administration platform and a university graduation platform with +70% efficiency improvement. Industrial background at Bosch · B2 English certified (Oxford University)."}
             </p>
 
             {/* Skills */}
