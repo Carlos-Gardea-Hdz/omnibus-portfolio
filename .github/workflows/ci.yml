@@ -39,6 +39,30 @@ jobs:
           path: dist/
           retention-days: 7
 
+  # Quality gate: audits the built site with Lighthouse CI and fails the check
+  # when any score drops below the thresholds in lighthouserc.json. Runs on
+  # every PR and on pushes to main. It only depends on 'build', so it runs in
+  # parallel with the deploy jobs and never blocks them: it gates the PR merge,
+  # not the release pipeline.
+  lighthouse:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout is only needed for lighthouserc.json; the audited site comes
+      # from the build artifact, same as the deploy jobs.
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v6
+        with:
+          name: dist
+          path: dist
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+
   # Deploy continuo: cada push a main (= cada merge de PR) publica el MISMO
   # artefacto que pasó type-check y build — primero staging, luego producción.
   # La llave SSH (secret VPS_SSH_KEY) está enjaulada en el VPS con un forced

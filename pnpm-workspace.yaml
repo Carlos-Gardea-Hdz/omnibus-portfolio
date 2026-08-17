@@ -13,3 +13,11 @@ allowBuilds:
 # declararlo hasta que npm lo señaló como error en CI; esto lo hace visible en
 # el momento de instalar, no meses después.
 strictPeerDependencies: true
+
+# Endurecimiento supply-chain (investigación 2026-08-17; contexto: Shai-Hulud,
+# ChainDrop). pnpm 10 bloqueó install scripts; pnpm 11 endureció el resto —
+# estos hacen la política explícita y suben el cooldown al triple del default.
+minimumReleaseAge: 4320   # 3 días: una versión recién publicada no se instala
+blockExoticSubdeps: true  # default v11, explícito: sin deps git/tarball ocultas
+strictDepBuilds: true     # default v11, explícito
+savePrefix: ''            # pins exactos en package.json de aquí en adelante
