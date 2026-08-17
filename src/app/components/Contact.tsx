@@ -46,7 +46,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-code text-[#FF4500] text-xs tracking-[0.25em] uppercase mb-4">
+          <p className="font-code text-[var(--accent-text)] text-xs tracking-[0.25em] uppercase mb-4">
             // {translations.contact.tag[lang]}
           </p>
           <h2 className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-6xl mb-5 leading-tight">

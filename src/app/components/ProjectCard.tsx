@@ -2,6 +2,7 @@ import { CSSProperties } from "react";
 import { ExternalLink, Github, Zap, Clock, History } from "lucide-react";
 import { Project, Lang, ProjectVersionType } from "../types";
 import { useMouseGlow } from "../hooks/useMouseGlow";
+import { translations } from "../data/translations";
 
 interface ProjectCardProps {
   project: Project;
@@ -153,12 +154,10 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
                 ) : (
                   <span
                     key={v.type}
-                    className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 rounded border opacity-40 cursor-not-allowed"
-                    style={{ color: cfg.color, borderColor: `${cfg.color}40` }}
-                    title={lang === "es" ? "Próximamente" : "Coming soon"}
+                    className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 rounded border border-[#404040] dark:border-[#1E2330] text-[#9CA3AF] bg-[#2D2D2D] dark:bg-[#111318] cursor-not-allowed"
                   >
                     <Clock size={9} />
-                    {v.label[lang]}
+                    {v.label[lang]} · {translations.projects.comingSoon[lang]}
                   </span>
                 );
               })}

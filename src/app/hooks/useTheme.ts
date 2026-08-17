@@ -4,7 +4,8 @@ export function useTheme() {
   const [isDark, setIsDark] = useState<boolean>(() => {
     try {
       const stored = localStorage.getItem("omnibus-theme");
-      return stored ? stored === "dark" : false; // light by default
+      if (stored) return stored === "dark";
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
     } catch {
       return false;
     }

@@ -60,7 +60,7 @@ export default function ProjectsGrid() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-code text-[#FF4500] text-xs tracking-[0.25em] uppercase mb-4"
+              className="font-code text-[var(--accent-text)] text-xs tracking-[0.25em] uppercase mb-4"
             >
               // {translations.projects.tag[lang]}
             </motion.p>
