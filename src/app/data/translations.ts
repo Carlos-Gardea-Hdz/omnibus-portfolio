@@ -51,9 +51,10 @@ export const translations = {
   },
   navbar: {
     links: [
-      { href: "#about", label: { es: "Sobre mí", en: "About" } },
-      { href: "#stack", label: { es: "Stack", en: "Stack" } },
       { href: "#projects", label: { es: "Proyectos", en: "Projects" } },
+      { href: "#infra", label: { es: "Infra", en: "Infra" } },
+      { href: "#stack", label: { es: "Stack", en: "Stack" } },
+      { href: "#about", label: { es: "Sobre mí", en: "About" } },
       { href: "#contact", label: { es: "Contacto", en: "Contact" } },
     ],
     status: {

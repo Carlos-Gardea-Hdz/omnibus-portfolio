@@ -60,7 +60,7 @@ export default function Infrastructure() {
   const { lang } = useAppContext();
 
   return (
-    <section className="bg-[#ffffff] dark:bg-[#0A0C10] py-24">
+    <section id="infra" className="bg-[#ffffff] dark:bg-[#0A0C10] py-24">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
         <div className="h-px w-full bg-gradient-to-r from-transparent via-[#e5e7eb] dark:via-[#1E2330] to-transparent mb-12" />
 
