@@ -5,8 +5,8 @@ export const projects: Project[] = [
     id: "kyc-wedding",
     letter: "K",
     codename: "KYC WEDDING",
-    domain: "kyc-wedding.com",
-    link: "https://kyc-wedding.com/",
+    domain: "kycwedding.com",
+    link: "https://kycwedding.com/",
     color: "#22D3EE",
     status: "production",
     description: {
@@ -25,13 +25,13 @@ export const projects: Project[] = [
       {
         type: "legacy",
         label: { es: "En producción", en: "Live" },
-        url: "https://kyc-wedding.com/",
+        url: "https://kycwedding.com/",
         available: true,
       },
       {
         type: "laravel",
         label: { es: "Fase 2 (Laravel)", en: "Phase 2 (Laravel)" },
-        url: "https://kyc-wedding.com/",
+        url: "https://kycwedding.com/",
         available: false,
       },
     ],
