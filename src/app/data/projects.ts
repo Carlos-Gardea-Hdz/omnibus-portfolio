@@ -6,6 +6,7 @@ export const projects: Project[] = [
     letter: "K",
     codename: "KYC WEDDING",
     domain: "kyc-wedding.com",
+    link: "https://kyc-wedding.com/",
     color: "#22D3EE",
     status: "production",
     description: {
