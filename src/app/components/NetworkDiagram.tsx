@@ -36,7 +36,7 @@ export default function NetworkDiagram() {
         viewBox="0 0 620 620"
         role="img"
         aria-labelledby="network-diagram-title"
-        className="w-full h-full max-w-[500px] rounded-2xl bg-[#333333] dark:bg-[#0A0C10] border border-[#404040] dark:border-[#1E2330] shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none"
+        className="w-full h-full max-w-[500px] bg-[#333333] dark:bg-[#0A0C10] border border-[#404040] dark:border-[#1E2330] shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-none"
         style={{ filter: "drop-shadow(0 0 40px rgba(255,69,0,0.08))" }}
       >
         <title id="network-diagram-title">
@@ -108,7 +108,7 @@ export default function NetworkDiagram() {
           y="18"
           fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="11"
-          fontFamily="'JetBrains Mono', monospace"
+          fontFamily="'Monaspace Neon', monospace"
         >
           X:0
         </text>
@@ -117,7 +117,7 @@ export default function NetworkDiagram() {
           y="18"
           fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="11"
-          fontFamily="'JetBrains Mono', monospace"
+          fontFamily="'Monaspace Neon', monospace"
         >
           X:480
         </text>
@@ -126,7 +126,7 @@ export default function NetworkDiagram() {
           y="614"
           fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="11"
-          fontFamily="'JetBrains Mono', monospace"
+          fontFamily="'Monaspace Neon', monospace"
         >
           Y:480
         </text>
@@ -135,7 +135,7 @@ export default function NetworkDiagram() {
           y="614"
           fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="11"
-          fontFamily="'JetBrains Mono', monospace"
+          fontFamily="'Monaspace Neon', monospace"
         >
           Y:480
         </text>
@@ -287,7 +287,7 @@ export default function NetworkDiagram() {
           textAnchor="middle"
           fill="#FF4500"
           fontSize="13"
-          fontFamily="'JetBrains Mono', monospace"
+          fontFamily="'Monaspace Neon', monospace"
           fontWeight="700"
         >
           VPS + Traefik
@@ -298,7 +298,7 @@ export default function NetworkDiagram() {
           textAnchor="middle"
           fill="#ffffff"
           fontSize="11"
-          fontFamily="'JetBrains Mono', monospace"
+          fontFamily="'Monaspace Neon', monospace"
         >
           Docker · SSL
         </text>
@@ -308,7 +308,7 @@ export default function NetworkDiagram() {
           textAnchor="middle"
           fill="#9CA3AF"
           fontSize="10"
-          fontFamily="'JetBrains Mono', monospace"
+          fontFamily="'Monaspace Neon', monospace"
         >
           v3 · Ubuntu 24
         </text>
@@ -360,7 +360,7 @@ export default function NetworkDiagram() {
                 textAnchor="middle"
                 fill={node.color}
                 fontSize="13"
-                fontFamily="'JetBrains Mono', monospace"
+                fontFamily="'Monaspace Neon', monospace"
                 fontWeight="700"
               >
                 {String.fromCharCode(65 + i)}
@@ -371,7 +371,7 @@ export default function NetworkDiagram() {
                 textAnchor="middle"
                 fill="#9CA3AF"
                 fontSize="9"
-                fontFamily="'JetBrains Mono', monospace"
+                fontFamily="'Monaspace Neon', monospace"
               >
                 {node.name}
               </text>
@@ -383,7 +383,7 @@ export default function NetworkDiagram() {
                 textAnchor={labelAnchor}
                 fill="#8899AA"
                 fontSize="11"
-                fontFamily="'JetBrains Mono', monospace"
+                fontFamily="'Monaspace Neon', monospace"
               >
                 {node.name}
               </text>
@@ -425,7 +425,7 @@ export default function NetworkDiagram() {
           textAnchor="middle"
           fill={isDark ? "#2A3044" : "#6B7280"}
           fontSize="10"
-          fontFamily="'JetBrains Mono', monospace"
+          fontFamily="'Monaspace Neon', monospace"
         >
           OMNIBUS · v6.2 · carlosgardea.com
         </text>

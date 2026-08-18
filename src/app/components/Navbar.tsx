@@ -94,7 +94,7 @@ export default function Navbar() {
             const pillColor = onDarkSurface ? status.color : status.colorLight;
             return (
               <span
-                className={`hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] border px-2.5 py-1 rounded-full transition-colors ${
+                className={`hidden lg:inline-flex items-center gap-1.5 font-code text-[10px] border px-2.5 py-1 transition-colors ${
                   !scrolled && !isDark ? "bg-white shadow-sm" : ""
                 }`}
                 style={{
@@ -115,7 +115,7 @@ export default function Navbar() {
           <button
             onClick={toggleLang}
             aria-label={lang === "es" ? "Cambiar idioma a inglés" : "Switch language to Spanish"}
-            className={`font-code flex items-center h-7 rounded-full border overflow-hidden text-[11px] cursor-pointer ${
+            className={`font-code flex items-center h-7 border overflow-hidden text-[11px] cursor-pointer ${
               scrolled 
                 ? "border-white/10 bg-white/5" 
                 : "border-black/10 dark:border-white/10 bg-[#FAFAFA] dark:bg-[#111318]"
@@ -218,7 +218,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`font-body text-base py-1 border-b ${
+              className={`font-body text-base py-1 border-b transition-colors hover:text-[#FF4500] ${
                 scrolled
                   ? "text-white/80 border-white/5"
                   : "text-[#0D1117] dark:text-[#F0F4FF] border-black/5 dark:border-[#1E2330]"

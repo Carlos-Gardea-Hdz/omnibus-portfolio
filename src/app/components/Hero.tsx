@@ -40,14 +40,14 @@ export default function Hero() {
 
       {/* Accent glow top-right */}
       <div
-        className="absolute top-0 right-0 z-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute top-0 right-0 z-0 w-[500px] h-[500px] pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(255,69,0,0.07) 0%, transparent 70%)",
         }}
       />
       <div
-        className="absolute bottom-20 left-0 z-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+        className="absolute bottom-20 left-0 z-0 w-[400px] h-[400px] pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%)",
@@ -60,7 +60,7 @@ export default function Hero() {
         <div className="flex-1 lg:w-[55%] max-w-xl lg:max-w-none">
           {/* Pre-heading badge */}
           <motion.div {...fadeUp(0.05)}>
-            <span className="inline-flex items-center gap-2 font-code text-[11px] text-[var(--accent-text)] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 rounded-full mb-6">
+            <span className="inline-flex items-center gap-2 font-code text-[11px] text-[var(--accent-text)] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF4500] animate-pulse" />
               {translations.hero.badge}
             </span>
@@ -87,7 +87,7 @@ export default function Hero() {
             <a
               href="#projects"
               onClick={handleScrollToProjects}
-              className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+              className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-6 py-3 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
             >
               {translations.hero.cta.primary[lang]}
               <ChevronRight size={16} />
@@ -95,7 +95,7 @@ export default function Hero() {
             <a
               href={translations.hero.cvFilename[lang]}
               download={translations.hero.cvFilename[lang].substring(1)}
-              className="inline-flex items-center gap-2 font-body border border-[#d4d4d8] dark:border-[#1E2330] text-[#2D2D2D] dark:text-[#F0F4FF] hover:border-[#FF4500]/50 dark:hover:border-[#FF4500]/50 px-6 py-3 rounded-lg transition-all duration-200 bg-white dark:bg-transparent active:scale-95 shadow-sm"
+              className="inline-flex items-center gap-2 font-body border border-[#d4d4d8] dark:border-[#1E2330] text-[#2D2D2D] dark:text-[#F0F4FF] hover:border-[#FF4500]/50 dark:hover:border-[#FF4500]/50 px-6 py-3 transition-all duration-200 bg-white dark:bg-transparent active:scale-95 shadow-sm"
             >
               <Download size={16} />
               {translations.hero.cta.secondary[lang]}
@@ -122,7 +122,7 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="relative z-10 max-w-[1280px] mx-auto w-full px-6 lg:px-12 pb-16"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-[#404040] dark:border-[#1E2330] rounded-xl overflow-hidden bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none">
+        <div className="grid grid-cols-2 md:grid-cols-4 border border-[#404040] dark:border-[#1E2330] overflow-hidden bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none">
           {STATS.map((stat, i) => (
             <div
               key={i}

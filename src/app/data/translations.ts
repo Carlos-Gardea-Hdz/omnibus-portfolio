@@ -6,7 +6,7 @@ export const translations = {
       {
         value: "9",
         label: { es: "Proyectos", en: "Projects" },
-        desc: { es: "Arquitectura avanzada", en: "Advanced architecture" },
+        desc: { es: "Un patrón por sistema", en: "One pattern per system" },
       },
       {
         value: "1",
@@ -29,12 +29,12 @@ export const translations = {
     ],
     badge: "Laravel 12 · React 19 · Docker · PostgreSQL 18 · VPS",
     title: {
-      es: "9 sistemas de\narquitectura avanzada.\nUna infraestructura.\nUn estándar.",
-      en: "9 advanced-architecture\nsystems.\nOne infrastructure.\nOne standard.",
+      es: "9 sistemas Laravel.\nUn VPS propio.\n9 patrones de\narquitectura distintos.",
+      en: "9 Laravel systems.\nOne self-managed VPS.\n9 distinct\narchitecture patterns.",
     },
     description: {
-      es: "Portafolio de arquitectura avanzada construido sobre VPS propio con Docker, Traefik v3, PostgreSQL 18 y Valkey. Cada proyecto demuestra un patrón de arquitectura diferente: desde Event Sourcing hasta microservicios con Go y Rust.",
-      en: "Advanced-architecture portfolio built on a self-managed VPS with Docker, Traefik v3, PostgreSQL 18, and Valkey. Each project demonstrates a distinct architectural pattern: from Event Sourcing to Go and Rust microservices.",
+      es: "Nueve aplicaciones Laravel sobre un VPS que administro yo mismo: Ubuntu 24.04, Docker, Traefik v3, PostgreSQL 18 y Valkey. Dos reconstruyen sistemas reales que siguen operando en producción. Las demás atacan un patrón concreto cada una: Event Sourcing, microservicios gRPC en Go, FFI con Rust, multi-tenancy.",
+      en: "Nine Laravel applications on a VPS I manage myself: Ubuntu 24.04, Docker, Traefik v3, PostgreSQL 18, and Valkey. Two rebuild real systems still running in production. The rest each take on one concrete pattern: Event Sourcing, gRPC microservices in Go, Rust FFI, multi-tenancy.",
     },
     cta: {
       primary: { es: "Ver Proyectos", en: "View Projects" },
@@ -80,10 +80,10 @@ export const translations = {
   },
   contact: {
     tag: { es: "Contacto", en: "Contact" },
-    title: { es: "¿Construimos algo juntos?", en: "Shall we build something together?" },
+    title: { es: "¿Traes un proyecto? Hablemos.", en: "Working on something? Let's talk." },
     description: {
-      es: "Disponible para proyectos freelance, posiciones remotas y colaboraciones.",
-      en: "Available for freelance projects, remote positions, and collaborations."
+      es: "Abierto a freelance y posiciones remotas, desde Ciudad Juárez.",
+      en: "Open to freelance work and remote roles, based in Ciudad Juárez."
     },
     cta: {
       linkedin: { es: "Conectar en LinkedIn", en: "Connect on LinkedIn" },
@@ -106,10 +106,10 @@ export const translations = {
     }
   },
   projects: {
-    tag: { es: "Sistemas de Arquitectura", en: "Architecture Systems" },
+    tag: { es: "Los 9 sistemas", en: "The 9 systems" },
     heading: {
-      es: "Cada sistema es un estándar de arquitectura.",
-      en: "Every system is an architectural standard.",
+      es: "Cada uno resuelve un problema de arquitectura distinto.",
+      en: "Each one solves a different architecture problem.",
     },
     showAll: { es: "Ver todos los sistemas", en: "View all systems" },
     showLess: { es: "Ver menos proyectos", en: "View fewer projects" },
@@ -129,8 +129,8 @@ export const translations = {
   footer: {
     built: "Vite + React 19 + Tailwind CSS v4",
     tagline: {
-      es: "// Arquitectura sin concesiones · Ciudad Juárez, MX",
-      en: "// Architecture without compromise · Ciudad Juárez, MX",
+      es: "// Autohospedado en mi propio VPS · Ciudad Juárez, MX",
+      en: "// Self-hosted on my own VPS · Ciudad Juárez, MX",
     },
   },
   common: {
