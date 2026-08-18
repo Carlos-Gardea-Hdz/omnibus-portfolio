@@ -124,7 +124,7 @@ export default function Navbar() {
             <span
               className={`px-2.5 h-full flex items-center transition-colors ${
                 lang === "es"
-                  ? "bg-[#FF4500] text-white"
+                  ? "bg-[#C83600] text-white"
                   : scrolled
                     ? "text-white/60 hover:text-white"
                     : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
@@ -135,7 +135,7 @@ export default function Navbar() {
             <span
               className={`px-2.5 h-full flex items-center transition-colors ${
                 lang === "en"
-                  ? "bg-[#FF4500] text-white"
+                  ? "bg-[#C83600] text-white"
                   : scrolled
                     ? "text-white/60 hover:text-white"
                     : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"

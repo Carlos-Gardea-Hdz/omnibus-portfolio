@@ -114,6 +114,9 @@ export default function About() {
                 */}
                 <img
                   src="/avatar.jpg"
+                  width={640}
+                  height={640}
+                  fetchPriority="high"
                   alt="Carlos Gardea"
                   className="relative z-20 w-full h-full object-cover object-center"
                   onError={(e) => {
@@ -213,7 +216,7 @@ export default function About() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="font-code text-[11px] px-2.5 py-1 border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#111318] text-[#ffffff] dark:text-[#6B7A99] shadow-[0_2px_10px_rgba(0,0,0,0.05)] dark:shadow-none"
+                  className="font-code text-[11px] px-2.5 py-1 border border-[#404040] dark:border-[#1E2330] bg-[#333333] dark:bg-[#111318] text-[#ffffff] dark:text-[#94A3B8] shadow-[0_2px_10px_rgba(0,0,0,0.05)] dark:shadow-none"
                 >
                   {skill}
                 </span>

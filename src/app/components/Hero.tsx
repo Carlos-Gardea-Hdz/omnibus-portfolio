@@ -87,7 +87,7 @@ export default function Hero() {
             <a
               href="#projects"
               onClick={handleScrollToProjects}
-              className="inline-flex items-center gap-2 font-body bg-[#FF4500] hover:bg-[#E03E00] text-white px-6 py-3 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+              className="inline-flex items-center gap-2 font-body bg-[#C83600] hover:bg-[#FF4500] text-white px-6 py-3 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
             >
               {translations.hero.cta.primary[lang]}
               <ChevronRight size={16} />
