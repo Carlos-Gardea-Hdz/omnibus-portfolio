@@ -2,6 +2,41 @@ import { Project } from "../types";
 
 export const projects: Project[] = [
   {
+    id: "kyc-wedding",
+    letter: "K",
+    codename: "KYC WEDDING",
+    domain: "kyc-wedding.com",
+    link: "https://kyc-wedding.com/",
+    color: "#22D3EE",
+    status: "production",
+    description: {
+      es: "Plataforma de invitaciones digitales para bodas y eventos — mi producto en desarrollo activo y el sitio de mi propia boda. La Fase 1 (estática) está en producción con invitados reales; la Fase 2 en Laravel 12 ya tiene construidos autenticación, pagos, panel de administración y envíos de invitación por WhatsApp, con más de 860 tests en verde.",
+      en: "Digital invitation platform for weddings and events — my product in active development and my own wedding's site. Phase 1 (static) is in production with real guests; the Laravel 12 Phase 2 already has auth, payments, admin panel and WhatsApp invitation sends built, with 860+ tests passing.",
+    },
+    stackBadges: [
+      "Laravel 12",
+      "React 19",
+      "Inertia.js",
+      "PostgreSQL",
+      "Docker",
+    ],
+    architecturePattern: "DDD Lite + Actions + Outbox",
+    versions: [
+      {
+        type: "legacy",
+        label: { es: "En producción", en: "Live" },
+        url: "https://kyc-wedding.com/",
+        available: true,
+      },
+      {
+        type: "laravel",
+        label: { es: "Fase 2 (Laravel)", en: "Phase 2 (Laravel)" },
+        url: "https://kyc-wedding.com/",
+        available: false,
+      },
+    ],
+  },
+  {
     id: "plataforma-empresarial",
     letter: "A",
     codename: "PLATAFORMA EMPRESARIAL",
