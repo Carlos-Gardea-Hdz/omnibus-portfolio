@@ -14,7 +14,7 @@ export default function Footer() {
             <span className="font-display text-[#0D1117] dark:text-[#F0F4FF] text-base">
               OMNIBUS · Carlos Gardea · 2026
             </span>
-            <span className="font-code text-[#64748B] dark:text-[#6B7A99] text-[11px]">
+            <span className="font-code text-[#4B5563] dark:text-[#6B7A99] text-[11px]">
               Built with {translations.footer.built}
             </span>
           </div>
@@ -25,7 +25,7 @@ export default function Footer() {
               href="https://carlosgardea.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-code text-[#64748B] dark:text-[#6B7A99] hover:text-[#FF4500] dark:hover:text-[#FF4500] text-sm transition-colors"
+              className="font-code text-[#4B5563] dark:text-[#6B7A99] hover:text-[#FF4500] dark:hover:text-[#FF4500] text-sm transition-colors"
             >
               carlosgardea.com
             </a>
@@ -38,7 +38,7 @@ export default function Footer() {
               href="https://github.com/Carlos-Gardea-Hdz"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF] transition-colors"
+              className="text-[#4B5563] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF] transition-colors"
               aria-label="GitHub"
             >
               <Github size={18} />
@@ -47,7 +47,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/carlos-gardea"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF] transition-colors"
+              className="text-[#4B5563] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF] transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin size={18} />
@@ -57,7 +57,7 @@ export default function Footer() {
 
         {/* Bottom line */}
         <div className="mt-6 pt-6 border-t border-[#E2E8F0] dark:border-[#1E2330] flex items-center justify-center">
-          <span className="font-code text-[#64748B] dark:text-[#6B7A99] text-[10px] tracking-widest">
+          <span className="font-code text-[#4B5563] dark:text-[#6B7A99] text-[10px] tracking-widest">
             {translations.footer.tagline[lang]}
           </span>
         </div>
