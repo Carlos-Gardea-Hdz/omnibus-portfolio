@@ -10,7 +10,7 @@ const STATS = translations.hero.stats;
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
+  transition: { duration: 0.35, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
 export default function Hero() {
@@ -59,7 +59,7 @@ export default function Hero() {
         {/* LEFT — 55% */}
         <div className="flex-1 lg:w-[55%] max-w-xl lg:max-w-none">
           {/* Pre-heading badge */}
-          <motion.div {...fadeUp(0.05)}>
+          <motion.div {...fadeUp(0.02)}>
             <span className="inline-flex items-center gap-2 font-code text-[11px] text-[var(--accent-text)] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF4500] animate-pulse" />
               {translations.hero.badge}
@@ -68,7 +68,7 @@ export default function Hero() {
 
           {/* Main heading */}
           <motion.h1
-            {...fadeUp(0.12)}
+            {...fadeUp(0.06)}
             className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
           >
             {translations.hero.title[lang]}
@@ -76,14 +76,14 @@ export default function Hero() {
 
           {/* Sub-heading */}
           <motion.p
-            {...fadeUp(0.2)}
+            {...fadeUp(0.12)}
             className="font-body text-[#404040] dark:text-[#6B7A99] text-base md:text-lg leading-relaxed mb-10 max-w-[520px]"
           >
             {translations.hero.description[lang]}
           </motion.p>
 
           {/* CTA buttons */}
-          <motion.div {...fadeUp(0.28)} className="flex flex-wrap gap-4">
+          <motion.div {...fadeUp(0.18)} className="flex flex-wrap gap-4">
             <a
               href="#projects"
               onClick={handleScrollToProjects}
@@ -107,7 +107,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
           className="w-full lg:w-[45%] flex items-center justify-center"
           style={{ height: "520px" }}
         >
@@ -119,7 +119,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
+        transition={{ duration: 0.4, delay: 0.25 }}
         className="relative z-10 max-w-[1280px] mx-auto w-full px-6 lg:px-12 pb-16"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 border border-[#404040] dark:border-[#1E2330] overflow-hidden bg-[#333333] dark:bg-[#0A0C10] shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-none">
