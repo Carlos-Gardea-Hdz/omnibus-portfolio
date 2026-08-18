@@ -80,8 +80,9 @@
 
 /* ── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0A0C10; }
-::-webkit-scrollbar-thumb { background: #1E2330; }
+::-webkit-scrollbar-track { background: #E5E7EB; }
+::-webkit-scrollbar-thumb { background: #9CA3AF; }
+.dark ::-webkit-scrollbar-track { background: #0A0C10; }
 .dark ::-webkit-scrollbar-thumb { background: #1E2330; }
 
 /* ── Film grain overlay ────────────────────────────────

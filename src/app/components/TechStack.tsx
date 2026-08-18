@@ -37,7 +37,7 @@ export default function TechStack() {
             transition={{ duration: 0.5 }}
             className="lg:ml-12"
           >
-            <p className="font-code text-[#FF4500] text-xs tracking-[0.2em] uppercase mb-3">
+            <p className="font-code text-[var(--accent-text)] text-xs tracking-[0.2em] uppercase mb-3">
               // {lang === 'es' ? 'Tecnologías' : 'Technologies'}
             </p>
             <h2 className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-4">
