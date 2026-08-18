@@ -41,10 +41,31 @@ await build({
 const { render } = await import(
   pathToFileURL(resolve(ssrOutDir, 'entry-server.js')).href
 );
-const appHtml = render();
+let appHtml = render();
 if (!appHtml || !appHtml.includes('<')) {
   throw new Error('Prerender produced empty output.');
 }
+
+// Neutralize baked-in animation initial states. Motion components render
+// their pre-animation styles (opacity:0 + a translate/scale) into the static
+// markup, which makes the prerendered page invisible without JS and delays
+// LCP until hydration animates everything in. Stripping them keeps the
+// content visible from first paint; when React mounts it replaces the tree
+// and the entry animations still run.
+appHtml = appHtml.replace(/style="([^"]*)"/g, (full, style) => {
+  if (!/opacity:\s*0(?:[;"]|$)/.test(style + ';')) return full;
+  const cleaned = style
+    .split(';')
+    .map((s) => s.trim())
+    .filter(
+      (s) =>
+        s &&
+        !/^opacity:\s*0$/.test(s) &&
+        !/^transform:.*(translate|scale)/.test(s)
+    )
+    .join(';');
+  return cleaned ? `style="${cleaned}"` : '';
+});
 
 // 3. Inject the markup into the client build's index.html.
 const marker = '<div id="root"></div>';
