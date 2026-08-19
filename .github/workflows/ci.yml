@@ -19,6 +19,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
@@ -57,6 +58,7 @@ jobs:
   lighthouse:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       # Checkout is only needed for lighthouserc.json; the audited site comes
       # from the build artifact, same as the deploy jobs.
@@ -76,12 +78,16 @@ jobs:
   # Deploy continuo: cada push a main (= cada merge de PR) publica el MISMO
   # artefacto que pasó type-check y build — primero staging, luego producción.
   # La llave SSH (secret VPS_SSH_KEY) está enjaulada en el VPS con un forced
-  # command de rrsync: solo puede escribir bajo /opt/omnibus/portfolio, nada
-  # más. nginx sirve estáticos por bind mount, así que no hace falta reload.
+  # command de rrsync write-only anclado al docroot de su ambiente (dist/ o
+  # dist-prod/). Por eso el destino del rsync es ":/": la RAÍZ de la jaula.
+  # Un destino relativo como ":dist/" se resolvería DENTRO de la jaula y
+  # anidaría el deploy en dist/dist/ sin que nginx lo sirva jamás.
+  # nginx sirve estáticos por bind mount, así que no hace falta reload.
   deploy-staging:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment:
       name: staging
       url: https://carlosgardea.cloud
@@ -96,10 +102,15 @@ jobs:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
 
       - name: Add VPS host key
-        run: mkdir -p ~/.ssh && echo "${{ secrets.VPS_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+        env:
+          KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: mkdir -p ~/.ssh && echo "$KNOWN_HOSTS" >> ~/.ssh/known_hosts
 
+      # --delay-updates deja los archivos nuevos en su lugar al FINAL de la
+      # transferencia y --delete-after borra los sobrantes después: la ventana
+      # en que el sitio mezcla build viejo y nuevo se reduce al mínimo.
       - name: Rsync to staging
-        run: rsync -az --delete ./dist/ deployer_vps@195.35.37.195:dist/
+        run: rsync -az --delay-updates --delete-after ./dist/ deployer_vps@195.35.37.195:/
 
       # El deploy no se da por bueno con "rsync exit 0": staging debe SERVIR
       # el artefacto nuevo antes de que production arranque.
@@ -112,6 +123,7 @@ jobs:
   deploy-prod:
     needs: deploy-staging
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     # El environment 'production' permite añadir aprobación manual en
     # Settings → Environments cuando se quiera un gate humano.
     environment:
@@ -128,10 +140,14 @@ jobs:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
 
       - name: Add VPS host key
-        run: mkdir -p ~/.ssh && echo "${{ secrets.VPS_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+        env:
+          KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: mkdir -p ~/.ssh && echo "$KNOWN_HOSTS" >> ~/.ssh/known_hosts
 
+      # Mismo destino ":/": la jaula rrsync de la llave de producción ya
+      # apunta a dist-prod/ (ver nota en deploy-staging).
       - name: Rsync to production
-        run: rsync -az --delete ./dist/ deployer_vps@195.35.37.195:dist-prod/
+        run: rsync -az --delay-updates --delete-after ./dist/ deployer_vps@195.35.37.195:/
 
       - name: Smoke test production
         run: |
