@@ -137,3 +137,10 @@ html, body { overflow-x: clip; }
 /* WCAG 2.5.8: targets of at least 24px; inline text links are exempt and ignore min-size. */
 a[href], button, [role="button"] { min-block-size: 24px; min-inline-size: 24px; }
 .sr-only:not(:focus):not(:active) { min-block-size: 0; min-inline-size: 0; }
+
+/* View Transitions: cross-fade the whole page on theme change. */
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: 350ms; animation-timing-function: ease-in-out; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
