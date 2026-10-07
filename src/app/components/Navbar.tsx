@@ -60,7 +60,7 @@ export default function Navbar() {
             OMNIBUS
           </span>
           <span className={`font-code text-[10px] leading-none mt-0.5 ${
-            scrolled ? "text-white/60" : "text-[#64748B] dark:text-[#6B7A99]"
+            scrolled ? "text-white/60" : "text-[#64748B] dark:text-[#8A98B5]"
           }`}>
             by Carlos Gardea
           </span>
@@ -76,7 +76,7 @@ export default function Navbar() {
               className={`font-body transition-colors text-sm ${
                 scrolled 
                   ? "text-white/70 hover:text-white" 
-                  : "text-[#475569] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+                  : "text-[#475569] dark:text-[#8A98B5] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
               }`}
             >
               {link.label[lang]}
@@ -127,7 +127,7 @@ export default function Navbar() {
                   ? "bg-[#C83600] text-white"
                   : scrolled
                     ? "text-white/60 hover:text-white"
-                    : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+                    : "text-[#64748B] dark:text-[#8A98B5] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
               }`}
             >
               ES
@@ -138,7 +138,7 @@ export default function Navbar() {
                   ? "bg-[#C83600] text-white"
                   : scrolled
                     ? "text-white/60 hover:text-white"
-                    : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+                    : "text-[#64748B] dark:text-[#8A98B5] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
               }`}
             >
               EN
@@ -153,7 +153,7 @@ export default function Navbar() {
             className={`transition-colors ${
               scrolled 
                 ? "text-white/60 hover:text-white" 
-                : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+                : "text-[#64748B] dark:text-[#8A98B5] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
             }`}
             aria-label="GitHub"
           >
@@ -168,7 +168,7 @@ export default function Navbar() {
             className={`transition-colors ${
               scrolled 
                 ? "text-white/60 hover:text-white" 
-                : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+                : "text-[#64748B] dark:text-[#8A98B5] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
             }`}
             aria-label="LinkedIn"
           >
@@ -181,7 +181,7 @@ export default function Navbar() {
             className={`transition-colors cursor-pointer ${
               scrolled 
                 ? "text-white/60 hover:text-white" 
-                : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+                : "text-[#64748B] dark:text-[#8A98B5] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
             }`}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
           >
@@ -194,7 +194,7 @@ export default function Navbar() {
             className={`md:hidden transition-colors cursor-pointer ${
               scrolled
                 ? "text-white/60 hover:text-white"
-                : "text-[#64748B] dark:text-[#6B7A99] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
+                : "text-[#64748B] dark:text-[#8A98B5] hover:text-[#0D1117] dark:hover:text-[#F0F4FF]"
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={lang === "es" ? "Abrir o cerrar menú" : "Toggle menu"}

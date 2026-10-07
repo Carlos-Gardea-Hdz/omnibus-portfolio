@@ -75,6 +75,37 @@ jobs:
           configPath: ./lighthouserc.json
           uploadArtifacts: true
 
+  # Responsive + a11y gate: Playwright runs the built site at 3 viewports x
+  # light/dark and fails on horizontal scroll, targets under 24px or axe
+  # violations. Runs the artifact from 'build', like Lighthouse.
+  responsive:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: dist
+          path: dist
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Responsive spec
+        run: pnpm test:e2e
+
   # Deploy continuo: cada push a main (= cada merge de PR) publica el MISMO
   # artefacto que pasó type-check y build — primero staging, luego producción.
   # La llave SSH (secret VPS_SSH_KEY) está enjaulada en el VPS con un forced

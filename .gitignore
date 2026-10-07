@@ -46,3 +46,5 @@ mcp_audit.log
 !MEMORY.md
 !.agent-memory/
 # <<< vault-tooling <<<
+test-results/
+playwright-report/

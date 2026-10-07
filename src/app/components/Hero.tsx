@@ -77,7 +77,7 @@ export default function Hero() {
           {/* Sub-heading */}
           <motion.p
             {...fadeUp(0.12)}
-            className="font-body text-[#404040] dark:text-[#6B7A99] text-base md:text-lg leading-relaxed mb-10 max-w-[520px]"
+            className="font-body text-[#404040] dark:text-[#8A98B5] text-base md:text-lg leading-relaxed mb-10 max-w-[520px]"
           >
             {translations.hero.description[lang]}
           </motion.p>
@@ -138,7 +138,7 @@ export default function Hero() {
               <span className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm">
                 {stat.label[lang]}
               </span>
-              <span className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px]">
+              <span className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-[11px]">
                 {stat.desc[lang]}
               </span>
             </div>
@@ -150,7 +150,7 @@ export default function Hero() {
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 opacity-40">
         <ArrowDown
           size={16}
-          className="text-[#4B5563] dark:text-[#6B7A99] animate-bounce"
+          className="text-[#4B5563] dark:text-[#8A98B5] animate-bounce"
         />
       </div>
     </section>
