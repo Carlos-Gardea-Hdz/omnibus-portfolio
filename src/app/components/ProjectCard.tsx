@@ -14,7 +14,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
     ProjectVersionType,
     { label: { es: string; en: string }; color: string }
   > = {
-    legacy: { label: { es: "Legacy", en: "Legacy" }, color: "#94A3B8" },
+    legacy: { label: { es: "Legacy", en: "Legacy" }, color: "#A3B1C4" },
     whitelabel: {
       label: { es: "White Label", en: "White Label" },
       color: "#F59E0B",
@@ -72,13 +72,13 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
           <h3 className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-xl leading-tight mb-1">
             {project.codename}
           </h3>
-          <span className="font-code text-[11px] text-[#9CA3AF] dark:text-[#6B7A99] border border-[#404040] dark:border-[#1E2330] px-2 py-0.5">
+          <span className="font-code text-[11px] text-[#9CA3AF] dark:text-[#8A98B5] border border-[#404040] dark:border-[#1E2330] px-2 py-0.5">
             {project.domain}
           </span>
         </div>
 
         {/* Description */}
-        <p className="font-body text-[#9CA3AF] dark:text-[#6B7A99] text-sm leading-relaxed flex-1">
+        <p className="font-body text-[#9CA3AF] dark:text-[#8A98B5] text-sm leading-relaxed flex-1">
           {project.description[lang]}
         </p>
 
@@ -88,7 +88,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
             className="w-1 h-3 flex-shrink-0"
             style={{ backgroundColor: project.color }}
           />
-          <span className="font-code text-[10px] text-[#9CA3AF] dark:text-[#6B7A99] leading-tight">
+          <span className="font-code text-[10px] text-[#9CA3AF] dark:text-[#8A98B5] leading-tight">
             {project.architecturePattern}
           </span>
         </div>
@@ -98,7 +98,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
           {project.stackBadges.map((badge) => (
             <span
               key={badge}
-              className="font-code text-[10px] px-2 py-0.5 border border-[#404040] dark:border-[#1E2330] text-[#9CA3AF] dark:text-[#6B7A99] bg-[#2D2D2D] dark:bg-[#111318]"
+              className="font-code text-[10px] px-2 py-0.5 border border-[#404040] dark:border-[#1E2330] text-[#9CA3AF] dark:text-[#8A98B5] bg-[#2D2D2D] dark:bg-[#111318]"
             >
               {badge}
             </span>
@@ -108,7 +108,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
           {/* Versions (only for projects with legacy/whitelabel/laravel history) */}
           {project.versions && project.versions.length > 0 && (
             <div className="flex flex-col gap-1.5 pt-2 border-t border-[#404040] dark:border-[#1E2330]">
-              <span className="inline-flex items-center gap-1 font-code text-[10px] text-[#9CA3AF] dark:text-[#6B7A99]">
+              <span className="inline-flex items-center gap-1 font-code text-[10px] text-[#9CA3AF] dark:text-[#8A98B5]">
                 <History size={10} />
                 {lang === "es" ? "Versiones" : "Versions"}
               </span>
@@ -121,7 +121,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
                     href={v.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 border transition-opacity hover:opacity-100 opacity-80"
+                    className="inline-flex items-center gap-1 font-code text-[10px] px-2 py-0.5 border min-h-6"
                     style={{
                       color: cfg.color,
                       borderColor: `${cfg.color}40`,
@@ -162,7 +162,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
             href={project.github || "https://github.com/Carlos-Gardea-Hdz"}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-body text-xs text-[#9CA3AF] dark:text-[#6B7A99] hover:text-[#ffffff] dark:hover:text-[#F0F4FF] transition-colors"
+            className="inline-flex items-center gap-1.5 font-body text-xs text-[#9CA3AF] dark:text-[#8A98B5] hover:text-[#ffffff] dark:hover:text-[#F0F4FF] transition-colors"
           >
             <Github size={12} />
             {lang === "es" ? "Ver Código" : "View Code"}

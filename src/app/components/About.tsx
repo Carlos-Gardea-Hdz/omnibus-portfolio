@@ -79,7 +79,7 @@ function EducationBadge({ edu, index }: { edu: any, index: number }) {
         <div className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm">
           {edu.title}
         </div>
-        <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px]">
+        <div className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-[11px]">
           {edu.subtitle}
         </div>
       </div>
@@ -144,12 +144,12 @@ export default function About() {
                   <span className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-lg">
                     Carlos Gardea
                   </span>
-                  <span className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-xs mt-1">
+                  <span className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-xs mt-1">
                     Software Engineer
                   </span>
                   <div className="flex items-center gap-1.5 mt-3">
-                    <MapPin size={11} className="text-[#9CA3AF] dark:text-[#6B7A99]" />
-                    <span className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px]">
+                    <MapPin size={11} className="text-[#9CA3AF] dark:text-[#8A98B5]" />
+                    <span className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-[11px]">
                       Ciudad Juárez, MX
                     </span>
                   </div>
@@ -193,7 +193,7 @@ export default function About() {
               {translations.about.heading[lang]}
             </h2>
 
-            <p className="font-body text-[#4B5563] dark:text-[#6B7A99] text-base leading-relaxed mb-8">
+            <p className="font-body text-[#4B5563] dark:text-[#8A98B5] text-base leading-relaxed mb-8">
               {lang === "es"
                 ? "Ingeniero Desarrollador de Software en Inventec México (IEC Technologies), construyendo sistemas de manufactura para piso de producción. Especializado en arquitecturas Laravel con visión full-stack y experiencia demostrada en sistemas en producción: plataforma de administración empresarial multi-sucursal y plataforma universitaria de titulación con +70% de incremento en eficiencia terminal. Background industrial en Bosch · Inglés B2 certificado (Oxford University)."
                 : "Software Development Engineer at Inventec México (IEC Technologies), building manufacturing systems for the production floor. Specialized in Laravel architectures with a full-stack mindset and proven experience delivering production systems: a multi-branch enterprise administration platform and a university graduation platform with +70% efficiency improvement. Industrial background at Bosch · B2 English certified (Oxford University)."}
@@ -225,7 +225,7 @@ export default function About() {
 
             {/* Timeline */}
             <div>
-              <p className="font-code text-[#4B5563] dark:text-[#6B7A99] text-xs uppercase tracking-widest mb-5">
+              <p className="font-code text-[#4B5563] dark:text-[#8A98B5] text-xs uppercase tracking-widest mb-5">
                 {translations.about.experience[lang]}
               </p>
 
@@ -262,10 +262,10 @@ export default function About() {
                         >
                           {item.company}
                         </div>
-                        <div className="font-body text-[#4B5563] dark:text-[#6B7A99] text-sm">
+                        <div className="font-body text-[#4B5563] dark:text-[#8A98B5] text-sm">
                           {item.role[lang]}
                         </div>
-                        <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-[11px] mt-0.5">
+                        <div className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-[11px] mt-0.5">
                           {item.period[lang]}
                         </div>
                       </div>

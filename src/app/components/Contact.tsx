@@ -84,7 +84,7 @@ export default function Contact() {
             </div>
             <div className="relative z-20 text-left">
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">LinkedIn</div>
-              <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-xs">/in/carlos-gardea</div>
+              <div className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-xs">/in/carlos-gardea</div>
             </div>
           </motion.a>
 
@@ -112,7 +112,7 @@ export default function Contact() {
             </div>
             <div className="relative z-20 text-left">
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">GitHub</div>
-              <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-xs">/Carlos-Gardea-Hdz</div>
+              <div className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-xs">/Carlos-Gardea-Hdz</div>
             </div>
           </motion.a>
 
@@ -138,7 +138,7 @@ export default function Contact() {
             </div>
             <div className="relative z-20 text-left">
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">Email</div>
-              <div className="font-code text-[#9CA3AF] dark:text-[#6B7A99] text-xs">carlos.gardea.hdz@outlook.com</div>
+              <div className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-xs">carlos.gardea.hdz@outlook.com</div>
             </div>
           </motion.a>
         </div>

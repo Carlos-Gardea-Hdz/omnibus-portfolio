@@ -43,7 +43,7 @@ export default function TechStack() {
             <h2 className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-4">
               {lang === 'es' ? 'El Stack' : 'The Stack'}
             </h2>
-            <p className="font-body text-[#4B5563] dark:text-[#6B7A99] text-lg max-w-lg">
+            <p className="font-body text-[#4B5563] dark:text-[#8A98B5] text-lg max-w-lg">
               {lang === 'es'
                 ? 'Cada tecnología fue elegida deliberadamente. Sin defaults. Sin excusas.'
                 : 'Every technology was chosen deliberately. No defaults. No excuses.'}
@@ -67,7 +67,7 @@ export default function TechStack() {
                   className="w-1 h-4"
                   style={{ backgroundColor: category.color }}
                 />
-                <span className="font-code text-[11px] tracking-[0.15em] uppercase text-[#4B5563] dark:text-[#6B7A99]">
+                <span className="font-code text-[11px] tracking-[0.15em] uppercase text-[#4B5563] dark:text-[#8A98B5]">
                   {category.label}
                 </span>
               </div>

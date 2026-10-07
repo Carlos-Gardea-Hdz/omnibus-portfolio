@@ -79,7 +79,7 @@ export default function Infrastructure() {
               <h2 className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl mb-4">
                 {lang === 'es' ? 'La Fortaleza' : 'The Fortress'}
               </h2>
-              <p className="font-body text-[#4B5563] dark:text-[#6B7A99] text-lg mb-10">
+              <p className="font-body text-[#4B5563] dark:text-[#8A98B5] text-lg mb-10">
                 {lang === 'es'
                   ? 'Infraestructura propia. Sin plataformas PaaS. Sin magia negra.'
                   : 'Self-managed infrastructure. No PaaS magic. No black boxes.'}
@@ -120,7 +120,7 @@ export default function Infrastructure() {
                 <div className="w-3 h-3 rounded-full bg-[#EF4444]" />
                 <div className="w-3 h-3 rounded-full bg-[#F59E0B]" />
                 <div className="w-3 h-3 rounded-full bg-[#22D3A5]" />
-                <span className="ml-2 font-code text-[11px] text-[#9CA3AF] dark:text-[#6B7A99]">
+                <span className="ml-2 font-code text-[11px] text-[#9CA3AF] dark:text-[#8A98B5]">
                   omnibus@vps:~$ architecture --view
                 </span>
               </div>
@@ -166,7 +166,7 @@ export default function Infrastructure() {
                   <div className="font-display text-xl" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <div className="font-code text-[10px] text-[#9CA3AF] dark:text-[#6B7A99] mt-0.5">{stat.label}</div>
+                  <div className="font-code text-[10px] text-[#9CA3AF] dark:text-[#8A98B5] mt-0.5">{stat.label}</div>
                 </div>
               ))}
             </div>
