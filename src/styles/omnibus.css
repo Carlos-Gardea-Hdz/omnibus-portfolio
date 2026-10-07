@@ -137,3 +137,12 @@ html, body { overflow-x: clip; }
 /* WCAG 2.5.8: targets of at least 24px; inline text links are exempt and ignore min-size. */
 a[href], button, [role="button"] { min-block-size: 24px; min-inline-size: 24px; }
 .sr-only:not(:focus):not(:active) { min-block-size: 0; min-inline-size: 0; }
+
+/* AuraBackground */
+.aura-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.aura-blob { position: absolute; border-radius: 9999px; filter: blur(80px); will-change: transform; animation: aura-drift 24s ease-in-out infinite alternate; }
+.aura-blob-a { top: -10%; right: -5%; width: 520px; height: 520px; background: rgba(255, 69, 0, 0.10); }
+.aura-blob-b { bottom: 5%; left: -8%; width: 440px; height: 440px; background: rgba(0, 212, 255, 0.08); animation-duration: 30s; animation-delay: -8s; }
+.aura-blob-c { top: 40%; left: 40%; width: 360px; height: 360px; background: rgba(139, 92, 246, 0.07); animation-duration: 36s; animation-delay: -16s; }
+@keyframes aura-drift { to { transform: translate3d(40px, -30px, 0) scale(1.12); } }
+@media (prefers-reduced-motion: reduce) { .aura-blob { animation: none; } }

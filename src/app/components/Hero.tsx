@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { ArrowDown, Download, ChevronRight } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import NetworkDiagram from "./NetworkDiagram";
+import { AuraBackground } from "./fx/AuraBackground";
 import { translations } from "../data/translations";
 
 const STATS = translations.hero.stats;
@@ -38,21 +39,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Accent glow top-right */}
-      <div
-        className="absolute top-0 right-0 z-0 w-[500px] h-[500px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(255,69,0,0.07) 0%, transparent 70%)",
-        }}
-      />
-      <div
-        className="absolute bottom-20 left-0 z-0 w-[400px] h-[400px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%)",
-        }}
-      />
+      <AuraBackground />
 
       {/* Main hero content */}
       <div className="relative z-10 flex-1 max-w-[1280px] mx-auto w-full px-6 lg:px-12 pt-32 pb-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
