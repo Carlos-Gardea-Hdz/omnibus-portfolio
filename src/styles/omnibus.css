@@ -137,3 +137,9 @@ html, body { overflow-x: clip; }
 /* WCAG 2.5.8: targets of at least 24px; inline text links are exempt and ignore min-size. */
 a[href], button, [role="button"] { min-block-size: 24px; min-inline-size: 24px; }
 .sr-only:not(:focus):not(:active) { min-block-size: 0; min-inline-size: 0; }
+
+/* SunMoonIcon morph */
+.sun-moon-icon * { transition: all 400ms ease-in-out; }
+.sun-moon-rays { transform-origin: 12px 12px; }
+.sun-moon-icon[data-moon="true"] .sun-moon-rays { transform: rotate(45deg); }
+@media (prefers-reduced-motion: reduce) { .sun-moon-icon * { transition: none; } }

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, type MouseEvent } from "react";
-import { Menu, X, Github, Sun, Moon, Linkedin } from "lucide-react";
+import { Menu, X, Github, Linkedin } from "lucide-react";
+import { SunMoonIcon } from "./fx/SunMoonIcon";
 import { useAppContext } from "../contexts/AppContext";
 import { translations } from "../data/translations";
 
@@ -185,7 +186,7 @@ export default function Navbar() {
             }`}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            <SunMoonIcon moon={!isDark} />
           </button>
 
           {/* Mobile hamburger */}
