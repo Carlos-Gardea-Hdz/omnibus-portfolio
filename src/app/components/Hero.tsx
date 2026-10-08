@@ -54,8 +54,9 @@ export default function Hero() {
           </m.div>
 
           {/* Main heading */}
+          {/* initial={false}: the prerendered h1 is the LCP element; a fade-in restart on hydration delays it */}
           <m.h1
-            {...fadeUp(0.06)}
+            initial={false}
             className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
           >
             {translations.hero.title[lang]}
