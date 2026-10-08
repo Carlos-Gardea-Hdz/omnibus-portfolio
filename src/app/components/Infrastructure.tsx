@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { Camera, Container, Database, Route, Shield, Workflow } from 'lucide-react';
 import { useAppContext } from '../contexts/AppContext';
 import { translations } from '../data/translations';
@@ -67,7 +67,7 @@ export default function Infrastructure() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* LEFT — Text */}
           <div>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -84,12 +84,12 @@ export default function Infrastructure() {
                   ? 'Infraestructura propia. Sin plataformas PaaS. Sin magia negra.'
                   : 'Self-managed infrastructure. No PaaS magic. No black boxes.'}
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Feature list */}
             <div className="flex flex-col gap-4">
               {FEATURES.map((feat, i) => (
-                <motion.div
+                <m.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -101,13 +101,13 @@ export default function Infrastructure() {
                   <span className="font-body text-[#ffffff] dark:text-[#F0F4FF] text-sm leading-relaxed">
                     {feat[lang]}
                   </span>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
 
           {/* RIGHT — Terminal diagram */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -129,7 +129,7 @@ export default function Infrastructure() {
               <p className="sr-only">{translations.infrastructure.diagramSummary[lang]}</p>
               <div className="terminal-box p-6 relative z-20" aria-hidden="true">
                 {DIAGRAM_LINES.map((line, i) => (
-                  <motion.div
+                  <m.div
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -138,7 +138,7 @@ export default function Infrastructure() {
                     className="leading-6"
                   >
                     <span style={{ color: line.color }}>{line.text}</span>
-                  </motion.div>
+                  </m.div>
                 ))}
 
                 {/* Blinking cursor */}
@@ -170,7 +170,7 @@ export default function Infrastructure() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

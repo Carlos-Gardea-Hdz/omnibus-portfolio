@@ -1,4 +1,4 @@
-import { MotionConfig } from 'motion/react';
+import { LazyMotion, MotionConfig, domAnimation } from 'motion/react';
 import { AppContext } from './contexts/AppContext';
 import { useTheme } from './hooks/useTheme';
 import { useLanguage } from './hooks/useLanguage';
@@ -17,6 +17,7 @@ export default function App() {
   const { lang, toggle: toggleLang } = useLanguage();
 
   return (
+    <LazyMotion features={domAnimation} strict>
     <MotionConfig reducedMotion="user">
       <AppContext.Provider value={{ lang, toggleLang, isDark, toggleTheme }}>
         <div className="font-body bg-[#F5F6FA] dark:bg-[#0A0C10] min-h-screen">
@@ -39,5 +40,6 @@ export default function App() {
         </div>
       </AppContext.Provider>
     </MotionConfig>
+    </LazyMotion>
   );
 }

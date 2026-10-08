@@ -23,9 +23,9 @@ async function openIn(page: Page, route: string, theme: (typeof THEMES)[number])
   }, theme);
   await page.goto(route, { waitUntil: "networkidle" });
   await page.evaluate((t) => document.documentElement.classList.toggle("dark", t === "dark"), theme);
-  // The app animates theme and entrance changes; axe would sample mid-transition colors.
+  // The app animates theme and entrance changes (CSS and motion JS); axe would sample mid-transition colors.
   await page.addStyleTag({ content: "*,*::before,*::after{transition:none!important;animation:none!important}" });
-  await page.waitForTimeout(300);
+  await page.waitForTimeout(1000);
 }
 
 for (const route of ROUTES) {
@@ -65,7 +65,7 @@ for (const route of ROUTES) {
           const results = await new AxeBuilder({ page })
             .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
             .analyze();
-          expect(results.violations.map((v) => `${v.id} (${v.nodes.length})`)).toEqual([]);
+          expect(results.violations.map((v) => `${v.id} (${v.nodes.length}) ${v.nodes.slice(0,3).map((n) => n.target.join(" ") + " " + (n.any[0]?.message ?? "")).join(" | ")}`)).toEqual([]);
         });
 
         test("captures a screenshot", async ({ page }, info) => {
