@@ -23,3 +23,20 @@ for (const c of CASES) {
     await context.close();
   });
 }
+
+test("hydrating a Spanish visitor does not shift the layout", async ({ browser }) => {
+  const context = await browser.newContext({ locale: "es-MX", viewport: { width: 375, height: 812 } });
+  const page = await context.newPage();
+  await page.addInitScript(() => {
+    (window as unknown as { __cls: number }).__cls = 0;
+    new PerformanceObserver((list) => {
+      for (const e of list.getEntries() as unknown as { value: number; hadRecentInput: boolean }[]) {
+        if (!e.hadRecentInput) (window as unknown as { __cls: number }).__cls += e.value;
+      }
+    }).observe({ type: "layout-shift", buffered: true });
+  });
+  await page.goto("/", { waitUntil: "networkidle" });
+  await page.waitForTimeout(500);
+  expect(await page.evaluate(() => (window as unknown as { __cls: number }).__cls)).toBeLessThan(0.001);
+  await context.close();
+});

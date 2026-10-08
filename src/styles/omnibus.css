@@ -139,7 +139,7 @@ a[href], button, [role="button"] { min-block-size: 24px; min-inline-size: 24px; 
 .sr-only:not(:focus):not(:active) { min-block-size: 0; min-inline-size: 0; }
 
 /* AuraBackground */
-.aura-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.aura-bg { position: absolute; inset: 0 0 auto 0; height: 100vh; z-index: 0; overflow: hidden; pointer-events: none; }
 .aura-blob { position: absolute; border-radius: 9999px; filter: blur(80px); will-change: transform; animation: aura-drift 24s ease-in-out infinite alternate; }
 .aura-blob-a { top: -10%; right: -5%; width: 520px; height: 520px; background: rgba(255, 69, 0, 0.10); }
 .aura-blob-b { bottom: 5%; left: -8%; width: 440px; height: 440px; background: rgba(0, 212, 255, 0.08); animation-duration: 30s; animation-delay: -8s; }
