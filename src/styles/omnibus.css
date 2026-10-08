@@ -143,3 +143,10 @@ a[href], button, [role="button"] { min-block-size: 24px; min-inline-size: 24px; 
 .sun-moon-rays { transform-origin: 12px 12px; }
 .sun-moon-icon[data-moon="true"] .sun-moon-rays { transform: rotate(45deg); }
 @media (prefers-reduced-motion: reduce) { .sun-moon-body, .sun-moon-bite, .sun-moon-rays { transition: none; } }
+
+/* View Transitions: cross-fade the whole page on theme change. */
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: 350ms; animation-timing-function: ease-in-out; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
