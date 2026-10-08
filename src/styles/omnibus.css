@@ -139,7 +139,7 @@ a[href], button, [role="button"] { min-block-size: 24px; min-inline-size: 24px; 
 .sr-only:not(:focus):not(:active) { min-block-size: 0; min-inline-size: 0; }
 
 /* SunMoonIcon morph */
-.sun-moon-icon * { transition: all 400ms ease-in-out; }
+.sun-moon-body, .sun-moon-bite, .sun-moon-rays { transition: r 400ms ease-in-out, cx 400ms ease-in-out, cy 400ms ease-in-out, opacity 400ms ease-in-out, transform 400ms ease-in-out; }
 .sun-moon-rays { transform-origin: 12px 12px; }
 .sun-moon-icon[data-moon="true"] .sun-moon-rays { transform: rotate(45deg); }
-@media (prefers-reduced-motion: reduce) { .sun-moon-icon * { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .sun-moon-body, .sun-moon-bite, .sun-moon-rays { transition: none; } }
