@@ -144,6 +144,22 @@ a[href], button, [role="button"] { min-block-size: 24px; min-inline-size: 24px; 
 .sun-moon-icon[data-moon="true"] .sun-moon-rays { transform: rotate(45deg); }
 @media (prefers-reduced-motion: reduce) { .sun-moon-body, .sun-moon-bite, .sun-moon-rays { transition: none; } }
 
+/* BorderBeam */
+@property --beam-angle { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.border-beam {
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  pointer-events: none;
+  background: conic-gradient(from var(--beam-angle), transparent 0 80%, var(--beam-color) 95%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: border-beam-spin var(--beam-duration) linear infinite;
+}
+@keyframes border-beam-spin { to { --beam-angle: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .border-beam { animation: none; opacity: 0; } }
+
 /* View Transitions: cross-fade the whole page on theme change. */
 ::view-transition-old(root),
 ::view-transition-new(root) { animation-duration: 350ms; animation-timing-function: ease-in-out; }
