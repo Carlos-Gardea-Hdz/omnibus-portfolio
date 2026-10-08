@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { GraduationCap, Globe, MapPin, Trophy } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import { translations } from "../data/translations";
@@ -67,7 +67,7 @@ const EDUCATION = [
 
 function EducationBadge({ edu, index }: { edu: any, index: number }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -83,7 +83,7 @@ function EducationBadge({ edu, index }: { edu: any, index: number }) {
           {edu.subtitle}
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -97,7 +97,7 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* LEFT — Avatar card */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -177,10 +177,10 @@ export default function About() {
                 <EducationBadge key={i} edu={edu} index={i} />
               ))}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* RIGHT — Text content */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -235,7 +235,7 @@ export default function About() {
 
                 <div className="flex flex-col gap-6">
                   {TIMELINE.map((item, i) => (
-                    <motion.div
+                    <m.div
                       key={i}
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -269,12 +269,12 @@ export default function About() {
                           {item.period[lang]}
                         </div>
                       </div>
-                    </motion.div>
+                    </m.div>
                   ))}
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

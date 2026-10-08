@@ -1,10 +1,10 @@
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { useAppContext } from '../contexts/AppContext';
 import { techCategories } from '../data/techStack';
 
 function TechBadge({ badge, category, badgeIdx, catIdx }: { badge: any, category: any, badgeIdx: number, catIdx: number }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -17,7 +17,7 @@ function TechBadge({ badge, category, badgeIdx, catIdx }: { badge: any, category
       <span className="font-code text-[12px] text-[#ffffff] dark:text-[#F0F4FF]">
         {badge.name}
       </span>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -30,7 +30,7 @@ export default function TechStack() {
         {/* Section header */}
         <div className="mb-16">
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#e5e7eb] dark:via-[#1E2330] to-transparent mb-12" />
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -48,13 +48,13 @@ export default function TechStack() {
                 ? 'Cada tecnología fue elegida deliberadamente. Sin defaults. Sin excusas.'
                 : 'Every technology was chosen deliberately. No defaults. No excuses.'}
             </p>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Tech categories */}
         <div className="flex flex-col gap-10">
           {techCategories.map((category, catIdx) => (
-            <motion.div
+            <m.div
               key={category.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ export default function TechStack() {
                   />
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

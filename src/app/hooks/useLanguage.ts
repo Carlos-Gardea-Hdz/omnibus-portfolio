@@ -12,7 +12,12 @@ function detectLang(): Lang {
 }
 
 export function useLanguage() {
-  const [lang, setLang] = useState<Lang>(detectLang);
+  // Prerendered markup is English: hydrate with it, then apply the visitor's language.
+  const [lang, setLang] = useState<Lang>("en");
+
+  useEffect(() => {
+    setLang(detectLang());
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = lang;

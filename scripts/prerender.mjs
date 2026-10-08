@@ -7,12 +7,11 @@
  *    link scrapers (LinkedIn, WhatsApp, search bots without JS) see the real
  *    page content instead of an empty shell.
  *
- * Deliberate decision — src/main.tsx keeps createRoot (render-and-replace)
- * instead of migrating to hydrateRoot: server output is always light/English
- * while the client detects theme and language per visitor, so hydration
- * mismatches are guaranteed for some visitors, and without hydration test
- * coverage a silent mismatch is worse than replacing the prerendered tree.
- * The goal of this step is SEO/scraper visibility, not hydration speed.
+ * src/main.tsx hydrates this markup (hydrateRoot) so the prerendered h1 stays
+ * the LCP element instead of being replaced after the JS runs. Hydration only
+ * matches because the first client render is always light/English, like this
+ * output; useTheme/useLanguage apply the visitor's stored preference in an
+ * effect afterwards. Keep that invariant (e2e/hydration.spec.ts guards it).
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
