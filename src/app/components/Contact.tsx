@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import { translations } from "../data/translations";
@@ -40,7 +40,7 @@ export default function Contact() {
 
       <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12">
         {/* Heading */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -56,11 +56,11 @@ export default function Contact() {
           <p className="font-body text-[#4B5563] dark:text-[#94A3B8] text-lg mb-12 max-w-lg">
             {translations.contact.description[lang]}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Social Link Cards — staggered on purpose, no centered triplet */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
-          <motion.a
+          <m.a
             ref={linkedInGlow.ref}
             {...linkedInGlow.handlers}
             initial={{ opacity: 0, y: 20 }}
@@ -86,9 +86,9 @@ export default function Contact() {
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">LinkedIn</div>
               <div className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-xs">/in/carlos-gardea</div>
             </div>
-          </motion.a>
+          </m.a>
 
-          <motion.a
+          <m.a
             ref={githubGlow.ref}
             {...githubGlow.handlers}
             initial={{ opacity: 0, y: 20 }}
@@ -114,9 +114,9 @@ export default function Contact() {
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">GitHub</div>
               <div className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-xs">/Carlos-Gardea-Hdz</div>
             </div>
-          </motion.a>
+          </m.a>
 
-          <motion.a
+          <m.a
             ref={emailGlow.ref}
             {...emailGlow.handlers}
             initial={{ opacity: 0, y: 20 }}
@@ -140,7 +140,7 @@ export default function Contact() {
               <div className="font-display text-[#ffffff] dark:text-[#F0F4FF] text-base mb-1">Email</div>
               <div className="font-code text-[#9CA3AF] dark:text-[#8A98B5] text-xs">carlos.gardea.hdz@outlook.com</div>
             </div>
-          </motion.a>
+          </m.a>
         </div>
       </div>
     </section>

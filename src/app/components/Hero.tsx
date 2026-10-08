@@ -1,5 +1,5 @@
 import { type MouseEvent } from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { ArrowDown, Download, ChevronRight } from "lucide-react";
 import { useAppContext } from "../contexts/AppContext";
 import NetworkDiagram from "./NetworkDiagram";
@@ -59,31 +59,31 @@ export default function Hero() {
         {/* LEFT — 55% */}
         <div className="flex-1 lg:w-[55%] max-w-xl lg:max-w-none">
           {/* Pre-heading badge */}
-          <motion.div {...fadeUp(0.02)}>
+          <m.div {...fadeUp(0.02)}>
             <span className="inline-flex items-center gap-2 font-code text-[11px] text-[var(--accent-text)] border border-[#FF4500]/30 bg-[#FF4500]/5 px-3 py-1.5 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF4500] animate-pulse" />
               {translations.hero.badge}
             </span>
-          </motion.div>
+          </m.div>
 
           {/* Main heading */}
-          <motion.h1
+          <m.h1
             {...fadeUp(0.06)}
             className="font-display text-[#2D2D2D] dark:text-[#F0F4FF] text-4xl md:text-5xl lg:text-[56px] leading-[1.12] tracking-tight mb-6 whitespace-pre-line"
           >
             {translations.hero.title[lang]}
-          </motion.h1>
+          </m.h1>
 
           {/* Sub-heading */}
-          <motion.p
+          <m.p
             {...fadeUp(0.12)}
             className="font-body text-[#404040] dark:text-[#8A98B5] text-base md:text-lg leading-relaxed mb-10 max-w-[520px]"
           >
             {translations.hero.description[lang]}
-          </motion.p>
+          </m.p>
 
           {/* CTA buttons */}
-          <motion.div {...fadeUp(0.18)} className="flex flex-wrap gap-4">
+          <m.div {...fadeUp(0.18)} className="flex flex-wrap gap-4">
             <a
               href="#projects"
               onClick={handleScrollToProjects}
@@ -100,11 +100,11 @@ export default function Hero() {
               <Download size={16} />
               {translations.hero.cta.secondary[lang]}
             </a>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* RIGHT — 45% — Network Diagram */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
@@ -112,11 +112,11 @@ export default function Hero() {
           style={{ height: "520px" }}
         >
           <NetworkDiagram />
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Stats bar */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.25 }}
@@ -144,7 +144,7 @@ export default function Hero() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 opacity-40">

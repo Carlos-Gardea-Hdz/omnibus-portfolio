@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "motion/react";
+import { m, AnimatePresence } from "motion/react";
 import { useAppContext } from "../contexts/AppContext";
 import { projects } from "../data/projects";
 import { translations } from "../data/translations";
@@ -56,15 +56,15 @@ export default function ProjectsGrid() {
         {/* Heading */}
         <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-16">
           <div className="max-w-2xl lg:ml-12">
-            <motion.p
+            <m.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="font-code text-[var(--accent-text)] text-xs tracking-[0.25em] uppercase mb-4"
             >
               // {translations.projects.tag[lang]}
-            </motion.p>
-            <motion.h2
+            </m.p>
+            <m.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -72,7 +72,7 @@ export default function ProjectsGrid() {
               className="font-display text-[#0a0a0a] dark:text-[#F0F4FF] text-4xl md:text-5xl leading-tight"
             >
               {translations.projects.heading[lang]}
-            </motion.h2>
+            </m.h2>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ export default function ProjectsGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           <AnimatePresence mode="popLayout" initial={false}>
             {displayedProjects.map((project, index) => (
-              <motion.div
+              <m.div
                 key={project.id}
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -102,7 +102,7 @@ export default function ProjectsGrid() {
                 className="h-full"
               >
                 <ProjectCard project={project} lang={lang} />
-              </motion.div>
+              </m.div>
             ))}
 
             {/* Temporary invisible spacers to preserve layout height while cards exit */}
@@ -118,7 +118,7 @@ export default function ProjectsGrid() {
 
         {/* Load More Button */}
         {projects.length > 6 && (
-          <motion.div
+          <m.div
             layout
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -151,7 +151,7 @@ export default function ProjectsGrid() {
                 </>
               )}
             </button>
-          </motion.div>
+          </m.div>
         )}
       </div>
     </section>
