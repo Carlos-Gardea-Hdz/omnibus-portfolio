@@ -48,3 +48,6 @@ mcp_audit.log
 # <<< vault-tooling <<<
 test-results/
 playwright-report/
+# Lighthouse CI temp Chrome profiles (WSL leaks Windows-style paths)
+C:*
+*lighthouse.*/
