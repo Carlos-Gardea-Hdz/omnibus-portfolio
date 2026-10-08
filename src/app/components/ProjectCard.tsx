@@ -1,5 +1,6 @@
 import { ExternalLink, Github, Zap, Clock, History } from "lucide-react";
 import { Project, Lang, ProjectVersionType } from "../types";
+import { BorderBeam } from "./fx/BorderBeam";
 import { translations } from "../data/translations";
 
 interface ProjectCardProps {
@@ -29,6 +30,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
         borderLeft: `3px solid ${project.color}`,
       }}
     >
+      {project.status === "production" && <BorderBeam color={project.color} />}
       {/* Top accent line */}
       <div
         className="h-0.5 w-full"
